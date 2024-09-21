@@ -588,109 +588,124 @@ class _MyHomePageState extends State<MyHomePage> {
               onInit: _onRiveInit,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 0, 50),
-            // child: Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //   children: w,
-            // ),
-            child: showQuestions ? t : Container(),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(600, 0, 0, 240),
-            child: Text(
-              questions[selectedQuestionIndex],
-              softWrap: true,
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 32,
-              ),
+          IgnorePointer(
+            ignoring: false,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 0, 50),
+              // child: Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //   children: w,
+              // ),
+              child: showQuestions ? t : Container(),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 900, 520),
-            child: Container(
-              key: GlobalKey(),
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.tertiaryContainer,
-                // border: Border.all(color: Colors.black, width: 1.0),
-                borderRadius: const BorderRadius.all(Radius.circular(8)),
-              ),
-              child: TimerCountdown(
-                format: CountDownTimerFormat.minutesSeconds,
-                endTime: endTime,
-                timeTextStyle: const TextStyle(
-                  color: Colors.purple,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 72,
-                ),
-                descriptionTextStyle: const TextStyle(
+          IgnorePointer(
+            ignoring: true,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(600, 0, 0, 240),
+              child: Text(
+                questions[selectedQuestionIndex],
+                softWrap: true,
+                style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
-                  fontSize: 12,
+                  fontSize: 32,
                 ),
-                onEnd: () {
-                  if (showQuestions == true && overPlayed == false) {
-                    playOver();
-                    overPlayed = true;
-                  }
-                },
               ),
             ),
           ),
-          DropdownButton<int>(
-            value: selectedQuestionIndex,
-            items: <int>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-                .map((int value) {
-              return DropdownMenuItem<int>(
-                value: value,
-                child: Text(value.toString()),
-              );
-            }).toList(),
-            onChanged: (val) {
-              setState(() {
-                showQuestions = false;
-                overPlayed = false;
-
-                _selectedOptions = List<bool>.filled(4, false);
-                _selectedOptionsSix = List<bool>.filled(6, false);
-                selectedQuestionIndex = val!;
-
-                endTime = DateTime.now().add(
-                  const Duration(
-                    minutes: 0,
-                    seconds: 0,
+          IgnorePointer(
+            ignoring: true,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 900, 520),
+              child: Container(
+                key: GlobalKey(),
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.tertiaryContainer,
+                  // border: Border.all(color: Colors.black, width: 1.0),
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                ),
+                child: TimerCountdown(
+                  format: CountDownTimerFormat.minutesSeconds,
+                  endTime: endTime,
+                  timeTextStyle: const TextStyle(
+                    color: Colors.purple,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 72,
                   ),
-                );
-
-                _onIdle();
-                playNotify();
-              });
-            },
+                  descriptionTextStyle: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                  ),
+                  onEnd: () {
+                    if (showQuestions == true && overPlayed == false) {
+                      playOver();
+                      overPlayed = true;
+                    }
+                  },
+                ),
+              ),
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(200, 0, 0, 10),
-            child: ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    showQuestions = true;
-                    playStart();
-                    _onIdle();
+          IgnorePointer(
+            ignoring: false,
+            child: DropdownButton<int>(
+              value: selectedQuestionIndex,
+              items: <int>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+                  .map((int value) {
+                return DropdownMenuItem<int>(
+                  value: value,
+                  child: Text(value.toString()),
+                );
+              }).toList(),
+              onChanged: (val) {
+                setState(() {
+                  showQuestions = false;
+                  overPlayed = false;
 
-                    _selectedOptions = List<bool>.filled(4, false);
-                    _selectedOptionsSix = List<bool>.filled(6, false);
+                  _selectedOptions = List<bool>.filled(4, false);
+                  _selectedOptionsSix = List<bool>.filled(6, false);
+                  selectedQuestionIndex = val!;
 
-                    endTime = DateTime.now().add(
-                      const Duration(
-                        minutes: 1,
-                        seconds: 0,
-                      ),
-                    );
-                  });
-                },
-                child: const Text("Start")),
+                  endTime = DateTime.now().add(
+                    const Duration(
+                      minutes: 0,
+                      seconds: 0,
+                    ),
+                  );
+
+                  _onIdle();
+                  playNotify();
+                });
+              },
+            ),
+          ),
+          IgnorePointer(
+            ignoring: false,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(200, 0, 0, 10),
+              child: ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      showQuestions = true;
+                      playStart();
+                      _onIdle();
+
+                      _selectedOptions = List<bool>.filled(4, false);
+                      _selectedOptionsSix = List<bool>.filled(6, false);
+
+                      endTime = DateTime.now().add(
+                        const Duration(
+                          minutes: 1,
+                          seconds: 0,
+                        ),
+                      );
+                    });
+                  },
+                  child: const Text("Start")),
+            ),
           ),
         ],
       ),
