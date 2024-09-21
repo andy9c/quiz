@@ -1,0 +1,19 @@
+Target dependency graph (8 targets)
+FlutterMacOS in Pods, no dependencies
+audioplayers_darwin in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+path_provider_foundation-path_provider_foundation_privacy in Pods, no dependencies
+path_provider_foundation in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+path_provider_foundation-path_provider_foundation_privacy in Pods (explicit)
+rive_common-rive_common_privacy in Pods, no dependencies
+rive_common in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+rive_common-rive_common_privacy in Pods (explicit)
+Pods-Runner in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+audioplayers_darwin in Pods (explicit)
+path_provider_foundation in Pods (explicit)
+rive_common in Pods (explicit)
+Pods-RunnerTests in Pods, depends on:
+Pods-Runner in Pods (explicit)

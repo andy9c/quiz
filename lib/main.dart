@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(
-          title: 'BISHOP ALPHONSE BILUNG SVD MEMORIAL, BIBLE QUIZ 2023'),
+          title: 'BISHOP ALPHONSE BILUNG SVD MEMORIAL, BIBLE QUIZ 2024'),
     );
   }
 }
@@ -92,11 +92,11 @@ class _MyHomePageState extends State<MyHomePage> {
       await startPlay.setPlayerMode(PlayerMode.lowLatency);
       await notifyPlay.setPlayerMode(PlayerMode.lowLatency);
 
-      await correctPlay.setSourceAsset("assets/y.mp3");
-      await wrongPlay.setSourceAsset("assets/o.mp3");
-      await overPlay.setSourceAsset("assets/over.mp3");
-      await startPlay.setSourceAsset("assets/bgm.mp3");
-      await notifyPlay.setSourceAsset("assets/not.mp3");
+      await correctPlay.setSourceAsset("audio/y.mp3");
+      await wrongPlay.setSourceAsset("audio/o.mp3");
+      await overPlay.setSourceAsset("audio/over.mp3");
+      await startPlay.setSourceAsset("audio/bgm.mp3");
+      await notifyPlay.setSourceAsset("audio/not.mp3");
       // ignore: empty_catches
     } catch (e) {}
   }
@@ -128,6 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
   );
 
   bool showQuestions = false;
+  bool overPlayed = false;
 
   // List<Map<String, String>> opts = [
   //   {"val": "A. PHARISSES\nफरीसी", "out": "TRUE"},
@@ -381,23 +382,36 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void playCorrect() async {
+    await stopAll();
     await correctPlay.resume();
   }
 
   void playWrong() async {
+    await stopAll();
     await wrongPlay.resume();
   }
 
   void playOver() async {
+    await stopAll();
     await overPlay.resume();
   }
 
   void playStart() async {
+    await stopAll();
     if (showQuestions) await startPlay.resume();
   }
 
   void playNotify() async {
+    await stopAll();
     await notifyPlay.resume();
+  }
+
+  Future<void> stopAll() async {
+    await startPlay.stop();
+    await correctPlay.stop();
+    await wrongPlay.stop();
+    await overPlay.stop();
+    await notifyPlay.stop();
   }
 
   void _onHappy() {
@@ -567,7 +581,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Center(
             child: RiveAnimation.asset(
-              'assets/grumpy_bear_4_720p.riv',
+              'assets/rive/grumpy_bear_4_720p.riv',
               fit: BoxFit.cover,
               alignment: Alignment.topLeft,
               stateMachines: const ['State Machine 1'],
@@ -618,7 +632,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 12,
                 ),
                 onEnd: () {
-                  if (showQuestions) playOver();
+                  if (showQuestions == true && overPlayed == false) {
+                    playOver();
+                    overPlayed = true;
+                  }
                 },
               ),
             ),
@@ -635,6 +652,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onChanged: (val) {
               setState(() {
                 showQuestions = false;
+                overPlayed = false;
 
                 _selectedOptions = List<bool>.filled(4, false);
                 _selectedOptionsSix = List<bool>.filled(6, false);
