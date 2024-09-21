@@ -1,6 +1,6 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:rive/rive.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -71,7 +71,35 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   SMIInput<bool>? _happy, _angry;
-  final player = AudioPlayer();
+
+  AudioPlayer correctPlay = AudioPlayer();
+  AudioPlayer wrongPlay = AudioPlayer();
+  AudioPlayer overPlay = AudioPlayer();
+  AudioPlayer startPlay = AudioPlayer();
+  AudioPlayer notifyPlay = AudioPlayer();
+
+  @override
+  initState() {
+    audio();
+    super.initState();
+  }
+
+  Future<void> audio() async {
+    try {
+      await correctPlay.setPlayerMode(PlayerMode.lowLatency);
+      await wrongPlay.setPlayerMode(PlayerMode.lowLatency);
+      await overPlay.setPlayerMode(PlayerMode.lowLatency);
+      await startPlay.setPlayerMode(PlayerMode.lowLatency);
+      await notifyPlay.setPlayerMode(PlayerMode.lowLatency);
+
+      await correctPlay.setSourceAsset("assets/y.mp3");
+      await wrongPlay.setSourceAsset("assets/o.mp3");
+      await overPlay.setSourceAsset("assets/over.mp3");
+      await startPlay.setSourceAsset("assets/bgm.mp3");
+      await notifyPlay.setSourceAsset("assets/not.mp3");
+      // ignore: empty_catches
+    } catch (e) {}
+  }
 
   List<bool> _selectedOptions = <bool>[
     false,
@@ -353,28 +381,23 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void playCorrect() async {
-    await player.setAsset('assets/y.mp3');
-    player.play();
+    await correctPlay.resume();
   }
 
   void playWrong() async {
-    await player.setAsset('assets/o.mp3');
-    player.play();
+    await wrongPlay.resume();
   }
 
   void playOver() async {
-    await player.setAsset('assets/over.mp3');
-    player.play();
+    await overPlay.resume();
   }
 
   void playStart() async {
-    await player.setAsset('assets/bgm.mp3');
-    if (showQuestions) player.play();
+    if (showQuestions) await startPlay.resume();
   }
 
   void playNotify() async {
-    await player.setAsset('assets/not.mp3');
-    player.play();
+    await notifyPlay.resume();
   }
 
   void _onHappy() {
