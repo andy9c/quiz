@@ -602,14 +602,22 @@ class _MyHomePageState extends State<MyHomePage> {
           IgnorePointer(
             ignoring: true,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(600, 0, 0, 240),
-              child: Text(
-                questions[selectedQuestionIndex],
-                softWrap: true,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 32,
+              padding: const EdgeInsets.fromLTRB(600, 0, 20, 240),
+              child: Container(
+                padding: const EdgeInsets.all(20.0),
+                decoration: const BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  color: Colors.white38,
+                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                ),
+                child: Text(
+                  questions[selectedQuestionIndex],
+                  softWrap: true,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 32,
+                  ),
                 ),
               ),
             ),
