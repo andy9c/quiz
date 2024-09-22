@@ -690,6 +690,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     setState(() {
                       showQuestions = true;
+                      overPlayed = false;
+
                       playStart();
                       _onIdle();
 
