@@ -28,15 +28,18 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  audioplayers: 6.1.0
-  cupertino_icons: 1.0.8
+  audioplayers: ^6.1.0
+  bloc: ^8.1.4
+  cupertino_icons: ^1.0.8
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
-  flutter_timer_countdown: 1.0.7
-  path_provider: 2.1.4
-  responsive_framework: 1.5.1
-  rive: 0.13.13
-  win32: 5.5.4
+  flutter_timer_countdown: ^1.0.7
+  hydrated_bloc: ^9.1.5
+  path_provider: ^2.1.4
+  responsive_framework: ^1.5.1
+  rive: ^0.13.13
+  win32: ^5.5.4
 
 dev_dependencies:
   flutter_lints: ^4.0.0
