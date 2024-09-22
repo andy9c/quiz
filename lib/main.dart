@@ -158,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
     [
       {"val": "A. ", "out": "FALSE"},
       {"val": "B. ", "out": "FALSE"},
-      {"val": "C. ", "out": "FALSE"},
+      {"val": "C. ", "out": "TRUE"},
       {"val": "D. ", "out": "FALSE"},
     ],
     [
