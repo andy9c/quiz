@@ -72,7 +72,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  SMIInput<bool>? _happy, _angry;
+  SMIInput<bool>? _happy, _angry, _isFireworks, _themeToggled;
 
   AudioPlayer correctPlay = AudioPlayer();
   AudioPlayer wrongPlay = AudioPlayer();
@@ -143,8 +143,29 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  void _onRiveInitFireworks(Artboard artboard) {
+    final StateMachineController? controller =
+        StateMachineController.fromArtboard(artboard, 'State Machine 1');
+
+    if (controller != null) {
+      artboard.addController(controller);
+      _isFireworks = controller.findInput<bool>('isFireworksout');
+    }
+  }
+
+  void _onRiveInitDayNight(Artboard artboard) {
+    final StateMachineController? controller =
+        StateMachineController.fromArtboard(artboard, 'State Machine 1');
+
+    if (controller != null) {
+      artboard.addController(controller);
+      _themeToggled = controller.findInput<bool>('Theme toggled');
+    }
+  }
+
   void playCorrect() async {
     await stopAll();
+    _isFireworks!.change(true);
     await correctPlay.resume();
   }
 
@@ -169,6 +190,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> stopAll() async {
+    _isFireworks!.change(false);
     await startPlay.stop();
     await correctPlay.stop();
     await wrongPlay.stop();
@@ -328,13 +350,31 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
+          // Center(
+          //   child: RiveAnimation.asset(
+          //     'assets/rive/breathing_animation.riv',
+          //     fit: BoxFit.cover,
+          //     alignment: Alignment.topLeft,
+          //     stateMachines: const ['State Machine 1'],
+          //     onInit: _onRiveInit,
+          //   ),
+          // ),
           Center(
             child: RiveAnimation.asset(
-              'assets/rive/breathing_animation.riv',
+              'assets/rive/dark_light_theme.riv',
               fit: BoxFit.cover,
               alignment: Alignment.topLeft,
               stateMachines: const ['State Machine 1'],
-              onInit: _onRiveInit,
+              onInit: _onRiveInitDayNight,
+            ),
+          ),
+          Center(
+            child: RiveAnimation.asset(
+              'assets/rive/fireworks.riv',
+              fit: BoxFit.cover,
+              alignment: Alignment.topLeft,
+              stateMachines: const ['State Machine 1'],
+              onInit: _onRiveInitFireworks,
             ),
           ),
           Center(
@@ -437,6 +477,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   showQuestions = false;
                   overPlayed = false;
 
+                  _themeToggled!.change(false);
+
                   _selectedOptions = List<bool>.filled(4, false);
                   _selectedOptionsSix = List<bool>.filled(6, false);
                   selectedQuestionIndex = val!;
@@ -463,6 +505,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     setState(() {
                       showQuestions = true;
                       overPlayed = false;
+
+                      _themeToggled!.change(true);
 
                       playStart();
                       _onIdle();
