@@ -197,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> opts = questionSets[selectedQuestionIndex]
+    Map<String, bool> opts = questionSets[selectedQuestionIndex]
         .entries
         .firstWhere((e) => e.key == "options")
         .value;
@@ -207,16 +207,13 @@ class _MyHomePageState extends State<MyHomePage> {
     List<Widget> z = [];
 
     int count = 0;
-    for (Map e in opts) {
+
+    opts.forEach((key, value) {
       Widget g = Expanded(
         child: ElevatedButton(
-          onPressed:
-              e.entries.firstWhere((element) => element.key == "out").value ==
-                      "TRUE"
-                  ? _onHappy
-                  : _onAngry,
+          onPressed: value == true ? _onHappy : _onAngry,
           child: Text(
-            e.entries.firstWhere((element) => element.key == "val").value,
+            key,
             textAlign: TextAlign.center,
             softWrap: true,
             style: const TextStyle(
@@ -233,20 +230,10 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.zero,
           decoration: BoxDecoration(
             color: selectedQuestionIndex < 7
-                ? opts[count]
-                                .entries
-                                .firstWhere((element) => element.key == "out")
-                                .value ==
-                            "TRUE" &&
-                        _selectedOptions[count] == true
+                ? value == true && _selectedOptions[count] == true
                     ? Colors.green
                     : Theme.of(context).colorScheme.tertiaryContainer
-                : opts[count]
-                                .entries
-                                .firstWhere((element) => element.key == "out")
-                                .value ==
-                            "TRUE" &&
-                        _selectedOptionsSix[count] == true
+                : value == true && _selectedOptionsSix[count] == true
                     ? Colors.green
                     : Theme.of(context).colorScheme.tertiaryContainer,
             // border: Border.all(color: Colors.black, width: 1.0),
@@ -255,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              e.entries.firstWhere((element) => element.key == "val").value,
+              key,
               textAlign: TextAlign.center,
               softWrap: true,
               style: const TextStyle(
@@ -272,7 +259,7 @@ class _MyHomePageState extends State<MyHomePage> {
         width: 16,
         height: 16,
       ));
-    }
+    });
 
     Widget t = Padding(
       padding: const EdgeInsets.all(8.0),
@@ -282,14 +269,11 @@ class _MyHomePageState extends State<MyHomePage> {
           setState(() {
             selectedOptionIndex = index;
 
-            String b = opts[index]
-                .entries
-                .firstWhere((element) => element.key == "out")
-                .value;
+            bool b = opts.entries.toList()[index].value;
 
             if (z.length == 4) {
               if (_selectedOptions[index] == false) {
-                b == "TRUE" ? _onHappy() : _onAngry();
+                b == true ? _onHappy() : _onAngry();
               } else {
                 _onIdle();
               }
@@ -297,7 +281,7 @@ class _MyHomePageState extends State<MyHomePage> {
               _selectedOptions[index] = !_selectedOptions[index];
             } else {
               if (_selectedOptionsSix[index] == false) {
-                b == "TRUE" ? _onHappy() : _onAngry();
+                b == true ? _onHappy() : _onAngry();
               } else {
                 _onIdle();
               }
