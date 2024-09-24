@@ -1,6 +1,8 @@
 final List<Map<String, dynamic>> questionSets = [
   {
     "title": "Round 2",
+    "set": 1,
+    "main": true,
     "question": "ROUND 2\nCHOOSE THE RIGHT ANSWER\nसही जवाब को चुने",
     "options": {
       "A. ": false,
@@ -11,6 +13,7 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 2 - Q1",
+    "set": 1,
     "question":
         "1. Which religious group frequently challenges Jesus and engages in debates with Him in the Gospel of Mark? \n\nकौन सा धार्मिक समुह अक्सर येसु को चुनौती देता है और मरकुस के सुसमाचार में उनके साथ वाद​-विवाद करता है ?",
     "options": {
@@ -22,6 +25,7 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 2 - Q2",
+    "set": 1,
     "question":
         "2. In Mark 7:24-30, Jesus heals the daughter of a Syrophoenician woman. What  is the woman’s response to Jesus’ analogy about the children and the dogs ? \n\nमरकुस 7:24-30 में, येसु एक सुरुफिनीकी महिला की बेटी को ठीक करता है । बच्चों और कुत्तों के बारे में येसु की उपमा की क्या प्रतिक्रिया है ?",
     "options": {
@@ -36,6 +40,7 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 2 - Q3",
+    "set": 1,
     "question":
         "3. In Mark 10:17-27, what was the reason the rich young ruler went away sad after speaking to Jesus?\n\nमरकुस 10:17-27 में, क्या कारण था कि अमीर युवा शासक येसु से बात करने के बाद उदास होकर चला गया ?",
     "options": {
@@ -51,6 +56,7 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 2 - Q4",
+    "set": 1,
     "question":
         "4. What term does Jesus often use in Mark’s Gospel to refer to Himself, emphasizing His humble and serving nature ?\n\nमरकुस के सुसमाचार में येसु अक्सर स्वयं को सम्बोधित करने के लिए किस शब्द का उपयोग करते हैं, अपने विनम्र और सेवारत स्वभाव पर जोर देने के लिए ?",
     "options": {
@@ -62,6 +68,7 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 2 - Q5",
+    "set": 1,
     "question":
         "5. Through Mark 9:37 “‘Whoever welcomes one such child in my name welcomes me, and whoever welcomes me welcomes not me but the one who sent me.’” what did Jesus mean to teach ?\n\nमरकुस 9:37 जो मेरे नाम पर इन बालकों में किसी एक का भी स्वागत करता है, वह मेरा स्वागत करता है और जो मेरा स्वागत करता ह, वह मेरा नहीं, बल्कि उसका स्वागत करता है, जिसने मुझे भेजा है । “ के माध्यम से, येसु क्या सिखाना चाहते थे ?",
     "options": {
@@ -77,6 +84,7 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 2 - Q6",
+    "set": 1,
     "question":
         "6. According to Mark 16:15-18, what commission did Jesus give to His disciples after His resurrection?\n\nमरकुस 16:15-18 के अनुसार, पुनरुत्थान के बाद येसु ने अपने चेलों को क्या आदेश दिया ?",
     "options": {
@@ -102,6 +110,7 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 3 - Q1",
+    "set": 2,
     "question":
         "1. In the Gospel of Mark, what is the significance of Jesus’ statement, “ The time is fulfilled and the kingdom of God is at hand; repent and believe in the gospel” (Mark 1:15) ?\n\nमरकुस के सुसमाचार में, येसु के इस कथन का क्या महत्व है,” समय पूरा हुआ है, और परमेश्वर का राज्य निकट आ गया है; मन फिराओ और सुसमाचार पर विश्वास करो । (मरकुस 1:15) ?",
     "options": {
@@ -116,6 +125,7 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 3 - Q2",
+    "set": 2,
     "question":
         "2. What does the term “Abba” indicate when used by Jesus inMark 14:36 ?\n\nमरकुस 14:36 में येसु द्वारा इस्तेमाल किया गया शब्द ”अब्बा” क्या दर्शाता है ?",
     "options": {
@@ -129,6 +139,7 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 3 - Q3",
+    "set": 2,
     "question":
         "3. What is the significance of the title “Son of Man” in the Gospel of Mark ?\n\nमरकुस के सुसमाचार में “मनुष्य का पुत्र“ शीर्षक का क्या महत्व है ?",
     "options": {
@@ -142,6 +153,7 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 3 - Q4",
+    "set": 2,
     "question":
         "4. In Mark 10:45 “For the Son of Man came not to be served but to serve, and to give his life a ransom for many”, Jesus describes His mission as : \n\nमरकुस 10:45, “क्योंकि मानव पुत्र भी अपनी सेवा कराने नहीं, बल्कि सेवा करने और बहुतों के उद्धार के लिए अपने प्राण देने आया है” में येसु ने अपने उद्देश्य का वर्णन इस प्रकार किया है :",
     "options": {
@@ -156,6 +168,7 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 3 - Q5",
+    "set": 2,
     "question":
         "5. Through Mark 9:37 “‘Whoever welcomes one such child in my name welcomes me, and whoever welcomes me welcomes not me but the one who sent me.’” what did Jesus mean to teach ?\n\nमरकुस 9:37 जो मेरे नाम पर इन बालकों में किसी एक का भी स्वागत करता है, वह मेरा स्वागत करता है और जो मेरा स्वागत करता ह, वह मेरा नहीं, बल्कि उसका स्वागत करता है, जिसने मुझे भेजा है । “ के माध्यम से, येसु क्या सिखाना चाहते थे ?",
     "options": {
@@ -169,6 +182,7 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 3 - Q6",
+    "set": 2,
     "question":
         "6. What does Jesus make people understand in Mark 3:35 “‘Whoever does the will of God is my brother and sister and mother.”\n\nमरकुस 3:35 ”जो ईश्वर की इच्छा पूरी करता है, वही है मेरा भाई, मेरी बहन और मेरी माता” में येसु लोगों को क्या समझाते हैं ?",
     "options": {

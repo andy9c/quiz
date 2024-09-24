@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         ],
       ),
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Bible Quiz',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -49,6 +49,52 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(
           title: 'BISHOP ALPHONSE BILUNG SVD MEMORIAL, BIBLE QUIZ 2024'),
+    );
+  }
+}
+
+class ExpandingButton extends StatefulWidget {
+  const ExpandingButton({super.key});
+
+  @override
+  State<ExpandingButton> createState() => _ExpandingButtonState();
+}
+
+class _ExpandingButtonState extends State<ExpandingButton> {
+  bool isExpanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            setState(() {
+              isExpanded = !isExpanded;
+            });
+          },
+          child: const Text('Show More'),
+        ),
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          height: isExpanded ? 300 : 0, // Adjust height as needed
+          child: SingleChildScrollView(
+            child: Visibility(
+              visible: isExpanded,
+              child: Column(
+                children: List.generate(12, (index) {
+                  return ElevatedButton(
+                    onPressed: () {
+                      // Handle button click (index + 1)
+                    },
+                    child: Text('Button ${index + 1}'),
+                  );
+                }),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -346,6 +392,38 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.comment),
+            tooltip: 'Comment Icon',
+            onPressed: () {},
+          ), //IconButton
+          IconButton(
+            icon: const Icon(Icons.settings),
+            tooltip: 'Setting Icon',
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text('Expanding Button'),
+                    content: GridView.count(
+                      crossAxisCount: 3, // 3 columns in the grid
+                      children: List.generate(12, (index) {
+                        return ElevatedButton(
+                          onPressed: () {
+                            // Handle button click (index + 1)
+                          },
+                          child: Text('Button ${index + 1}'),
+                        );
+                      }),
+                    ),
+                  );
+                },
+              );
+            },
+          ), //IconButton
+        ],
       ),
       body: Stack(
         alignment: Alignment.bottomCenter,
