@@ -98,6 +98,8 @@ final List<Map<String, dynamic>> questionSets = [
   },
   {
     "title": "Round 3",
+    "set": 2,
+    "main": true,
     "question": "ROUND 3\nBRING OUT THE MEANING\nअर्थ सामने लाओ",
     "options": {
       "A. ": false,

@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:rive/rive.dart';
 
 import 'package:quiz/quest.dart';
@@ -16,85 +17,43 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      builder: (context, child) => ResponsiveBreakpoints.builder(
-        child: child!,
-        breakpoints: [
-          const Breakpoint(start: 0, end: 450, name: MOBILE),
-          const Breakpoint(start: 451, end: 800, name: TABLET),
-          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-        ],
-      ),
-      debugShowCheckedModeBanner: false,
-      title: 'Bible Quiz',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(
-          title: 'BISHOP ALPHONSE BILUNG SVD MEMORIAL, BIBLE QUIZ 2024'),
-    );
-  }
-}
-
-class ExpandingButton extends StatefulWidget {
-  const ExpandingButton({super.key});
-
-  @override
-  State<ExpandingButton> createState() => _ExpandingButtonState();
-}
-
-class _ExpandingButtonState extends State<ExpandingButton> {
-  bool isExpanded = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ElevatedButton(
-          onPressed: () {
-            setState(() {
-              isExpanded = !isExpanded;
-            });
-          },
-          child: const Text('Show More'),
-        ),
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          height: isExpanded ? 300 : 0, // Adjust height as needed
-          child: SingleChildScrollView(
-            child: Visibility(
-              visible: isExpanded,
-              child: Column(
-                children: List.generate(12, (index) {
-                  return ElevatedButton(
-                    onPressed: () {
-                      // Handle button click (index + 1)
-                    },
-                    child: Text('Button ${index + 1}'),
-                  );
-                }),
-              ),
-            ),
+    return ResponsiveSizer(
+      builder: (context, orientation, deviceType) {
+        return MaterialApp(
+          builder: (context, child) => ResponsiveBreakpoints.builder(
+            child: child!,
+            breakpoints: [
+              const Breakpoint(start: 0, end: 450, name: MOBILE),
+              const Breakpoint(start: 451, end: 800, name: TABLET),
+              const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+              const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+            ],
           ),
-        ),
-      ],
+          debugShowCheckedModeBanner: false,
+          title: 'Bible Quiz',
+          theme: ThemeData(
+            // This is the theme of your application.
+            //
+            // TRY THIS: Try running your application with "flutter run". You'll see
+            // the application has a blue toolbar. Then, without quitting the app,
+            // try changing the seedColor in the colorScheme below to Colors.green
+            // and then invoke "hot reload" (save your changes or press the "hot
+            // reload" button in a Flutter-supported IDE, or press "r" if you used
+            // the command line to start the app).
+            //
+            // Notice that the counter didn't reset back to zero; the application
+            // state is not lost during the reload. To reset the state, use hot
+            // restart instead.
+            //
+            // This works for code too, not just values: Most code changes can be
+            // tested with just a hot reload.
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          home: const MyHomePage(
+              title: 'BISHOP ALPHONSE BILUNG SVD MEMORIAL, BIBLE QUIZ 2024'),
+        );
+      },
     );
   }
 }
@@ -119,6 +78,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   SMIInput<bool>? _happy, _angry, _isFireworks, _themeToggled;
+  List<Widget> groupA = [];
+  Map<int, List<int>> groupARoundList = {};
+  List<int> groupARoundLanding = [];
 
   AudioPlayer correctPlay = AudioPlayer();
   AudioPlayer wrongPlay = AudioPlayer();
@@ -126,9 +88,143 @@ class _MyHomePageState extends State<MyHomePage> {
   AudioPlayer startPlay = AudioPlayer();
   AudioPlayer notifyPlay = AudioPlayer();
 
+  selectQuestion(int? val) {
+    setState(() {
+      showQuestions = false;
+      overPlayed = false;
+
+      _themeToggled!.change(false);
+
+      _selectedOptions = List<bool>.filled(4, false);
+      _selectedOptionsSix = List<bool>.filled(6, false);
+      selectedQuestionIndex = val!;
+
+      endTime = DateTime.now().add(
+        const Duration(
+          minutes: 0,
+          seconds: 0,
+        ),
+      );
+
+      _onIdle();
+      playNotify();
+    });
+  }
+
+  loadQuestions(BuildContext context, int set) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(questionSets[groupARoundLanding[set - 1]]
+              .entries
+              .firstWhere((e) => e.key == "title")
+              .value),
+          content: SizedBox(
+            width: 20.sw,
+            height: 30.sh,
+            child: GridView.count(
+              mainAxisSpacing: 10.0,
+              crossAxisSpacing: 10.0,
+              childAspectRatio: 1.78,
+              crossAxisCount: 3, // 3 columns in the grid
+              children: List.generate(
+                  groupARoundList.entries
+                      .firstWhere((e) => e.key == set,
+                          orElse: () => const MapEntry(0, []))
+                      .value
+                      .length, (index) {
+                // Generate 12 buttons
+                return ElevatedButton(
+                  onPressed: () {
+                    selectQuestion(groupARoundList.entries
+                        .firstWhere((e) => e.key == set,
+                            orElse: () => const MapEntry(0, []))
+                        .value[index]);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    foregroundColor: Colors.white,
+                    textStyle: const TextStyle(fontSize: 16),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: Text(
+                    '${index + 1}',
+                    style: const TextStyle(
+                        fontSize: 40, fontWeight: FontWeight.bold),
+                  ),
+                );
+              }),
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   initState() {
     audio();
+
+    Set<int> uniqueSets = {};
+
+    for (var map in questionSets) {
+      if (map.containsKey("set")) {
+        uniqueSets.add(map["set"]);
+      }
+    }
+
+    for (int s in uniqueSets) {
+      int index = 0;
+      List<int> c = [];
+      for (var map in questionSets) {
+        if (map.containsKey("set") &&
+            map["set"] == s &&
+            !map.containsKey("main")) {
+          c.add(index);
+        }
+        index = index + 1;
+      }
+      groupARoundList.addAll({s: c});
+    }
+
+    for (int s in uniqueSets) {
+      int index = 0;
+      for (var map in questionSets) {
+        if (map.containsKey("set") &&
+            map["set"] == s &&
+            map.containsKey("main")) {
+          groupARoundLanding.add(index);
+        }
+        index = index + 1;
+      }
+
+      groupA.add(IconButton(
+        onPressed: () {
+          selectQuestion(groupARoundLanding[s - 1]);
+          loadQuestions(context, s);
+        },
+        icon: const Icon(Icons.ac_unit),
+        tooltip: questionSets[groupARoundLanding[s - 1]]
+            .entries
+            .firstWhere((e) => e.key == "title")
+            .value,
+      ));
+    }
+
     super.initState();
   }
 
@@ -392,218 +488,171 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.comment),
-            tooltip: 'Comment Icon',
-            onPressed: () {},
-          ), //IconButton
-          IconButton(
-            icon: const Icon(Icons.settings),
-            tooltip: 'Setting Icon',
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: const Text('Expanding Button'),
-                    content: GridView.count(
-                      crossAxisCount: 3, // 3 columns in the grid
-                      children: List.generate(12, (index) {
-                        return ElevatedButton(
-                          onPressed: () {
-                            // Handle button click (index + 1)
-                          },
-                          child: Text('Button ${index + 1}'),
-                        );
-                      }),
-                    ),
-                  );
-                },
-              );
-            },
-          ), //IconButton
-        ],
+        actions: groupA,
       ),
-      body: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          // Center(
-          //   child: RiveAnimation.asset(
-          //     'assets/rive/breathing_animation.riv',
-          //     fit: BoxFit.cover,
-          //     alignment: Alignment.topLeft,
-          //     stateMachines: const ['State Machine 1'],
-          //     onInit: _onRiveInit,
-          //   ),
-          // ),
-          Center(
-            child: RiveAnimation.asset(
-              'assets/rive/dark_light_theme.riv',
-              fit: BoxFit.cover,
-              alignment: Alignment.topLeft,
-              stateMachines: const ['State Machine 1'],
-              onInit: _onRiveInitDayNight,
-            ),
-          ),
-          Center(
-            child: RiveAnimation.asset(
-              'assets/rive/fireworks.riv',
-              fit: BoxFit.cover,
-              alignment: Alignment.topLeft,
-              stateMachines: const ['State Machine 1'],
-              onInit: _onRiveInitFireworks,
-            ),
-          ),
-          Center(
-            child: RiveAnimation.asset(
-              'assets/rive/grumpy_bear_2_rev.riv',
-              fit: BoxFit.cover,
-              alignment: Alignment.topLeft,
-              stateMachines: const ['State Machine 1'],
-              onInit: _onRiveInit,
-            ),
-          ),
-          IgnorePointer(
-            ignoring: false,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 0, 50),
-              // child: Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   children: w,
-              // ),
-              child: showQuestions ? t : Container(),
-            ),
-          ),
-          IgnorePointer(
-            ignoring: true,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(600, 0, 20, 240),
-              child: Container(
-                padding: const EdgeInsets.all(20.0),
-                decoration: const BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: Colors.white38,
-                  borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                ),
-                child: Text(
-                  questionSets[selectedQuestionIndex]
-                      .entries
-                      .firstWhere((e) => e.key == "question")
-                      .value,
-                  softWrap: true,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32,
-                  ),
-                ),
+      body: SafeArea(
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            // Center(
+            //   child: RiveAnimation.asset(
+            //     'assets/rive/breathing_animation.riv',
+            //     fit: BoxFit.cover,
+            //     alignment: Alignment.topLeft,
+            //     stateMachines: const ['State Machine 1'],
+            //     onInit: _onRiveInit,
+            //   ),
+            // ),
+            Center(
+              child: RiveAnimation.asset(
+                'assets/rive/dark_light_theme.riv',
+                fit: BoxFit.cover,
+                alignment: Alignment.topLeft,
+                stateMachines: const ['State Machine 1'],
+                onInit: _onRiveInitDayNight,
               ),
             ),
-          ),
-          IgnorePointer(
-            ignoring: true,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 900, 520),
-              child: Container(
-                key: GlobalKey(),
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.tertiaryContainer,
-                  // border: Border.all(color: Colors.black, width: 1.0),
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                ),
-                child: TimerCountdown(
-                  format: CountDownTimerFormat.minutesSeconds,
-                  endTime: endTime,
-                  timeTextStyle: const TextStyle(
-                    color: Colors.purple,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 72,
-                  ),
-                  descriptionTextStyle: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                  ),
-                  onEnd: () {
-                    if (showQuestions == true && overPlayed == false) {
-                      playOver();
-                      overPlayed = true;
-                    }
-                  },
-                ),
+            Center(
+              child: RiveAnimation.asset(
+                'assets/rive/fireworks.riv',
+                fit: BoxFit.cover,
+                alignment: Alignment.topLeft,
+                stateMachines: const ['State Machine 1'],
+                onInit: _onRiveInitFireworks,
               ),
             ),
-          ),
-          IgnorePointer(
-            ignoring: false,
-            child: DropdownButton<int>(
-              value: selectedQuestionIndex,
-              items: List.generate(questionSets.length, (index) => index)
-                  .map((int value) {
-                return DropdownMenuItem<int>(
-                  value: value,
-                  child: Text(questionSets[value]
-                      .entries
-                      .firstWhere((e) => e.key == "title")
-                      .value),
-                );
-              }).toList(),
-              onChanged: (val) {
-                setState(() {
-                  showQuestions = false;
-                  overPlayed = false;
-
-                  _themeToggled!.change(false);
-
-                  _selectedOptions = List<bool>.filled(4, false);
-                  _selectedOptionsSix = List<bool>.filled(6, false);
-                  selectedQuestionIndex = val!;
-
-                  endTime = DateTime.now().add(
-                    const Duration(
-                      minutes: 0,
-                      seconds: 0,
+            Center(
+              child: RiveAnimation.asset(
+                'assets/rive/grumpy_bear_2_rev.riv',
+                fit: BoxFit.cover,
+                alignment: Alignment.topLeft,
+                stateMachines: const ['State Machine 1'],
+                onInit: _onRiveInit,
+              ),
+            ),
+            IgnorePointer(
+              ignoring: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 0, 50),
+                // child: Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: w,
+                // ),
+                child: showQuestions ? t : Container(),
+              ),
+            ),
+            IgnorePointer(
+              ignoring: true,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(50.sw, 0, 1.sw, 20.sh),
+                child: Container(
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: Colors.white38,
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  ),
+                  child: Text(
+                    questionSets[selectedQuestionIndex]
+                        .entries
+                        .firstWhere((e) => e.key == "question")
+                        .value,
+                    softWrap: true,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
                     ),
+                  ),
+                ),
+              ),
+            ),
+            IgnorePointer(
+              ignoring: true,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 60.sw, 60.sh),
+                child: Container(
+                  clipBehavior: Clip.hardEdge,
+                  key: GlobalKey(),
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.tertiaryContainer,
+                    // border: Border.all(color: Colors.black, width: 1.0),
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  ),
+                  child: TimerCountdown(
+                    format: CountDownTimerFormat.minutesSeconds,
+                    endTime: endTime,
+                    timeTextStyle: const TextStyle(
+                      color: Colors.purple,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 72,
+                    ),
+                    descriptionTextStyle: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                    onEnd: () {
+                      if (showQuestions == true && overPlayed == false) {
+                        playOver();
+                        overPlayed = true;
+                      }
+                    },
+                  ),
+                ),
+              ),
+            ),
+            IgnorePointer(
+              ignoring: false,
+              child: DropdownButton<int>(
+                value: selectedQuestionIndex,
+                items: List.generate(questionSets.length, (index) => index)
+                    .map((int value) {
+                  return DropdownMenuItem<int>(
+                    value: value,
+                    child: Text(questionSets[value]
+                        .entries
+                        .firstWhere((e) => e.key == "title")
+                        .value),
                   );
-
-                  _onIdle();
-                  playNotify();
-                });
-              },
+                }).toList(),
+                onChanged: (val) {
+                  selectQuestion(val);
+                },
+              ),
             ),
-          ),
-          IgnorePointer(
-            ignoring: false,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(200, 0, 0, 10),
-              child: ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      showQuestions = true;
-                      overPlayed = false;
+            IgnorePointer(
+              ignoring: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(200, 0, 0, 10),
+                child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        showQuestions = true;
+                        overPlayed = false;
 
-                      _themeToggled!.change(true);
+                        _themeToggled!.change(true);
 
-                      playStart();
-                      _onIdle();
+                        playStart();
+                        _onIdle();
 
-                      _selectedOptions = List<bool>.filled(4, false);
-                      _selectedOptionsSix = List<bool>.filled(6, false);
+                        _selectedOptions = List<bool>.filled(4, false);
+                        _selectedOptionsSix = List<bool>.filled(6, false);
 
-                      endTime = DateTime.now().add(
-                        const Duration(
-                          minutes: 1,
-                          seconds: 0,
-                        ),
-                      );
-                    });
-                  },
-                  child: const Text("Start")),
+                        endTime = DateTime.now().add(
+                          const Duration(
+                            minutes: 1,
+                            seconds: 0,
+                          ),
+                        );
+                      });
+                    },
+                    child: const Text("Start")),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

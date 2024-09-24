@@ -38,6 +38,7 @@ dependencies:
   hydrated_bloc: ^9.1.5
   path_provider: ^2.1.4
   responsive_framework: ^1.5.1
+  responsive_sizer: ^3.3.1
   rive: ^0.13.13
   win32: ^5.5.4
 
