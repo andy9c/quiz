@@ -108,6 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
   AudioPlayer overPlay = AudioPlayer();
   AudioPlayer startPlay = AudioPlayer();
   AudioPlayer notifyPlay = AudioPlayer();
+  AudioPlayer fireworksPlay = AudioPlayer();
 
   selectQuestion(int? val) {
     setState(() {
@@ -152,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
               return SizedBox(
                 key: UniqueKey(),
                 width: 85.sw,
-                height: 70.sh,
+                height: 65.sh,
                 child: GridView.count(
                   key: UniqueKey(),
                   mainAxisSpacing: 10.0,
@@ -242,12 +243,14 @@ class _MyHomePageState extends State<MyHomePage> {
       await overPlay.setPlayerMode(PlayerMode.lowLatency);
       await startPlay.setPlayerMode(PlayerMode.lowLatency);
       await notifyPlay.setPlayerMode(PlayerMode.lowLatency);
+      await fireworksPlay.setPlayerMode(PlayerMode.lowLatency);
 
       await correctPlay.setSourceAsset("audio/y.mp3");
       await wrongPlay.setSourceAsset("audio/o.mp3");
       await overPlay.setSourceAsset("audio/over.mp3");
       await startPlay.setSourceAsset("audio/bgm.mp3");
       await notifyPlay.setSourceAsset("audio/not.mp3");
+      await fireworksPlay.setSourceAsset("audio/fireworks.mp3");
       // ignore: empty_catches
     } catch (e) {}
   }
@@ -315,7 +318,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void playCorrect() async {
     await stopAll();
     _isFireworks!.change(true);
-    await correctPlay.resume();
+    correctPlay.resume();
+    fireworksPlay.resume();
   }
 
   void playWrong() async {
@@ -324,7 +328,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void playOver() async {
-    await stopAll();
+    //await stopAll();
     await overPlay.resume();
   }
 
@@ -338,6 +342,10 @@ class _MyHomePageState extends State<MyHomePage> {
     await notifyPlay.resume();
   }
 
+  void playFireworks() async {
+    await fireworksPlay.resume();
+  }
+
   Future<void> stopAll() async {
     _isFireworks!.change(false);
     await startPlay.stop();
@@ -345,6 +353,7 @@ class _MyHomePageState extends State<MyHomePage> {
     await wrongPlay.stop();
     await overPlay.stop();
     await notifyPlay.stop();
+    await fireworksPlay.stop();
   }
 
   void _onHappy() {
@@ -451,10 +460,10 @@ class _MyHomePageState extends State<MyHomePage> {
             color: selectedQuestionIndex < 7
                 ? value == true && _selectedOptions[count] == true
                     ? Colors.green
-                    : Theme.of(context).colorScheme.tertiaryContainer
+                    : Theme.of(context).colorScheme.errorContainer
                 : value == true && _selectedOptionsSix[count] == true
                     ? Colors.green
-                    : Theme.of(context).colorScheme.tertiaryContainer,
+                    : Theme.of(context).colorScheme.errorContainer,
             // border: Border.all(color: Colors.black, width: 1.0),
             borderRadius: const BorderRadius.all(Radius.circular(8)),
           ),
@@ -480,7 +489,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ));
     });
 
-    Widget t = Padding(
+    Widget allOptions = Padding(
       padding: const EdgeInsets.all(8.0),
       child: ToggleButtons(
         direction: vertical ? Axis.vertical : Axis.horizontal,
@@ -510,10 +519,10 @@ class _MyHomePageState extends State<MyHomePage> {
           });
         },
         borderRadius: const BorderRadius.all(Radius.circular(8)),
-        selectedBorderColor: Colors.red[700],
-        splashColor: Colors.amber,
+        //selectedBorderColor: Colors.red[700],
+        //splashColor: Colors.amber,
         selectedColor: Colors.red,
-        fillColor: Colors.blue[200],
+        //fillColor: Colors.blue[200],
         color: Theme.of(context).buttonTheme.colorScheme!.primary,
         hoverColor: Theme.of(context).highlightColor,
         constraints: BoxConstraints(
@@ -522,9 +531,26 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         isSelected: z.length == 4 ? _selectedOptions : _selectedOptionsSix,
         textStyle: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 28,
-        ),
+            fontWeight: FontWeight.bold,
+            fontSize: 28,
+            shadows: [
+              // Shadow(
+              //     // bottomLeft
+              //     offset: Offset(-1.5, -1.5),
+              //     color: Colors.white),
+              // Shadow(
+              //     // bottomRight
+              //     offset: Offset(1.5, -1.5),
+              //     color: Colors.white),
+              Shadow(
+                  // topRight
+                  offset: Offset(1.5, 1.5),
+                  color: Colors.white),
+              // Shadow(
+              //     // topLeft
+              //     offset: Offset(-1.5, 1.5),
+              //     color: Colors.white),
+            ]),
         children: z,
       ),
     );
@@ -588,12 +614,8 @@ class _MyHomePageState extends State<MyHomePage> {
             IgnorePointer(
               ignoring: false,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 0, 50),
-                // child: Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                //   children: w,
-                // ),
-                child: showQuestions ? t : Container(),
+                padding: EdgeInsets.fromLTRB(40.sw, 0, 1.sw, 5.sh),
+                child: showQuestions ? allOptions : Container(),
               ),
             ),
             IgnorePointer(
