@@ -1,13 +1,27 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:rive/rive.dart';
 
-import 'package:quiz/quest.dart';
+import 'package:quiz/cubit/cubit.dart';
+import 'package:quiz/lib.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorage.webStorageDirectory
+        : await getApplicationDocumentsDirectory(),
+  );
+
+  Bloc.observer = AppBlocObserver(showInfo: true);
+
   runApp(const MyApp());
 }
 
@@ -50,8 +64,15 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const MyHomePage(
-              title: 'BISHOP ALPHONSE BILUNG SVD MEMORIAL, BIBLE QUIZ 2024'),
+          home: MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => TempCubit(),
+              ),
+            ],
+            child: const MyHomePage(
+                title: 'BISHOP ALPHONSE BILUNG SVD MEMORIAL, BIBLE QUIZ 2024'),
+          ),
         );
       },
     );
@@ -111,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  loadQuestions(BuildContext context, int set) {
+  loadQuestions(BuildContext ctx, int set) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -120,47 +141,68 @@ class _MyHomePageState extends State<MyHomePage> {
               .entries
               .firstWhere((e) => e.key == "title")
               .value),
-          content: SizedBox(
-            width: 20.sw,
-            height: 30.sh,
-            child: GridView.count(
-              mainAxisSpacing: 10.0,
-              crossAxisSpacing: 10.0,
-              childAspectRatio: 1.78,
-              crossAxisCount: 3, // 3 columns in the grid
-              children: List.generate(
-                  groupARoundList.entries
-                      .firstWhere((e) => e.key == set,
-                          orElse: () => const MapEntry(0, []))
-                      .value
-                      .length, (index) {
-                // Generate 12 buttons
-                return ElevatedButton(
-                  onPressed: () {
-                    selectQuestion(groupARoundList.entries
-                        .firstWhere((e) => e.key == set,
-                            orElse: () => const MapEntry(0, []))
-                        .value[index]);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    foregroundColor: Colors.white,
-                    textStyle: const TextStyle(fontSize: 16),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: Text(
-                    '${index + 1}',
-                    style: const TextStyle(
-                        fontSize: 40, fontWeight: FontWeight.bold),
-                  ),
-                );
-              }),
-            ),
+          content: BlocBuilder<TempCubit, TempState>(
+            bloc: BlocProvider.of<TempCubit>(ctx),
+            buildWhen: (prev, current) => true,
+            builder: (context, state) {
+              return SizedBox(
+                key: UniqueKey(),
+                width: 20.sw,
+                height: 30.sh,
+                child: GridView.count(
+                  key: UniqueKey(),
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  childAspectRatio: 1.78,
+                  crossAxisCount: 3, // 3 columns in the grid
+                  children: List.generate(
+                      groupARoundList.entries
+                          .firstWhere((e) => e.key == set,
+                              orElse: () => const MapEntry(0, []))
+                          .value
+                          .length, (index) {
+                    // Generate 12 buttons
+                    return ElevatedButton(
+                      key: UniqueKey(),
+                      onPressed: () {
+                        int origIndex = groupARoundList.entries
+                            .firstWhere((e) => e.key == set,
+                                orElse: () => const MapEntry(0, []))
+                            .value[index];
+                        BlocProvider.of<TempCubit>(ctx).processIndex(origIndex);
+
+                        if (state.doneQuestionIndex.contains(origIndex)) {
+                          //Navigator.of(context).pop();
+                          selectQuestion(origIndex);
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: state.doneQuestionIndex.contains(
+                                groupARoundList.entries
+                                    .firstWhere((e) => e.key == set,
+                                        orElse: () => const MapEntry(0, []))
+                                    .value[index])
+                            ? Colors.red
+                            : Colors.green,
+                        foregroundColor: Colors.white,
+                        textStyle: const TextStyle(fontSize: 16),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
+                        elevation: 5,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Text(
+                        '${index + 1}',
+                        style: const TextStyle(
+                            fontSize: 40, fontWeight: FontWeight.bold),
+                      ),
+                    );
+                  }),
+                ),
+              );
+            },
           ),
           actions: <Widget>[
             TextButton(
@@ -178,52 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   initState() {
     audio();
-
-    Set<int> uniqueSets = {};
-
-    for (var map in questionSets) {
-      if (map.containsKey("set")) {
-        uniqueSets.add(map["set"]);
-      }
-    }
-
-    for (int s in uniqueSets) {
-      int index = 0;
-      List<int> c = [];
-      for (var map in questionSets) {
-        if (map.containsKey("set") &&
-            map["set"] == s &&
-            !map.containsKey("main")) {
-          c.add(index);
-        }
-        index = index + 1;
-      }
-      groupARoundList.addAll({s: c});
-    }
-
-    for (int s in uniqueSets) {
-      int index = 0;
-      for (var map in questionSets) {
-        if (map.containsKey("set") &&
-            map["set"] == s &&
-            map.containsKey("main")) {
-          groupARoundLanding.add(index);
-        }
-        index = index + 1;
-      }
-
-      groupA.add(IconButton(
-        onPressed: () {
-          selectQuestion(groupARoundLanding[s - 1]);
-          loadQuestions(context, s);
-        },
-        icon: const Icon(Icons.ac_unit),
-        tooltip: questionSets[groupARoundLanding[s - 1]]
-            .entries
-            .firstWhere((e) => e.key == "title")
-            .value,
-      ));
-    }
+    makeCalculations(context);
 
     super.initState();
   }
@@ -359,6 +356,54 @@ class _MyHomePageState extends State<MyHomePage> {
     _angry!.change(false);
   }
 
+  void makeCalculations(BuildContext context) {
+    Set<int> uniqueSets = {};
+
+    for (var map in questionSets) {
+      if (map.containsKey("set")) {
+        uniqueSets.add(map["set"]);
+      }
+    }
+
+    for (int s in uniqueSets) {
+      int index = 0;
+      List<int> c = [];
+      for (var map in questionSets) {
+        if (map.containsKey("set") &&
+            map["set"] == s &&
+            !map.containsKey("main")) {
+          c.add(index);
+        }
+        index = index + 1;
+      }
+      groupARoundList.addAll({s: c});
+    }
+
+    for (int s in uniqueSets) {
+      int index = 0;
+      for (var map in questionSets) {
+        if (map.containsKey("set") &&
+            map["set"] == s &&
+            map.containsKey("main")) {
+          groupARoundLanding.add(index);
+        }
+        index = index + 1;
+      }
+
+      groupA.add(IconButton(
+        onPressed: () {
+          selectQuestion(groupARoundLanding[s - 1]);
+          loadQuestions(context, s);
+        },
+        icon: const Icon(Icons.ac_unit),
+        tooltip: questionSets[groupARoundLanding[s - 1]]
+            .entries
+            .firstWhere((e) => e.key == "title")
+            .value,
+      ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Map<String, bool> opts = questionSets[selectedQuestionIndex]
@@ -457,7 +502,7 @@ class _MyHomePageState extends State<MyHomePage> {
         borderRadius: const BorderRadius.all(Radius.circular(8)),
         selectedBorderColor: Colors.red[700],
         splashColor: Colors.amber,
-        selectedColor: Colors.black,
+        selectedColor: Colors.red,
         fillColor: Colors.blue[200],
         color: Theme.of(context).buttonTheme.colorScheme!.primary,
         hoverColor: Theme.of(context).highlightColor,
@@ -544,7 +589,7 @@ class _MyHomePageState extends State<MyHomePage> {
             IgnorePointer(
               ignoring: true,
               child: Padding(
-                padding: EdgeInsets.fromLTRB(50.sw, 0, 1.sw, 20.sh),
+                padding: EdgeInsets.fromLTRB(40.sw, 0, 1.sw, 30.sh),
                 child: Container(
                   padding: const EdgeInsets.all(20.0),
                   decoration: const BoxDecoration(
@@ -570,7 +615,7 @@ class _MyHomePageState extends State<MyHomePage> {
             IgnorePointer(
               ignoring: true,
               child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 60.sw, 60.sh),
+                padding: EdgeInsets.fromLTRB(0, 0, 60.sw, 65.sh),
                 child: Container(
                   clipBehavior: Clip.hardEdge,
                   key: GlobalKey(),
