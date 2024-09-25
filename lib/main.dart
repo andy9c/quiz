@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -109,6 +111,9 @@ class _MyHomePageState extends State<MyHomePage> {
   AudioPlayer startPlay = AudioPlayer();
   AudioPlayer notifyPlay = AudioPlayer();
   AudioPlayer fireworksPlay = AudioPlayer();
+  AudioPlayer backgroundPlay = AudioPlayer();
+
+  double bgAudioLevel = 0.2;
 
   selectQuestion(int? val) {
     setState(() {
@@ -137,92 +142,97 @@ class _MyHomePageState extends State<MyHomePage> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            questionSets[groupARoundLanding[set - 1]]
-                .entries
-                .firstWhere((e) => e.key == "title")
-                .value,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
-          ),
-          content: BlocBuilder<TempCubit, TempState>(
-            bloc: BlocProvider.of<TempCubit>(ctx),
-            buildWhen: (prev, current) => true,
-            builder: (context, state) {
-              return SizedBox(
-                key: UniqueKey(),
-                width: 85.sw,
-                height: 65.sh,
-                child: GridView.count(
+        return BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: AlertDialog(
+            title: Text(
+              questionSets[groupARoundLanding[set - 1]]
+                  .entries
+                  .firstWhere((e) => e.key == "title")
+                  .value,
+              textAlign: TextAlign.center,
+              style:
+                  const TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
+            ),
+            content: BlocBuilder<TempCubit, TempState>(
+              bloc: BlocProvider.of<TempCubit>(ctx),
+              buildWhen: (prev, current) => true,
+              builder: (context, state) {
+                return SizedBox(
                   key: UniqueKey(),
-                  mainAxisSpacing: 10.0,
-                  crossAxisSpacing: 10.0,
-                  childAspectRatio: 1.78,
-                  crossAxisCount: 3, // 3 columns in the grid
-                  children: List.generate(
-                      groupARoundList.entries
-                          .firstWhere((e) => e.key == set,
-                              orElse: () => const MapEntry(0, []))
-                          .value
-                          .length, (index) {
-                    // Generate 12 buttons
-                    return ElevatedButton(
-                      key: UniqueKey(),
-                      onPressed: () {
-                        int origIndex = groupARoundList.entries
+                  width: 30.sw,
+                  height: 40.sh,
+                  child: GridView.count(
+                    key: UniqueKey(),
+                    mainAxisSpacing: 10.0,
+                    crossAxisSpacing: 10.0,
+                    childAspectRatio: 1.78,
+                    crossAxisCount: 3, // 3 columns in the grid
+                    children: List.generate(
+                        groupARoundList.entries
                             .firstWhere((e) => e.key == set,
                                 orElse: () => const MapEntry(0, []))
-                            .value[index];
+                            .value
+                            .length, (index) {
+                      // Generate 12 buttons
+                      return ElevatedButton(
+                        key: UniqueKey(),
+                        onPressed: () {
+                          int origIndex = groupARoundList.entries
+                              .firstWhere((e) => e.key == set,
+                                  orElse: () => const MapEntry(0, []))
+                              .value[index];
 
-                        if (state.doneQuestionIndex.contains(origIndex)) {
-                          //Navigator.of(context).pop();
-                          selectQuestion(groupARoundLanding[set - 1]);
-                        }
+                          if (state.doneQuestionIndex.contains(origIndex)) {
+                            //Navigator.of(context).pop();
+                            selectQuestion(groupARoundLanding[set - 1]);
+                          }
 
-                        BlocProvider.of<TempCubit>(ctx).processIndex(origIndex);
+                          BlocProvider.of<TempCubit>(ctx)
+                              .processIndex(origIndex);
 
-                        if (!state.doneQuestionIndex.contains(origIndex)) {
-                          //Navigator.of(context).pop();
-                          selectQuestion(origIndex);
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: state.doneQuestionIndex.contains(
-                                groupARoundList.entries
-                                    .firstWhere((e) => e.key == set,
-                                        orElse: () => const MapEntry(0, []))
-                                    .value[index])
-                            ? Colors.red
-                            : Colors.green,
-                        foregroundColor: Colors.white,
-                        textStyle: const TextStyle(fontSize: 16),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
-                        elevation: 5,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                          if (!state.doneQuestionIndex.contains(origIndex)) {
+                            //Navigator.of(context).pop();
+                            selectQuestion(origIndex);
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: state.doneQuestionIndex.contains(
+                                  groupARoundList.entries
+                                      .firstWhere((e) => e.key == set,
+                                          orElse: () => const MapEntry(0, []))
+                                      .value[index])
+                              ? Colors.red
+                              : Colors.green,
+                          foregroundColor: Colors.white,
+                          textStyle: const TextStyle(fontSize: 16),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
-                      ),
-                      child: Text(
-                        '${index + 1}',
-                        style: const TextStyle(
-                            fontSize: 100, fontWeight: FontWeight.bold),
-                      ),
-                    );
-                  }),
-                ),
-              );
-            },
-          ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
+                        child: Text(
+                          '${index + 1}',
+                          style: const TextStyle(
+                              fontSize: 70, fontWeight: FontWeight.bold),
+                        ),
+                      );
+                    }),
+                  ),
+                );
               },
-              child: const Text('OK'),
             ),
-          ],
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          ),
         );
       },
     );
@@ -232,6 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
   initState() {
     audio();
     makeCalculations(context);
+    playBackground();
 
     super.initState();
   }
@@ -244,6 +255,7 @@ class _MyHomePageState extends State<MyHomePage> {
       await startPlay.setPlayerMode(PlayerMode.lowLatency);
       await notifyPlay.setPlayerMode(PlayerMode.lowLatency);
       await fireworksPlay.setPlayerMode(PlayerMode.lowLatency);
+      await backgroundPlay.setPlayerMode(PlayerMode.lowLatency);
 
       await correctPlay.setSourceAsset("audio/y.mp3");
       await wrongPlay.setSourceAsset("audio/o.mp3");
@@ -251,6 +263,10 @@ class _MyHomePageState extends State<MyHomePage> {
       await startPlay.setSourceAsset("audio/bgm.mp3");
       await notifyPlay.setSourceAsset("audio/not.mp3");
       await fireworksPlay.setSourceAsset("audio/fireworks.mp3");
+      await backgroundPlay.setSourceAsset("audio/quiz.mp3");
+
+      await backgroundPlay.setReleaseMode(ReleaseMode.loop);
+      await backgroundPlay.setVolume(bgAudioLevel);
       // ignore: empty_catches
     } catch (e) {}
   }
@@ -320,30 +336,43 @@ class _MyHomePageState extends State<MyHomePage> {
     _isFireworks!.change(true);
     correctPlay.resume();
     fireworksPlay.resume();
+    backgroundPlay.setVolume(bgAudioLevel);
   }
 
   void playWrong() async {
     await stopAll();
     await wrongPlay.resume();
+    backgroundPlay.setVolume(bgAudioLevel);
   }
 
   void playOver() async {
     //await stopAll();
     await overPlay.resume();
+    backgroundPlay.setVolume(bgAudioLevel);
   }
 
   void playStart() async {
     await stopAll();
-    if (showQuestions) await startPlay.resume();
+    if (showQuestions) {
+      await backgroundPlay.setVolume(0.0);
+      await backgroundPlay.resume();
+      await startPlay.resume();
+    }
   }
 
   void playNotify() async {
     await stopAll();
     await notifyPlay.resume();
+    backgroundPlay.setVolume(bgAudioLevel);
   }
 
   void playFireworks() async {
     await fireworksPlay.resume();
+    backgroundPlay.setVolume(bgAudioLevel);
+  }
+
+  void playBackground() async {
+    backgroundPlay.resume();
   }
 
   Future<void> stopAll() async {
