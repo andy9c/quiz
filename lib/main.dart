@@ -141,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  Future<String> readFile(String fileName) async {
+  Future<Map<String, dynamic>> readFile(String fileName) async {
     try {
       // Get the path to the 'My Documents older' folder
       final myDocumentsFolderPath =
@@ -152,12 +152,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
       // Read the file contents
       final contents = await file.readAsString();
+      Map<String, dynamic> jsonData = jsonDecode(contents);
 
-      return contents;
+      return jsonData;
     } catch (e) {
       // Handle errors (e.g., file not found)
       //print('Error reading file: $e');
-      return '{"PRANOLD":100, "AMAN":200, "SMIRITY":300,"KAMLES":100, "SNEHA":200, "DIVYA":300}'; // Or throw an exception, depending on your error handling strategy
+      return {
+        "PRANOLD": 100,
+        "AMAN": 200,
+        "SMIRITY": 300,
+        "KAMLES": 100,
+        "SNEHA": 200,
+        "DIVYA": 300
+      }; // Or throw an exception, depending on your error handling strategy
     }
   }
 
@@ -170,7 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
     showDialog(
       context: context,
       builder: (context) {
-        return FutureBuilder<String>(
+        return FutureBuilder<Map<String, dynamic>>(
           future: readFile("res.txt"),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -188,7 +196,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               );
             } else {
-              Map<String, dynamic> jsonData = jsonDecode(snapshot.data!);
               return BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                 child: AlertDialog(
@@ -209,7 +216,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       childAspectRatio: 1,
                       crossAxisCount: 3, // 3 columns in the grid
                       children: List.generate(
-                        jsonData.length,
+                        snapshot.data!.length,
                         (index) {
                           final random = Random();
                           return Column(
@@ -223,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   1,
                                 ),
                                 child: Text(
-                                  "${jsonData.entries.toList()[index].key.split(" ").first.toUpperCase()}\n${jsonData.entries.toList()[index].value}",
+                                  "${snapshot.data!.entries.toList()[index].key.split(" ").first.toUpperCase()}\n${snapshot.data!.entries.toList()[index].value}",
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                       fontSize: 28,
