@@ -15,7 +15,7 @@ class TempCubit extends Cubit<TempState> with HydratedMixin {
   }
 
   void processIndex(int index) {
-    Set<int> tempCopy = state.doneQuestionIndex;
+    Set<int> tempCopy = getCopy().doneQuestionIndex;
 
     if (state.doneQuestionIndex.contains(index)) {
       tempCopy.remove(index);

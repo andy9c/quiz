@@ -20,7 +20,7 @@ Future<void> main() async {
         : await getApplicationDocumentsDirectory(),
   );
 
-  Bloc.observer = AppBlocObserver(showInfo: true);
+  Bloc.observer = AppBlocObserver(showInfo: false);
 
   runApp(const MyApp());
 }
@@ -147,8 +147,8 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context, state) {
               return SizedBox(
                 key: UniqueKey(),
-                width: 20.sw,
-                height: 30.sh,
+                width: 85.sw,
+                height: 70.sh,
                 child: GridView.count(
                   key: UniqueKey(),
                   mainAxisSpacing: 10.0,
@@ -169,9 +169,15 @@ class _MyHomePageState extends State<MyHomePage> {
                             .firstWhere((e) => e.key == set,
                                 orElse: () => const MapEntry(0, []))
                             .value[index];
-                        BlocProvider.of<TempCubit>(ctx).processIndex(origIndex);
 
                         if (state.doneQuestionIndex.contains(origIndex)) {
+                          //Navigator.of(context).pop();
+                          selectQuestion(groupARoundLanding[set - 1]);
+                        }
+
+                        BlocProvider.of<TempCubit>(ctx).processIndex(origIndex);
+
+                        if (!state.doneQuestionIndex.contains(origIndex)) {
                           //Navigator.of(context).pop();
                           selectQuestion(origIndex);
                         }
