@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:audioplayers/audioplayers.dart';
@@ -138,6 +141,138 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Future<String> readFile(String fileName) async {
+    try {
+      // Get the path to the 'My Documents older' folder
+      final myDocumentsFolderPath =
+          (await getApplicationDocumentsDirectory()).path;
+
+      // Create a File object
+      final file = File('$myDocumentsFolderPath\\$fileName');
+
+      // Read the file contents
+      final contents = await file.readAsString();
+
+      return contents;
+    } catch (e) {
+      // Handle errors (e.g., file not found)
+      //print('Error reading file: $e');
+      return '{"PRANOLD":100, "AMAN":200, "SMIRITY":300,"KAMLES":100, "SNEHA":200, "DIVYA":300}'; // Or throw an exception, depending on your error handling strategy
+    }
+  }
+
+  loadResults(BuildContext ctx, String title) async {
+    // final String fileContents =
+    //     await readFile('my_text_file.txt');
+
+    // Map<String, dynamic> jsonData = jsonDecode(fileContents);
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return FutureBuilder<String>(
+          future: readFile("res.txt"),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: AlertDialog(
+                  title: const Text('Error'),
+                  content: SizedBox(
+                      key: UniqueKey(),
+                      width: 30.sw,
+                      height: 40.sh,
+                      child: Text('Error:   ${snapshot.error}')),
+                ),
+              );
+            } else {
+              Map<String, dynamic> jsonData = jsonDecode(snapshot.data!);
+              return BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: AlertDialog(
+                  title: Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 100, fontWeight: FontWeight.bold),
+                  ),
+                  content: SizedBox(
+                    key: UniqueKey(),
+                    width: 30.sw,
+                    height: 40.sh,
+                    child: GridView.count(
+                      key: UniqueKey(),
+                      mainAxisSpacing: 10.0,
+                      crossAxisSpacing: 10.0,
+                      childAspectRatio: 1,
+                      crossAxisCount: 3, // 3 columns in the grid
+                      children: List.generate(
+                        jsonData.length,
+                        (index) {
+                          final random = Random();
+                          return Column(
+                            children: [
+                              CircleAvatar(
+                                radius: 4.sw,
+                                backgroundColor: Color.fromRGBO(
+                                  random.nextInt(256),
+                                  random.nextInt(256),
+                                  random.nextInt(256),
+                                  1,
+                                ),
+                                child: Text(
+                                  "${jsonData.entries.toList()[index].key.split(" ").first.toUpperCase()}\n${jsonData.entries.toList()[index].value}",
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      shadows: [
+                                        Shadow(
+                                            // bottomLeft
+                                            offset: Offset(-1.5, -1.5),
+                                            color: Colors.black),
+                                        Shadow(
+                                            // bottomRight
+                                            offset: Offset(1.5, -1.5),
+                                            color: Colors.black),
+                                        Shadow(
+                                            // topRight
+                                            offset: Offset(1.5, 1.5),
+                                            color: Colors.black),
+                                        Shadow(
+                                            // topLeft
+                                            offset: Offset(-1.5, 1.5),
+                                            color: Colors.black),
+                                      ]),
+                                ),
+                              ),
+                              // Text(
+                              //   jsonData.entries.toList()[index].key,
+                              // ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Close'),
+                    ),
+                  ],
+                ),
+              );
+            }
+          },
+        );
+      },
+    );
+  }
+
   loadQuestions(BuildContext ctx, int set) {
     showDialog(
       context: context,
@@ -243,6 +378,14 @@ class _MyHomePageState extends State<MyHomePage> {
     audio();
     makeCalculations(context);
     playBackground();
+
+    groupA.add(IconButton(
+      onPressed: () {
+        loadResults(context, "Results");
+      },
+      icon: const Icon(Icons.settings),
+      tooltip: "Results",
+    ));
 
     super.initState();
   }
