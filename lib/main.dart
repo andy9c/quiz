@@ -137,10 +137,14 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(questionSets[groupARoundLanding[set - 1]]
-              .entries
-              .firstWhere((e) => e.key == "title")
-              .value),
+          title: Text(
+            questionSets[groupARoundLanding[set - 1]]
+                .entries
+                .firstWhere((e) => e.key == "title")
+                .value,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
+          ),
           content: BlocBuilder<TempCubit, TempState>(
             bloc: BlocProvider.of<TempCubit>(ctx),
             buildWhen: (prev, current) => true,
@@ -202,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Text(
                         '${index + 1}',
                         style: const TextStyle(
-                            fontSize: 40, fontWeight: FontWeight.bold),
+                            fontSize: 100, fontWeight: FontWeight.bold),
                       ),
                     );
                   }),
