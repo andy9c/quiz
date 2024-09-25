@@ -496,8 +496,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void playOver() async {
-    //await stopAll();
-    await overPlay.resume();
+    overPlay.resume();
+    await stopAll();
     backgroundPlay.setVolume(bgAudioLevel);
   }
 
@@ -530,7 +530,7 @@ class _MyHomePageState extends State<MyHomePage> {
     await startPlay.stop();
     await correctPlay.stop();
     await wrongPlay.stop();
-    await overPlay.stop();
+    // await overPlay.stop();
     await notifyPlay.stop();
     await fireworksPlay.stop();
   }
@@ -793,7 +793,7 @@ class _MyHomePageState extends State<MyHomePage> {
             IgnorePointer(
               ignoring: false,
               child: Padding(
-                padding: EdgeInsets.fromLTRB(40.sw, 0, 1.sw, 5.sh),
+                padding: EdgeInsets.fromLTRB(20.sw, 0, 1.sw, 5.sh),
                 child: showQuestions ? allOptions : Container(),
               ),
             ),
@@ -898,8 +898,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         endTime = DateTime.now().add(
                           const Duration(
-                            minutes: 1,
-                            seconds: 0,
+                            minutes: 0,
+                            seconds: 30,
                           ),
                         );
                       });
