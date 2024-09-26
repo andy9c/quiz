@@ -544,7 +544,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if (showOptions || opts.length == 1) {
       await backgroundPlay.setVolume(0.0);
-      await backgroundPlay.resume();
+      // await backgroundPlay.resume();
       await startPlay.resume();
     }
   }
@@ -845,8 +845,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         actions: groupA,
       ),
-      body: SafeArea(
-        child: Stack(
+      body: LayoutBuilder(builder: (context, constraints) {
+        return Stack(
           alignment: Alignment.bottomCenter,
           children: [
             // Center(
@@ -1045,15 +1045,52 @@ class _MyHomePageState extends State<MyHomePage> {
                               });
                             }
                           }),
-                      TextButton(child: const Text('Mute'), onPressed: () {}),
+                      SizedBox(
+                        width: 200,
+                        height: 20,
+                        child: SliderTheme(
+                          data: SliderThemeData(
+                            trackHeight: 25,
+                            inactiveTrackColor:
+                                Theme.of(context).colorScheme.tertiaryContainer,
+                          ),
+                          child: Stack(children: [
+                            Slider(
+                              label: bgAudioLevel.toString(),
+                              value: bgAudioLevel,
+                              onChanged: (value) {
+                                setState(() {
+                                  bgAudioLevel = value;
+                                  backgroundPlay.setVolume(bgAudioLevel);
+                                  // backgroundPlay.resume();
+                                });
+                              },
+                            ),
+                            Center(
+                              child: Text('${(bgAudioLevel * 100).round()}',
+                                  style: TextStyle(
+                                    color: bgAudioLevel > 0.5
+                                        ? Theme.of(context)
+                                            .colorScheme
+                                            .onInverseSurface
+                                        : Theme.of(context)
+                                            .colorScheme
+                                            .onTertiaryContainer,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                  )),
+                            )
+                          ]),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
           ],
-        ),
-      ),
+        );
+      }),
     );
   }
 }
