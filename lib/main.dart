@@ -881,7 +881,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: RiveAnimation.asset(
                 'assets/rive/fireworks.riv',
                 fit: BoxFit.cover,
-                alignment: Alignment.topLeft,
+                alignment: Alignment.bottomCenter,
                 stateMachines: const ['State Machine 1'],
                 onInit: _onRiveInitFireworks,
               ),
