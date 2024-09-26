@@ -489,12 +489,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
                       child: Center(
-                        child: RiveAnimation.direct(
-                          _frog!,
-                          fit: BoxFit.cover,
-                          alignment: Alignment.bottomCenter,
-                          stateMachines: const ['State Machine v03'],
-                        ),
+                        child: _frog == null
+                            ? Container()
+                            : RiveAnimation.direct(
+                                _frog!,
+                                fit: BoxFit.cover,
+                                alignment: Alignment.bottomCenter,
+                                stateMachines: const ['State Machine v03'],
+                              ),
                       ),
                     ),
                   ),
@@ -526,7 +528,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> preload() async {
-    rootBundle.load('assets/rive/dark_light_theme.riv').then(
+    // Initialize Rive before importing the file
+    await RiveFile.initialize();
+
+    await rootBundle.load('assets/rive/dark_light_theme.riv').then(
       (data) async {
         // Load the RiveFile from the binary data.
         setState(() {
@@ -535,7 +540,7 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
 
-    rootBundle.load('assets/rive/fireworks.riv').then(
+    await rootBundle.load('assets/rive/fireworks.riv').then(
       (data) async {
         // Load the RiveFile from the binary data.
         setState(() {
@@ -544,7 +549,7 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
 
-    rootBundle.load('assets/rive/grumpy_bear_2_rev.riv').then(
+    await rootBundle.load('assets/rive/grumpy_bear_2_rev.riv').then(
       (data) async {
         // Load the RiveFile from the binary data.
         setState(() {
@@ -553,7 +558,7 @@ class _MyHomePageState extends State<MyHomePage> {
       },
     );
 
-    rootBundle.load('assets/rive/happy_frog.riv').then(
+    await rootBundle.load('assets/rive/happy_frog.riv').then(
       (data) async {
         // Load the RiveFile from the binary data.
         setState(() {
@@ -565,7 +570,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   initState() {
-    preload();
     audio();
     makeCalculations(context);
     playBackground();
@@ -573,6 +577,7 @@ class _MyHomePageState extends State<MyHomePage> {
     groupA.add(_resultButton());
 
     super.initState();
+    preload();
   }
 
   Future<void> audio() async {
@@ -641,7 +646,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool showOptions = false;
   bool overPlayed = false;
 
-  void _onRiveInit(Artboard artboard) {
+  void _onRiveInitBear(Artboard artboard) {
     final StateMachineController? controller =
         StateMachineController.fromArtboard(artboard, 'State Machine 1');
 
@@ -1032,31 +1037,37 @@ class _MyHomePageState extends State<MyHomePage> {
             //   ),
             // ),
             Center(
-              child: RiveAnimation.direct(
-                _dayNight!,
-                fit: BoxFit.cover,
-                alignment: Alignment.topLeft,
-                stateMachines: const ['State Machine 1'],
-                onInit: _onRiveInitDayNight,
-              ),
+              child: _dayNight == null
+                  ? Container()
+                  : RiveAnimation.direct(
+                      _dayNight!,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topLeft,
+                      stateMachines: const ['State Machine 1'],
+                      onInit: _onRiveInitDayNight,
+                    ),
             ),
             Center(
-              child: RiveAnimation.direct(
-                _fireworks!,
-                fit: BoxFit.cover,
-                alignment: Alignment.bottomCenter,
-                stateMachines: const ['State Machine 1'],
-                onInit: _onRiveInitFireworks,
-              ),
+              child: _fireworks == null
+                  ? Container()
+                  : RiveAnimation.direct(
+                      _fireworks!,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.bottomCenter,
+                      stateMachines: const ['State Machine 1'],
+                      onInit: _onRiveInitFireworks,
+                    ),
             ),
             Center(
-              child: RiveAnimation.direct(
-                _bear!,
-                fit: BoxFit.cover,
-                alignment: Alignment.topLeft,
-                stateMachines: const ['State Machine 1'],
-                onInit: _onRiveInit,
-              ),
+              child: _bear == null
+                  ? Container()
+                  : RiveAnimation.direct(
+                      _bear!,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topLeft,
+                      stateMachines: const ['State Machine 1'],
+                      onInit: _onRiveInitBear,
+                    ),
             ),
             IgnorePointer(
               ignoring: false,
