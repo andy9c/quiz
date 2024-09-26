@@ -116,6 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
   AudioPlayer notifyPlay = AudioPlayer();
   AudioPlayer fireworksPlay = AudioPlayer();
   AudioPlayer backgroundPlay = AudioPlayer();
+  AudioPlayer fiftyfiftyPlay = AudioPlayer();
 
   double bgAudioLevel = 0.2;
   bool fiftyfifty = false;
@@ -429,6 +430,7 @@ class _MyHomePageState extends State<MyHomePage> {
       await notifyPlay.setPlayerMode(PlayerMode.lowLatency);
       await fireworksPlay.setPlayerMode(PlayerMode.lowLatency);
       await backgroundPlay.setPlayerMode(PlayerMode.lowLatency);
+      await fiftyfiftyPlay.setPlayerMode(PlayerMode.lowLatency);
 
       await correctPlay.setSourceAsset("audio/y.mp3");
       await wrongPlay.setSourceAsset("audio/o.mp3");
@@ -437,6 +439,7 @@ class _MyHomePageState extends State<MyHomePage> {
       await notifyPlay.setSourceAsset("audio/not.mp3");
       await fireworksPlay.setSourceAsset("audio/fireworks.mp3");
       await backgroundPlay.setSourceAsset("audio/quiz.mp3");
+      await fiftyfiftyPlay.setSourceAsset("audio/fifty.mp3");
 
       await backgroundPlay.setReleaseMode(ReleaseMode.loop);
       await backgroundPlay.setVolume(bgAudioLevel);
@@ -564,6 +567,12 @@ class _MyHomePageState extends State<MyHomePage> {
     backgroundPlay.resume();
   }
 
+  void playFiftyfifty() async {
+    await stopAll();
+    await fiftyfiftyPlay.resume();
+    backgroundPlay.setVolume(bgAudioLevel);
+  }
+
   Future<void> stopAll() async {
     _isFireworks!.change(false);
     await startPlay.stop();
@@ -572,6 +581,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // await overPlay.stop();
     await notifyPlay.stop();
     await fireworksPlay.stop();
+    await fiftyfiftyPlay.stop();
   }
 
   void _onHappy() {
@@ -999,6 +1009,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   overPlayed = true;
                                 }
                               });
+                            } else {
+                              scheduleTask(const Duration(seconds: 29), () {
+                                if (showOptions == true &&
+                                    overPlayed == false) {
+                                  playOver();
+                                  overPlayed = true;
+                                }
+                              });
                             }
 
                             setState(() {
@@ -1029,6 +1047,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       TextButton(
                           child: const Text('50-50'),
                           onPressed: () {
+                            playFiftyfifty();
+
                             if (opts.length == 4) {
                               setState(() {
                                 _selectedOptionsOne =
