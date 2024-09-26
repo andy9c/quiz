@@ -1,0 +1,8 @@
+{
+	"ARLINA":100
+	,"KRITIKA":200
+	,"BIBIANA":300
+	,"AMAN":400
+	,"ABHIJIT":500
+	,"ARATI":600
+}

@@ -15,7 +15,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q1",
     "set": 1,
     "question":
-        "1.	How many days and nights did Jesus fast in the wilderness ?",
+        "1.	How many days and nights did Jesus fast in the wilderness ?\nयेसु ने निर्जन प्रदेश में कितने दिन और रात उपवास किया ?",
     "options": {
       "Forty": true,
     },
