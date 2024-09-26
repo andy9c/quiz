@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -117,17 +118,39 @@ class _MyHomePageState extends State<MyHomePage> {
   AudioPlayer backgroundPlay = AudioPlayer();
 
   double bgAudioLevel = 0.2;
+  bool fiftyfifty = false;
+  Map<String, bool> ftft = {};
+
+  List<Timer> activeTimers = [];
+
+  void scheduleTask(Duration duration, Function callback) {
+    // Cancel all existing timers
+    for (var timer in activeTimers) {
+      timer.cancel();
+    }
+    activeTimers.clear();
+
+    // Create and schedule the new timer
+    Timer newTimer = Timer(duration, () {
+      callback();
+    });
+    activeTimers.add(newTimer);
+  }
 
   selectQuestion(int? val) {
     setState(() {
-      showQuestions = false;
+      showOptions = false;
       overPlayed = false;
 
       _themeToggled!.change(false);
 
-      _selectedOptions = List<bool>.filled(4, false);
+      _selectedOptionsOne = List<bool>.filled(1, false);
+      _selectedOptionsTwo = List<bool>.filled(2, false);
+      _selectedOptionsFour = List<bool>.filled(4, false);
       _selectedOptionsSix = List<bool>.filled(6, false);
       selectedQuestionIndex = val!;
+
+      fiftyfifty = false;
 
       endTime = DateTime.now().add(
         const Duration(
@@ -421,7 +444,16 @@ class _MyHomePageState extends State<MyHomePage> {
     } catch (e) {}
   }
 
-  List<bool> _selectedOptions = <bool>[
+  List<bool> _selectedOptionsOne = <bool>[
+    false,
+  ];
+
+  List<bool> _selectedOptionsTwo = <bool>[
+    false,
+    false,
+  ];
+
+  List<bool> _selectedOptionsFour = <bool>[
     false,
     false,
     false,
@@ -440,14 +472,16 @@ class _MyHomePageState extends State<MyHomePage> {
   bool vertical = false;
   int selectedOptionIndex = 0, selectedQuestionIndex = 0;
 
-  DateTime endTime = DateTime.now().add(
-    const Duration(
-      minutes: 0,
-      seconds: 0,
-    ),
-  );
+  // DateTime endTime = DateTime.now().add(
+  //   const Duration(
+  //     minutes: 0,
+  //     seconds: 0,
+  //   ),
+  // );
 
-  bool showQuestions = false;
+  DateTime endTime = DateTime.utc(1970, 1, 1);
+
+  bool showOptions = false;
   bool overPlayed = false;
 
   void _onRiveInit(Artboard artboard) {
@@ -503,7 +537,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void playStart() async {
     await stopAll();
-    if (showQuestions) {
+    var opts = questionSets[selectedQuestionIndex]
+        .entries
+        .firstWhere((e) => e.key == "options")
+        .value;
+
+    if (showOptions || opts.length == 1) {
       await backgroundPlay.setVolume(0.0);
       await backgroundPlay.resume();
       await startPlay.resume();
@@ -602,6 +641,38 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  Map<String, bool> getRandomEntriesFiftyFifty(Map<String, bool> map) {
+    List<MapEntry<String, bool>> trueEntries = [];
+    List<MapEntry<String, bool>> falseEntries = [];
+
+    // Separate entries based on their boolean values
+    for (var entry in map.entries) {
+      if (entry.value) {
+        trueEntries.add(entry);
+      } else {
+        falseEntries.add(entry);
+      }
+    }
+
+    // Check if we have at least one true and one false entry
+    if (trueEntries.isEmpty || falseEntries.isEmpty) {
+      return {};
+    }
+
+    // Randomly select one entry from each list
+    Random random = Random();
+    MapEntry<String, bool> randomTrueEntry =
+        trueEntries[random.nextInt(trueEntries.length)];
+    MapEntry<String, bool> randomFalseEntry =
+        falseEntries[random.nextInt(falseEntries.length)];
+
+    if (random.nextBool()) {
+      return Map.fromEntries([randomTrueEntry, randomFalseEntry]);
+    } else {
+      return Map.fromEntries([randomFalseEntry, randomTrueEntry]);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Map<String, bool> opts = questionSets[selectedQuestionIndex]
@@ -610,39 +681,41 @@ class _MyHomePageState extends State<MyHomePage> {
         .value;
     // opts.shuffle();
 
-    List<Widget> w = [];
-    List<Widget> z = [];
+    List<Widget> optionButtons = [];
 
     int count = 0;
 
-    opts.forEach((key, value) {
-      Widget g = Expanded(
-        child: ElevatedButton(
-          onPressed: value == true ? _onHappy : _onAngry,
-          child: Text(
-            key,
-            textAlign: TextAlign.center,
-            softWrap: true,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 28,
-            ),
-          ),
-        ),
-      );
-      w.add(g);
+    (fiftyfifty ? ftft : opts).forEach((key, value) {
+      Color bg = Colors.green;
 
-      z.add(
+      if (selectedQuestionIndex < 7) {
+        switch (opts.length) {
+          case 1:
+            bg = value == true && _selectedOptionsOne[count] == true
+                ? Colors.green
+                : Theme.of(context).colorScheme.errorContainer;
+            break;
+          case 2:
+            bg = value == true && _selectedOptionsTwo[count] == true
+                ? Colors.green
+                : Theme.of(context).colorScheme.errorContainer;
+            break;
+          case 4:
+            bg = value == true && _selectedOptionsFour[count] == true
+                ? Colors.green
+                : Theme.of(context).colorScheme.errorContainer;
+          case 6:
+            bg = value == true && _selectedOptionsSix[count] == true
+                ? Colors.green
+                : Theme.of(context).colorScheme.errorContainer;
+        }
+      }
+
+      optionButtons.add(
         Container(
           padding: EdgeInsets.zero,
           decoration: BoxDecoration(
-            color: selectedQuestionIndex < 7
-                ? value == true && _selectedOptions[count] == true
-                    ? Colors.green
-                    : Theme.of(context).colorScheme.errorContainer
-                : value == true && _selectedOptionsSix[count] == true
-                    ? Colors.green
-                    : Theme.of(context).colorScheme.errorContainer,
+            color: bg,
             // border: Border.all(color: Colors.black, width: 1.0),
             borderRadius: const BorderRadius.all(Radius.circular(8)),
           ),
@@ -662,10 +735,6 @@ class _MyHomePageState extends State<MyHomePage> {
       );
 
       count = count + 1;
-      w.add(const SizedBox(
-        width: 16,
-        height: 16,
-      ));
     });
 
     Widget allOptions = Padding(
@@ -676,16 +745,32 @@ class _MyHomePageState extends State<MyHomePage> {
           setState(() {
             selectedOptionIndex = index;
 
-            bool b = opts.entries.toList()[index].value;
+            bool b = (fiftyfifty ? ftft : opts).entries.toList()[index].value;
 
-            if (z.length == 4) {
-              if (_selectedOptions[index] == false) {
+            if (opts.length == 1) {
+              if (_selectedOptionsOne[index] == false) {
                 b == true ? _onHappy() : _onAngry();
               } else {
                 _onIdle();
               }
 
-              _selectedOptions[index] = !_selectedOptions[index];
+              _selectedOptionsOne[index] = !_selectedOptionsOne[index];
+            } else if (opts.length == 2) {
+              if (_selectedOptionsTwo[index] == false) {
+                b == true ? _onHappy() : _onAngry();
+              } else {
+                _onIdle();
+              }
+
+              _selectedOptionsTwo[index] = !_selectedOptionsTwo[index];
+            } else if (opts.length == 4) {
+              if (_selectedOptionsFour[index] == false) {
+                b == true ? _onHappy() : _onAngry();
+              } else {
+                _onIdle();
+              }
+
+              _selectedOptionsFour[index] = !_selectedOptionsFour[index];
             } else {
               if (_selectedOptionsSix[index] == false) {
                 b == true ? _onHappy() : _onAngry();
@@ -706,9 +791,15 @@ class _MyHomePageState extends State<MyHomePage> {
         hoverColor: Theme.of(context).highlightColor,
         constraints: BoxConstraints(
           minHeight: 100.0,
-          minWidth: z.length == 4 ? 250.0 : 180,
+          minWidth: optionButtons.length == 4 ? 250.0 : 180,
         ),
-        isSelected: z.length == 4 ? _selectedOptions : _selectedOptionsSix,
+        isSelected: optionButtons.length == 1
+            ? _selectedOptionsOne
+            : optionButtons.length == 2
+                ? _selectedOptionsTwo
+                : optionButtons.length == 4
+                    ? _selectedOptionsFour
+                    : _selectedOptionsSix,
         textStyle: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 28,
@@ -730,7 +821,7 @@ class _MyHomePageState extends State<MyHomePage> {
               //     offset: Offset(-1.5, 1.5),
               //     color: Colors.white),
             ]),
-        children: z,
+        children: optionButtons,
       ),
     );
     // This method is rerun every time setState is called, for instance as done
@@ -794,7 +885,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ignoring: false,
               child: Padding(
                 padding: EdgeInsets.fromLTRB(20.sw, 0, 1.sw, 5.sh),
-                child: showQuestions ? allOptions : Container(),
+                child: showOptions ? allOptions : Container(),
               ),
             ),
             IgnorePointer(
@@ -850,10 +941,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontSize: 12,
                     ),
                     onEnd: () {
-                      if (showQuestions == true && overPlayed == false) {
-                        playOver();
-                        overPlayed = true;
-                      }
+                      // if (showOptions == true && overPlayed == false) {
+                      //   playOver();
+                      //   overPlayed = true;
+                      // }
                     },
                   ),
                 ),
@@ -882,29 +973,78 @@ class _MyHomePageState extends State<MyHomePage> {
               ignoring: false,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(200, 0, 0, 10),
-                child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        showQuestions = true;
-                        overPlayed = false;
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: OverflowBar(
+                    alignment: MainAxisAlignment.end,
+                    spacing: 8.0,
+                    overflowSpacing: 8.0,
+                    children: <Widget>[
+                      TextButton(
+                          child: const Text('Start'),
+                          onPressed: () {
+                            if (opts.length == 1) {
+                              scheduleTask(const Duration(seconds: 29), () {
+                                setState(() {
+                                  showOptions = true;
+                                });
 
-                        _themeToggled!.change(true);
+                                if (showOptions == true &&
+                                    overPlayed == false) {
+                                  playOver();
+                                  overPlayed = true;
+                                }
+                              });
+                            }
 
-                        playStart();
-                        _onIdle();
+                            setState(() {
+                              showOptions = opts.length == 1 ? false : true;
+                              overPlayed = false;
 
-                        _selectedOptions = List<bool>.filled(4, false);
-                        _selectedOptionsSix = List<bool>.filled(6, false);
+                              _themeToggled!.change(true);
 
-                        endTime = DateTime.now().add(
-                          const Duration(
-                            minutes: 0,
-                            seconds: 30,
-                          ),
-                        );
-                      });
-                    },
-                    child: const Text("Start")),
+                              playStart();
+                              _onIdle();
+
+                              _selectedOptionsOne = List<bool>.filled(1, false);
+                              _selectedOptionsTwo = List<bool>.filled(2, false);
+                              _selectedOptionsFour =
+                                  List<bool>.filled(4, false);
+                              _selectedOptionsSix = List<bool>.filled(6, false);
+
+                              fiftyfifty = false;
+
+                              endTime = DateTime.now().add(
+                                const Duration(
+                                  minutes: 0,
+                                  seconds: 30,
+                                ),
+                              );
+                            });
+                          }),
+                      TextButton(
+                          child: const Text('50-50'),
+                          onPressed: () {
+                            if (opts.length == 4) {
+                              setState(() {
+                                _selectedOptionsOne =
+                                    List<bool>.filled(1, false);
+                                _selectedOptionsTwo =
+                                    List<bool>.filled(2, false);
+                                _selectedOptionsFour =
+                                    List<bool>.filled(4, false);
+                                _selectedOptionsSix =
+                                    List<bool>.filled(6, false);
+
+                                ftft = getRandomEntriesFiftyFifty(opts);
+                                fiftyfifty = true;
+                              });
+                            }
+                          }),
+                      TextButton(child: const Text('Mute'), onPressed: () {}),
+                    ],
+                  ),
+                ),
               ),
             ),
           ],
