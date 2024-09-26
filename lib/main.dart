@@ -685,7 +685,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     int count = 0;
 
-    (fiftyfifty ? ftft : opts).forEach((key, value) {
+    opts.forEach((key, value) {
       Color bg = Colors.green;
 
       if (selectedQuestionIndex < 7) {
@@ -722,7 +722,11 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              key,
+              fiftyfifty
+                  ? ftft.containsKey(key)
+                      ? key
+                      : "---"
+                  : key,
               textAlign: TextAlign.center,
               softWrap: true,
               style: const TextStyle(
@@ -745,7 +749,7 @@ class _MyHomePageState extends State<MyHomePage> {
           setState(() {
             selectedOptionIndex = index;
 
-            bool b = (fiftyfifty ? ftft : opts).entries.toList()[index].value;
+            bool b = opts.entries.toList()[index].value;
 
             if (opts.length == 1) {
               if (_selectedOptionsOne[index] == false) {
