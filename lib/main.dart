@@ -469,6 +469,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     groupA.add(IconButton(
       onPressed: () {
+        playNotify();
+
         showDialog(
           context: context,
           builder: (BuildContext _) {
@@ -503,6 +505,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
+                      playNotify();
                       loadResults(context, "Results");
                     },
                     child: const Text('LOAD RESULTS'),
