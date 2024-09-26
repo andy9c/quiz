@@ -7,6 +7,7 @@ import 'dart:ui';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -123,6 +124,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Map<String, bool> ftft = {};
 
   List<Timer> activeTimers = [];
+
+  RiveFile? _dayNight, _fireworks, _bear, _frog;
 
   void scheduleTask(Duration duration, Function callback) {
     // Cancel all existing timers
@@ -461,13 +464,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  @override
-  initState() {
-    audio();
-    makeCalculations(context);
-    playBackground();
-
-    groupA.add(IconButton(
+  Widget _resultButton() {
+    return IconButton(
       onPressed: () {
         playNotify();
 
@@ -490,12 +488,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: const EdgeInsets.all(16.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
-                      child: const Center(
-                        child: RiveAnimation.asset(
-                          'assets/rive/happy_frog.riv',
+                      child: Center(
+                        child: RiveAnimation.direct(
+                          _frog!,
                           fit: BoxFit.cover,
                           alignment: Alignment.bottomCenter,
-                          stateMachines: ['State Machine v03'],
+                          stateMachines: const ['State Machine v03'],
                         ),
                       ),
                     ),
@@ -524,7 +522,55 @@ class _MyHomePageState extends State<MyHomePage> {
       },
       icon: const Icon(Icons.settings),
       tooltip: "Results",
-    ));
+    );
+  }
+
+  Future<void> preload() async {
+    rootBundle.load('assets/rive/dark_light_theme.riv').then(
+      (data) async {
+        // Load the RiveFile from the binary data.
+        setState(() {
+          _dayNight = RiveFile.import(data);
+        });
+      },
+    );
+
+    rootBundle.load('assets/rive/fireworks.riv').then(
+      (data) async {
+        // Load the RiveFile from the binary data.
+        setState(() {
+          _fireworks = RiveFile.import(data);
+        });
+      },
+    );
+
+    rootBundle.load('assets/rive/grumpy_bear_2_rev.riv').then(
+      (data) async {
+        // Load the RiveFile from the binary data.
+        setState(() {
+          _bear = RiveFile.import(data);
+        });
+      },
+    );
+
+    rootBundle.load('assets/rive/happy_frog.riv').then(
+      (data) async {
+        // Load the RiveFile from the binary data.
+        setState(() {
+          _frog = RiveFile.import(data);
+        });
+      },
+    );
+  }
+
+  @override
+  initState() {
+    preload();
+    audio();
+    makeCalculations(context);
+    playBackground();
+
+    groupA.add(_resultButton());
 
     super.initState();
   }
@@ -976,9 +1022,18 @@ class _MyHomePageState extends State<MyHomePage> {
             //     onInit: _onRiveInit,
             //   ),
             // ),
+            // Center(
+            //   child: RiveAnimation.asset(
+            //     'assets/rive/dark_light_theme.riv',
+            //     fit: BoxFit.cover,
+            //     alignment: Alignment.topLeft,
+            //     stateMachines: const ['State Machine 1'],
+            //     onInit: _onRiveInitDayNight,
+            //   ),
+            // ),
             Center(
-              child: RiveAnimation.asset(
-                'assets/rive/dark_light_theme.riv',
+              child: RiveAnimation.direct(
+                _dayNight!,
                 fit: BoxFit.cover,
                 alignment: Alignment.topLeft,
                 stateMachines: const ['State Machine 1'],
@@ -986,8 +1041,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Center(
-              child: RiveAnimation.asset(
-                'assets/rive/fireworks.riv',
+              child: RiveAnimation.direct(
+                _fireworks!,
                 fit: BoxFit.cover,
                 alignment: Alignment.bottomCenter,
                 stateMachines: const ['State Machine 1'],
@@ -995,8 +1050,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Center(
-              child: RiveAnimation.asset(
-                'assets/rive/grumpy_bear_2_rev.riv',
+              child: RiveAnimation.direct(
+                _bear!,
                 fit: BoxFit.cover,
                 alignment: Alignment.topLeft,
                 stateMachines: const ['State Machine 1'],
