@@ -1047,9 +1047,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       TextButton(
                           child: const Text('50-50'),
                           onPressed: () {
-                            playFiftyfifty();
-
-                            if (opts.length == 4) {
+                            if (opts.length == 4 && showOptions == true) {
+                              playFiftyfifty();
                               setState(() {
                                 _selectedOptionsOne =
                                     List<bool>.filled(1, false);
