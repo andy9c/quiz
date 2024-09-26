@@ -469,7 +469,53 @@ class _MyHomePageState extends State<MyHomePage> {
 
     groupA.add(IconButton(
       onPressed: () {
-        loadResults(context, "Results");
+        showDialog(
+          context: context,
+          builder: (BuildContext _) {
+            return BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: AlertDialog(
+                title: Text(
+                  "Results Awaiting ...",
+                  textAlign: TextAlign.center,
+                  style:
+                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                ),
+                content: SizedBox(
+                  width: 40.sw,
+                  height: 50.sh,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Center(
+                      child: RiveAnimation.asset(
+                        'assets/rive/happy_frog.riv',
+                        fit: BoxFit.cover,
+                        alignment: Alignment.bottomCenter,
+                        stateMachines: const ['State Machine v03'],
+                        onInit: _onRiveInitHappyFrog,
+                      ),
+                    ),
+                  ),
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      loadResults(context, "Results");
+                    },
+                    child: const Text('LOAD RESULTS'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text('CLOSE'),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
       },
       icon: const Icon(Icons.settings),
       tooltip: "Results",
@@ -573,6 +619,11 @@ class _MyHomePageState extends State<MyHomePage> {
       artboard.addController(controller);
       _themeToggled = controller.findInput<bool>('Theme toggled');
     }
+  }
+
+  void _onRiveInitHappyFrog(Artboard artboard) {
+    final StateMachineController? controller =
+        StateMachineController.fromArtboard(artboard, 'State Machine v03');
   }
 
   void playCorrect() async {
