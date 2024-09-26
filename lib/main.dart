@@ -484,14 +484,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 content: SizedBox(
                   width: 40.sw,
                   height: 50.sh,
-                  child: const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Center(
-                      child: RiveAnimation.asset(
-                        'assets/rive/happy_frog.riv',
-                        fit: BoxFit.cover,
-                        alignment: Alignment.bottomCenter,
-                        stateMachines: ['State Machine v03'],
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16.0),
+                      child: const Center(
+                        child: RiveAnimation.asset(
+                          'assets/rive/happy_frog.riv',
+                          fit: BoxFit.cover,
+                          alignment: Alignment.bottomCenter,
+                          stateMachines: ['State Machine v03'],
+                        ),
                       ),
                     ),
                   ),
