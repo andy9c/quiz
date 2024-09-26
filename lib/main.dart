@@ -226,13 +226,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   title: Text(
                     title,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        fontSize: 100, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
                   ),
                   content: SizedBox(
                     key: UniqueKey(),
-                    width: 30.sw,
-                    height: 40.sh,
+                    width: 40.sw,
+                    height: 50.sh,
                     child: GridView.count(
                       key: UniqueKey(),
                       mainAxisSpacing: 10.0,
@@ -246,7 +246,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           return Column(
                             children: [
                               CircleAvatar(
-                                radius: 4.sw,
+                                radius: 6.sw,
                                 backgroundColor: Color.fromRGBO(
                                   random.nextInt(256),
                                   random.nextInt(256),
@@ -256,11 +256,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 child: Text(
                                   "${snapshot.data!.entries.toList()[index].key.split(" ").first.toUpperCase()}\n${snapshot.data!.entries.toList()[index].value}",
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      fontSize: 28,
+                                  style: TextStyle(
+                                      fontSize: 16.sp,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
-                                      shadows: [
+                                      shadows: const [
                                         Shadow(
                                             // bottomLeft
                                             offset: Offset(-1.5, -1.5),
@@ -317,8 +317,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   .firstWhere((e) => e.key == "title")
                   .value,
               textAlign: TextAlign.center,
-              style:
-                  const TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
             ),
             content: BlocBuilder<TempCubit, TempState>(
               bloc: BlocProvider.of<TempCubit>(ctx),
@@ -371,7 +370,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ? Colors.red
                               : Colors.green,
                           foregroundColor: Colors.white,
-                          textStyle: const TextStyle(fontSize: 16),
+                          textStyle: TextStyle(fontSize: 22.sp),
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
                           elevation: 5,
@@ -381,8 +380,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         child: Text(
                           '${index + 1}',
-                          style: const TextStyle(
-                              fontSize: 70, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 24.sp, fontWeight: FontWeight.bold),
                         ),
                       );
                     }),
@@ -393,15 +392,73 @@ class _MyHomePageState extends State<MyHomePage> {
             actions: <Widget>[
               TextButton(
                 onPressed: () {
+                  _startAction();
                   Navigator.of(context).pop();
                 },
-                child: const Text('OK'),
+                child: const Text('START'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('CLOSE'),
               ),
             ],
           ),
         );
       },
     );
+  }
+
+  void _startAction() {
+    Map<String, bool> opts = questionSets[selectedQuestionIndex]
+        .entries
+        .firstWhere((e) => e.key == "options")
+        .value;
+
+    if (opts.length == 1) {
+      scheduleTask(const Duration(seconds: 29), () {
+        setState(() {
+          showOptions = true;
+        });
+
+        if (showOptions == true && overPlayed == false) {
+          playOver();
+          overPlayed = true;
+        }
+      });
+    } else {
+      scheduleTask(const Duration(seconds: 29), () {
+        if (showOptions == true && overPlayed == false) {
+          playOver();
+          overPlayed = true;
+        }
+      });
+    }
+
+    setState(() {
+      showOptions = opts.length == 1 ? false : true;
+      overPlayed = false;
+
+      _themeToggled!.change(true);
+
+      playStart();
+      _onIdle();
+
+      _selectedOptionsOne = List<bool>.filled(1, false);
+      _selectedOptionsTwo = List<bool>.filled(2, false);
+      _selectedOptionsFour = List<bool>.filled(4, false);
+      _selectedOptionsSix = List<bool>.filled(6, false);
+
+      fiftyfifty = false;
+
+      endTime = DateTime.now().add(
+        const Duration(
+          minutes: 0,
+          seconds: 30,
+        ),
+      );
+    });
   }
 
   @override
@@ -739,9 +796,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   : key,
               textAlign: TextAlign.center,
               softWrap: true,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 24,
+                fontSize: 16.sp,
               ),
             ),
           ),
@@ -815,8 +872,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ? _selectedOptionsFour
                     : _selectedOptionsSix,
         textStyle: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 28,
+            // fontWeight: FontWeight.bold,
+            // fontSize: 28,
             shadows: [
               // Shadow(
               //     // bottomLeft
@@ -919,10 +976,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         .firstWhere((e) => e.key == "question")
                         .value,
                     softWrap: true,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 32,
+                      fontSize: 22.sp,
                     ),
                   ),
                 ),
@@ -944,15 +1001,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: TimerCountdown(
                     format: CountDownTimerFormat.minutesSeconds,
                     endTime: endTime,
-                    timeTextStyle: const TextStyle(
+                    timeTextStyle: TextStyle(
                       color: Colors.purple,
                       fontWeight: FontWeight.bold,
-                      fontSize: 72,
+                      fontSize: 28.sp,
                     ),
-                    descriptionTextStyle: const TextStyle(
+                    descriptionTextStyle: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 12,
+                      fontSize: 12.sp,
                     ),
                     onEnd: () {
                       // if (showOptions == true && overPlayed == false) {
@@ -997,52 +1054,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       TextButton(
                           child: const Text('Start'),
                           onPressed: () {
-                            if (opts.length == 1) {
-                              scheduleTask(const Duration(seconds: 29), () {
-                                setState(() {
-                                  showOptions = true;
-                                });
-
-                                if (showOptions == true &&
-                                    overPlayed == false) {
-                                  playOver();
-                                  overPlayed = true;
-                                }
-                              });
-                            } else {
-                              scheduleTask(const Duration(seconds: 29), () {
-                                if (showOptions == true &&
-                                    overPlayed == false) {
-                                  playOver();
-                                  overPlayed = true;
-                                }
-                              });
-                            }
-
-                            setState(() {
-                              showOptions = opts.length == 1 ? false : true;
-                              overPlayed = false;
-
-                              _themeToggled!.change(true);
-
-                              playStart();
-                              _onIdle();
-
-                              _selectedOptionsOne = List<bool>.filled(1, false);
-                              _selectedOptionsTwo = List<bool>.filled(2, false);
-                              _selectedOptionsFour =
-                                  List<bool>.filled(4, false);
-                              _selectedOptionsSix = List<bool>.filled(6, false);
-
-                              fiftyfifty = false;
-
-                              endTime = DateTime.now().add(
-                                const Duration(
-                                  minutes: 0,
-                                  seconds: 30,
-                                ),
-                              );
-                            });
+                            _startAction();
                           }),
                       TextButton(
                           child: const Text('50-50'),
@@ -1096,7 +1108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                             .colorScheme
                                             .onTertiaryContainer,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 14,
+                                    fontSize: 10.sp,
                                   )),
                             )
                           ]),
