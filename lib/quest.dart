@@ -240,4 +240,180 @@ final List<Map<String, dynamic>> questionSets = [
       "Joseph of Arimathea, अरमिथिया के युसूफ": true,
     },
   },
+  {
+    "title": "Round 3 - MULTIPLE CHOICE (A)",
+    "set": 3,
+    "main": true,
+    "question": "ROUND 3\nMULTIPLE CHOICE QUESTIONS\nबहु विकल्पीय प्रश्न",
+    "options": {
+      "A. ": false,
+      "B. ": false,
+      "C. ": true,
+      "D. ": false,
+    },
+  },
+  {
+    "title": "Round 3 - Q1",
+    "set": 3,
+    "question":
+        "1.	In the Gospel of Matthew, which title is most frequently used to refer to Jesus ?\nसंत मत्ती के अनुसार सुसमाचार में येशु किस नाम से ज्यादा जाने जाते थे?",
+    "options": {
+      "Son of God, ईश्वर के पुत्र": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q2",
+    "set": 3,
+    "question":
+        "2.	In the Gospel of Matthew, who orders the Massacre of the Innocents ?\nसंत मत्ती के अनुसार सुसमाचार में बालकों की हत्या की आज्ञा किसने दी ?",
+    "options": {
+      "King Herod, राजा हेरोद": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q3",
+    "set": 3,
+    "question":
+        "3. Which group of people does Jesus frequently criticize in the Gospel of Matthew ?\nकिन लोगों की संत मत्ती के अनुसार सुसमाचार में अक्सर प्रभु यीशु आलोचना करते थे ?",
+    "options": {
+      "Pharisees, फरीसी": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q4",
+    "set": 3,
+    "question":
+        "4. In the Parable of the Weeds (Matt 13), who is the one who sows the good seed ?\nजंगली बीज के दृष्टांत में कौन अच्छा बीज बोता है ?",
+    "options": {
+      "The Son of Man, मानव पुत्र": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q5",
+    "set": 3,
+    "question":
+        "5. In the Genealogy of Matthew, who is the grandfather of king David ?\n21.संत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है ?",
+    "options": {
+      "Obed, ओबेद": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q6",
+    "set": 3,
+    "question":
+        "6.	In the Genealogy of Matthew, who is the grandfather of Jesus ?\nसंत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है ?",
+    "options": {
+      "Jacob, याकूब": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q7",
+    "set": 3,
+    "question":
+        "7.	In Matt 20, Jesus heals two blind men near Jericho. What do the men call Jesus ?\nमत्ती 20 में येसु दो दृष्टिहीन व्यक्तियों को चंगा करते हैं। वे येसु को कैसे पुकारते हैं ?",
+    "options": {
+      "Son of David, दाऊद के पुत्र": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q8",
+    "set": 3,
+    "question":
+        "8. In Matt 9, Jesus calls Matthew to follow Him. What was Matthew's profession ?\nमत्ती पाँच में येसु मत्ती को बुलाते हैं। मत्ती का पेशा क्या था ?",
+    "options": {
+      "Tax collector, नाकेदार": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q9",
+    "set": 3,
+    "question":
+        "9. In Matt 16, who does Peter declare Jesus to be ?\nमत्ती 16 में पेत्रुस क्या घोषणा करते हैं ?",
+    "options": {
+      "The Messiah, the Son of the living God\nमसीहा जीवंत ईश्वर के पुत्र":
+          true,
+    },
+  },
+  {
+    "title": "Round 3 - Q10",
+    "set": 3,
+    "question":
+        "10. In whose house, was Jesus anointed just before the Passover in Bethany ?\nबेथानिया में पस्का के पर्व के पहले किसके घर में यीशु का अभिषेक हुआ ?",
+    "options": {
+      "Simon the Leper, कोढी सिमोन के घर": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q11",
+    "set": 3,
+    "question":
+        "11. Which criminal was released instead of Jesus ?\nकिस व्यक्ति को पिलातुस ने येसु के बदले रिहा कर दिया ?",
+    "options": {
+      "Barabbas, बराबस": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q12",
+    "set": 3,
+    "question":
+        "12.	In the Genealogy of Matthew, who is the grandfather of Jesus ?\nसंत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है ?",
+    "options": {
+      "Jacob, याकूब": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q13",
+    "set": 3,
+    "question":
+        "13.	In Matt 20, Jesus heals two blind men near Jericho. What do the men call Jesus ?\nमत्ती 20 में येसु दो दृष्टिहीन व्यक्तियों को चंगा करते हैं। वे येसु को कैसे पुकारते हैं ?",
+    "options": {
+      "Son of David, दाऊद के पुत्र": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q14",
+    "set": 3,
+    "question":
+        "14. In Matt 9, Jesus calls Matthew to follow Him. What was Matthew's profession ?\nमत्ती पाँच में येसु मत्ती को बुलाते हैं। मत्ती का पेशा क्या था ?",
+    "options": {
+      "Tax collector, नाकेदार": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q15",
+    "set": 3,
+    "question":
+        "15. In Matt 16, who does Peter declare Jesus to be ?\nमत्ती 16 में पेत्रुस क्या घोषणा करते हैं ?",
+    "options": {
+      "The Messiah, the Son of the living God\nमसीहा जीवंत ईश्वर के पुत्र":
+          true,
+    },
+  },
+  {
+    "title": "Round 3 - Q16",
+    "set": 3,
+    "question":
+        "16. In whose house, was Jesus anointed just before the Passover in Bethany ?\nबेथानिया में पस्का के पर्व के पहले किसके घर में यीशु का अभिषेक हुआ ?",
+    "options": {
+      "Simon the Leper, कोढी सिमोन के घर": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q17",
+    "set": 3,
+    "question":
+        "17. Which criminal was released instead of Jesus ?\nकिस व्यक्ति को पिलातुस ने येसु के बदले रिहा कर दिया ?",
+    "options": {
+      "Barabbas, बराबस": true,
+    },
+  },
+  {
+    "title": "Round 3 - Q18",
+    "set": 3,
+    "question":
+        "18. Who went to Pilate to ask for Jesus' body ?\nयेशु की मृत लाश मांगने कौन पिलातुस के पास जाता है ?",
+    "options": {
+      "Joseph of Arimathea, अरमिथिया के युसूफ": true,
+    },
+  },
 ];

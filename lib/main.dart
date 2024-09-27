@@ -108,7 +108,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   SMIInput<bool>? _happy, _angry, _isFireworks, _themeToggled;
   List<Widget> groupA = [];
-  Map<int, List<int>> groupARoundList = {};
+  Map<int, List<int>> groupRoundList = {};
   List<int> groupARoundLanding = [];
 
   AudioPlayer correctPlay = AudioPlayer();
@@ -441,30 +441,27 @@ class _MyHomePageState extends State<MyHomePage> {
               bloc: BlocProvider.of<TempCubit>(ctx),
               buildWhen: (prev, current) => true,
               builder: (context, state) {
+                List<int> totalRounds = groupRoundList.entries
+                    .firstWhere((e) => e.key == set,
+                        orElse: () => const MapEntry(0, []))
+                    .value;
+
                 return SizedBox(
                   key: UniqueKey(),
                   width: 30.sw,
-                  height: 50.sh,
+                  height: totalRounds.length < 13 ? 50.sh : 70.sh,
                   child: GridView.count(
                     key: UniqueKey(),
                     mainAxisSpacing: 10.0,
                     crossAxisSpacing: 10.0,
                     childAspectRatio: 1.78,
                     crossAxisCount: 3, // 3 columns in the grid
-                    children: List.generate(
-                        groupARoundList.entries
-                            .firstWhere((e) => e.key == set,
-                                orElse: () => const MapEntry(0, []))
-                            .value
-                            .length, (index) {
+                    children: List.generate(totalRounds.length, (index) {
                       // Generate 12 buttons
                       return ElevatedButton(
                         key: UniqueKey(),
                         onPressed: () {
-                          int origIndex = groupARoundList.entries
-                              .firstWhere((e) => e.key == set,
-                                  orElse: () => const MapEntry(0, []))
-                              .value[index];
+                          int origIndex = totalRounds[index];
 
                           if (state.doneQuestionIndex.contains(origIndex)) {
                             //Navigator.of(context).pop();
@@ -480,11 +477,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: state.doneQuestionIndex.contains(
-                                  groupARoundList.entries
-                                      .firstWhere((e) => e.key == set,
-                                          orElse: () => const MapEntry(0, []))
-                                      .value[index])
+                          backgroundColor: state.doneQuestionIndex
+                                  .contains(totalRounds[index])
                               ? Colors.red
                               : Colors.green,
                           foregroundColor: Colors.white,
@@ -885,7 +879,7 @@ class _MyHomePageState extends State<MyHomePage> {
         }
         index = index + 1;
       }
-      groupARoundList.addAll({s: c});
+      groupRoundList.addAll({s: c});
     }
 
     for (int s in uniqueSets) {
