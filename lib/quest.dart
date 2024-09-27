@@ -705,107 +705,105 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 2 - Q1",
     "set": 7,
     "question":
-        "1. In the Gospel of Matthew, which title is most frequently used to refer to Jesus? संत मत्ती के अनुसार सुसमाचार में येशु किस नाम से ज्यादा जाने जाते थे?",
+        "1. Who visited Jesus after his birth according to Matthew? संत मत्ती के अनुसार येसु के जन्म के बाद कौन मिलने आए थे?",
     "options": {
-      "Son of God, ईश्वर के पुत्र": true,
+      "The Magi (Wise Men), ज्योतिषी(बुद्धिमान पुरुष)": true,
     },
   },
   {
     "title": "Round 2 - Q2",
     "set": 7,
     "question":
-        "2. In the Gospel of Matthew, who orders the Massacre of the Innocents? संत मत्ती के अनुसार सुसमाचार में बालकों की हत्या की आज्ञा किसने दी?",
+        "2. Who was the king when Jesus was born? येसु के जन्म के समय राजा कौन था?",
     "options": {
-      "King Herod, राजा हेरोद": true,
+      "Herod the Great, राजा हेरोद महान": true,
     },
   },
   {
     "title": "Round 2 - Q3",
     "set": 7,
-    "question":
-        "3. Which group of people does Jesus frequently criticize in the Gospel of Matthew? किन लोगों की संत मत्ती के अनुसार सुसमाचार में अक्सर प्रभु यीशु आलोचना करते थे?",
+    "question": "3. Who baptized Jesus? प्रभु येसु को बपतिस्मा किसने दिया था?",
     "options": {
-      "Pharisees, फरीसी": true,
+      "John the Baptist, योहान बपतिस्ता": true,
     },
   },
   {
     "title": "Round 2 - Q4",
     "set": 7,
     "question":
-        "4. In the Parable of the Weeds (Matt 13), who is the one who sows the good seed? जंगली बीज के दृष्टांत में कौन अच्छा बीज बोता है?",
+        "4. Who did Jesus call from their tax booth to follow Him? चुंगी घर से येसु ने किसको अपना शिष्य बनने बुलाया?",
     "options": {
-      "The Son of Man, मानव पुत्र": true,
+      "Matthew (Levi), मत्ती (लेवी)": true,
     },
   },
   {
     "title": "Round 2 - Q5",
     "set": 7,
     "question":
-        "5. In the Genealogy of Matthew, who is the grandfather of king David? संत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है?",
+        "5. Who is described as the ''rock'' upon which Jesus will build his church? येसु किसको चट्टान के रूप में वर्णन करके उस पर अपनी कलीमसया को बनाएंगे?",
     "options": {
-      "Obed, ओबेद": true,
+      "Peter, पेत्रुस": true,
     },
   },
   {
     "title": "Round 2 - Q6",
     "set": 7,
     "question":
-        "6. In the Genealogy of Matthew, who is the grandfather of Jesus? संत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है?",
+        "6. Who walked on water towards Jesus? कौन पानी पर चलते हुए ईसा के ओर आया?",
     "options": {
-      "Jacob, याकूब": true,
+      "Peter, पेत्रुस": true,
     },
   },
   {
     "title": "Round 2 - Q7",
     "set": 7,
     "question":
-        "7. In Matt 20, Jesus heals two blind men near Jericho. What do the men call Jesus? मत्ती 20 में येसु दो दृष्टिहीन व्यक्तियों को चंगा करते हैं। वे येसु को कैसे पुकारते हैं?",
+        "7. Which disciple betrayed Jesus? किस शिष्य ने येसु के साथ विश्वासघात किया?",
     "options": {
-      "Son of David, दाऊद के पुत्र": true,
+      "Judas Iscariot, यूदस इस्करियोती": true,
     },
   },
   {
     "title": "Round 2 - Q8",
     "set": 7,
     "question":
-        "8. In Matt 9, Jesus calls Matthew to follow Him. What was Matthew's profession? मत्ती पाँच में येसु मत्ती को बुलाते हैं। मत्ती का पेशा क्या था?",
+        "8. Who denied Jesus three times? किसने येसु को तीन बार अस्वीकार किया?",
     "options": {
-      "Tax collector, नाकेदार": true,
+      "Peter, पेत्रुस": true,
     },
   },
   {
     "title": "Round 2 - Q9",
     "set": 7,
     "question":
-        "9. In Matt 16, who does Peter declare Jesus to be? मत्ती 16 में पेत्रुस क्या घोषणा करते हैं?",
+        "9. Who helped Jesus carry the cross? क्रूस ढोने में किसने येसु की सहायता की?",
     "options": {
-      "The Messiah, the Son of the living God, मसीहा जीवंत ईश्वर के पुत्र":
-          true,
+      "Simon of Cyrene, साइरीन के साइमन": true,
     },
   },
   {
     "title": "Round 2 - Q10",
     "set": 7,
     "question":
-        "10. In whose house, was Jesus anointed just before the Passover in Bethany? बेथानिया में पस्का के पर्व के पहले किसके घर में यीशु का अभिषेक हुआ?",
+        "10. Who was the first person Jesus appeared to after his resurrection in Matthew? संत मत्ती के अनुसार सुसमाचार में येसु अपने पुनरुत्थान के बाद सबसे पहले किस से मिले?",
     "options": {
-      "Simon the Leper, कोढी सिमोन के घर": true,
+      "Mary Magdalene (and the other Mary), मरियम मगदलेना और दूसरी मरियम": true,
     },
   },
   {
     "title": "Round 2 - Q11",
     "set": 7,
     "question":
-        "11. Which criminal was released instead of Jesus? किस व्यक्ति को पिलातुस ने येसु के बदले रिहा कर दिया?",
+        "11. Who was the Roman governor who sentenced Jesus to be crucified? रोम साम्राज्य के किस राज्यपाल ने येसु को मृत्युदंड दिया था?",
     "options": {
-      "Barabbas, बराबस": true,
+      "Pontius Pilate, पोंतुस पिलातुस": true,
     },
   },
   {
     "title": "Round 2 - Q12",
     "set": 7,
     "question":
-        "12. Who went to Pilate to ask for Jesus' body? येशु की मृत लाश मांगने कौन पिलातुस के पास जाता है?",
+        "12. Who asked Pilate for Jesus' body for burial? येसु के मतृ शरीर को दफनाने की अनुमतत ककसने मांगी?",
     "options": {
       "Joseph of Arimathea, अरमिथिया के युसूफ": true,
     },
