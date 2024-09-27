@@ -330,7 +330,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 return SizedBox(
                   key: UniqueKey(),
                   width: 30.sw,
-                  height: 40.sh,
+                  height: 50.sh,
                   child: GridView.count(
                     key: UniqueKey(),
                     mainAxisSpacing: 10.0,
@@ -394,18 +394,18 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             actions: <Widget>[
+              // TextButton(
+              //   onPressed: () {
+              //     _startAction();
+              //     Navigator.of(context).pop();
+              //   },
+              //   child: const Text('START'),
+              // ),
               TextButton(
                 onPressed: () {
-                  _startAction();
                   Navigator.of(context).pop();
                 },
-                child: const Text('START'),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('CLOSE'),
+                child: const Text('Close'),
               ),
             ],
           ),
