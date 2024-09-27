@@ -120,11 +120,12 @@ class _MyHomePageState extends State<MyHomePage> {
   AudioPlayer fiftyfiftyPlay = AudioPlayer();
 
   double bgAudioLevel = 0.2;
+  int timeOutTimerSeconds = 30;
+
   bool fiftyfifty = false;
   Map<String, bool> ftft = {};
 
   List<Timer> activeTimers = [];
-
   RiveFile? _dayNight, _fireworks, _bear, _frog;
 
   void scheduleTask(Duration duration, Function callback) {
@@ -419,25 +420,12 @@ class _MyHomePageState extends State<MyHomePage> {
         .firstWhere((e) => e.key == "options")
         .value;
 
-    if (opts.length == 1) {
-      scheduleTask(const Duration(seconds: 29), () {
-        setState(() {
-          showOptions = true;
-        });
-
-        if (showOptions == true && overPlayed == false) {
-          playOver();
-          overPlayed = true;
-        }
-      });
-    } else {
-      scheduleTask(const Duration(seconds: 29), () {
-        if (showOptions == true && overPlayed == false) {
-          playOver();
-          overPlayed = true;
-        }
-      });
-    }
+    scheduleTask(Duration(seconds: timeOutTimerSeconds), () {
+      if (showOptions == true && overPlayed == false) {
+        playOver();
+        overPlayed = true;
+      }
+    });
 
     setState(() {
       showOptions = opts.length == 1 ? false : true;
@@ -456,9 +444,9 @@ class _MyHomePageState extends State<MyHomePage> {
       fiftyfifty = false;
 
       endTime = DateTime.now().add(
-        const Duration(
+        Duration(
           minutes: 0,
-          seconds: 30,
+          seconds: timeOutTimerSeconds + 1,
         ),
       );
     });
@@ -1169,30 +1157,61 @@ class _MyHomePageState extends State<MyHomePage> {
                     overflowSpacing: 8.0,
                     children: <Widget>[
                       TextButton(
-                          child: const Text('Start'),
-                          onPressed: () {
-                            _startAction();
-                          }),
-                      TextButton(
-                          child: const Text('50-50'),
-                          onPressed: () {
-                            if (opts.length == 4 && showOptions == true) {
-                              playFiftyfifty();
-                              setState(() {
-                                _selectedOptionsOne =
-                                    List<bool>.filled(1, false);
-                                _selectedOptionsTwo =
-                                    List<bool>.filled(2, false);
-                                _selectedOptionsFour =
-                                    List<bool>.filled(4, false);
-                                _selectedOptionsSix =
-                                    List<bool>.filled(6, false);
+                        child: const Text('5 sec'),
+                        onPressed: () {
+                          setState(() {
+                            _selectedOptionsOne = List<bool>.filled(1, false);
+                            _selectedOptionsTwo = List<bool>.filled(2, false);
+                            _selectedOptionsFour = List<bool>.filled(4, false);
+                            _selectedOptionsSix = List<bool>.filled(6, false);
 
-                                ftft = getRandomEntriesFiftyFifty(opts);
-                                fiftyfifty = true;
-                              });
-                            }
-                          }),
+                            timeOutTimerSeconds = 5;
+                            _startAction();
+                          });
+                        },
+                      ),
+                      TextButton(
+                        child: const Text('30 sec'),
+                        onPressed: () {
+                          setState(() {
+                            _selectedOptionsOne = List<bool>.filled(1, false);
+                            _selectedOptionsTwo = List<bool>.filled(2, false);
+                            _selectedOptionsFour = List<bool>.filled(4, false);
+                            _selectedOptionsSix = List<bool>.filled(6, false);
+
+                            timeOutTimerSeconds = 30;
+                            _startAction();
+                          });
+                        },
+                      ),
+                      TextButton(
+                        child: const Text('35 sec'),
+                        onPressed: () {
+                          setState(() {
+                            _selectedOptionsOne = List<bool>.filled(1, false);
+                            _selectedOptionsTwo = List<bool>.filled(2, false);
+                            _selectedOptionsFour = List<bool>.filled(4, false);
+                            _selectedOptionsSix = List<bool>.filled(6, false);
+
+                            timeOutTimerSeconds = 35;
+                            _startAction();
+                          });
+                        },
+                      ),
+                      TextButton(
+                        child: const Text('60 sec'),
+                        onPressed: () {
+                          setState(() {
+                            _selectedOptionsOne = List<bool>.filled(1, false);
+                            _selectedOptionsTwo = List<bool>.filled(2, false);
+                            _selectedOptionsFour = List<bool>.filled(4, false);
+                            _selectedOptionsSix = List<bool>.filled(6, false);
+
+                            timeOutTimerSeconds = 60;
+                            _startAction();
+                          });
+                        },
+                      ),
                       SizedBox(
                         width: 200,
                         height: 20,
@@ -1230,6 +1249,78 @@ class _MyHomePageState extends State<MyHomePage> {
                             )
                           ]),
                         ),
+                      ),
+                      // TextButton(
+                      //   child: const Text('Start'),
+                      //   onPressed: () {
+                      //     _startAction();
+                      //   },
+                      // ),
+
+                      TextButton(
+                        child: const Text('50-50'),
+                        onPressed: () {
+                          if (opts.length == 4 && showOptions == true) {
+                            playFiftyfifty();
+                            setState(() {
+                              _selectedOptionsOne = List<bool>.filled(1, false);
+                              _selectedOptionsTwo = List<bool>.filled(2, false);
+                              _selectedOptionsFour =
+                                  List<bool>.filled(4, false);
+                              _selectedOptionsSix = List<bool>.filled(6, false);
+
+                              ftft = getRandomEntriesFiftyFifty(opts);
+                              fiftyfifty = true;
+                            });
+                          }
+                        },
+                      ),
+                      // TextButton(
+                      //   child: const Text('Hide'),
+                      //   onPressed: () {
+                      //     setState(() {
+                      //       _themeToggled!.change(false);
+                      //       showOptions = false;
+                      //     });
+                      //   },
+                      // ),
+                      // TextButton(
+                      //   child: const Text('Show'),
+                      //   onPressed: () {
+                      //     setState(() {
+                      //       _themeToggled!.change(true);
+                      //       showOptions = true;
+                      //     });
+                      //   },
+                      // ),
+                      Switch(
+                        value: showOptions,
+                        onChanged: (value) {
+                          setState(() {
+                            showOptions = value;
+                          });
+                        },
+                      ),
+                      TextButton(
+                        child: const Text('Prev'),
+                        onPressed: () {
+                          setState(() {
+                            if (selectedQuestionIndex > 0) {
+                              selectedQuestionIndex = selectedQuestionIndex - 1;
+                            }
+                          });
+                        },
+                      ),
+                      TextButton(
+                        child: const Text('Next'),
+                        onPressed: () {
+                          setState(() {
+                            if (selectedQuestionIndex <
+                                questionSets.length - 1) {
+                              selectedQuestionIndex = selectedQuestionIndex + 1;
+                            }
+                          });
+                        },
                       ),
                     ],
                   ),
