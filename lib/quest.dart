@@ -478,11 +478,11 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "18. What were Jesus' last words according to the Gospel of Matthew? संत मत्ती के अनुसार येशु के आखिरी शब्द क्या थे?",
     "options": {
-      "A. “Father, forgive them”, पिता उन्हें क्षमा कीजिए": false,
-      "B. “It is finished”, सब कुछ पूरा हो चुका है": false,
-      "C. “Father, into Your hands I commit My spirit”, पिता! आपके हाथों में अपनी आत्मा को सौंपता हूं":
+      "A. “Father, forgive them”, पिता उन्हें क्षमा कीजिए।": false,
+      "B. “It is finished”, सब कुछ पूरा हो चुका है।": false,
+      "C. “Father, into Your hands I commit My spirit”, पिता! आपके हाथों में अपनी आत्मा को सौंपता हूं।":
           false,
-      "D. “My God, My God, why have You forsaken Me?”, मेरे ईश्वर! मेरे ईश्वर! तूने मुझे क्यों त्याग दिया है":
+      "D. “My God, My God, why have You forsaken Me?”, मेरे ईश्वर! मेरे ईश्वर! तूने मुझे क्यों त्याग दिया है।":
           true,
     },
   },
