@@ -901,16 +901,21 @@ class _MyHomePageState extends State<MyHomePage> {
         index = index + 1;
       }
 
-      groupA.add(IconButton(
-        onPressed: () {
-          selectQuestion(groupARoundLanding[s - 1]);
-          loadQuestions(context, s);
-        },
-        icon: const Icon(Icons.ac_unit),
-        tooltip: questionSets[groupARoundLanding[s - 1]]
-            .entries
-            .firstWhere((e) => e.key == "title")
-            .value,
+      groupA.add(Badge(
+        label: Text('${(s - 1) % 5 + 1}'),
+        child: IconButton(
+          onPressed: () {
+            selectQuestion(groupARoundLanding[s - 1]);
+            loadQuestions(context, s);
+          },
+          icon: s < 6
+              ? const Icon(Icons.adobe_rounded)
+              : const Icon(Icons.ac_unit),
+          tooltip: questionSets[groupARoundLanding[s - 1]]
+              .entries
+              .firstWhere((e) => e.key == "title")
+              .value,
+        ),
       ));
     }
   }
