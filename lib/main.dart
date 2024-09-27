@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -195,6 +196,119 @@ class _MyHomePageState extends State<MyHomePage> {
         "DIVYA": 300
       }; // Or throw an exception, depending on your error handling strategy
     }
+  }
+
+  loadResultsArranged(BuildContext ctx, String title) async {
+    // final String fileContents =
+    //     await readFile('my_text_file.txt');
+
+    // Map<String, dynamic> jsonData = jsonDecode(fileContents);
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return FutureBuilder<Map<String, dynamic>>(
+          future: readFile("res.txt"),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: AlertDialog(
+                  title: const Text('Error'),
+                  content: SizedBox(
+                      key: UniqueKey(),
+                      width: 30.sw,
+                      height: 40.sh,
+                      child: Text('Error:   ${snapshot.error}')),
+                ),
+              );
+            } else {
+              Map<String, dynamic> data = snapshot.data!;
+              // Convert to List of MapEntry
+              List<MapEntry<String, dynamic>> entries = data.entries.toList();
+
+              // Sort the List
+              entries.sort((a, b) => b.value.compareTo(a.value));
+
+              // Convert back to a LinkedHashMap (preserves insertion order)
+              Map<String, dynamic> sortedData =
+                  LinkedHashMap.fromEntries(entries);
+
+              return BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: AlertDialog(
+                  title: Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style:
+                        TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+                  ),
+                  content: SizedBox(
+                    key: UniqueKey(),
+                    width: 40.sw,
+                    height: 80.sh,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: sortedData.entries.toList().length,
+                      itemBuilder: (BuildContext context, int index) {
+                        String key =
+                            snapshot.data!.keys.elementAt(index).split(';')[0];
+                        return Column(
+                          children: <Widget>[
+                            ListTile(
+                              dense: false,
+                              isThreeLine: false,
+                              title: Text(
+                                key,
+                                style: TextStyle(
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: index % 2 == 0
+                                        ? Colors.pinkAccent
+                                        : Colors.blueAccent),
+                              ),
+                              subtitle: Text(
+                                sortedData.keys.elementAt(index).split(';')[1],
+                                style: TextStyle(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: index % 2 == 0
+                                        ? Colors.pinkAccent
+                                        : Colors.blueAccent),
+                              ),
+                              trailing: Text(
+                                "${sortedData.values.elementAt(index)}",
+                                style: TextStyle(
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: index % 2 == 0
+                                        ? Colors.pinkAccent
+                                        : Colors.blueAccent),
+                              ),
+                            ),
+                            const Divider(
+                              height: 2.0,
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Close'),
+                    ),
+                  ],
+                ),
+              );
+            }
+          },
+        );
+      },
+    );
   }
 
   loadResults(BuildContext ctx, String title) async {
@@ -494,15 +608,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       Navigator.of(context).pop();
                       playNotify();
-                      loadResults(context, "Results");
+                      // loadResults(context, "Results");
+                      loadResultsArranged(context, "Results");
                     },
-                    child: const Text('LOAD RESULTS'),
+                    child: const Text('Load Results'),
                   ),
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: const Text('CLOSE'),
+                    child: const Text('Close'),
                   ),
                 ],
               ),
@@ -845,27 +960,49 @@ class _MyHomePageState extends State<MyHomePage> {
     opts.forEach((key, value) {
       Color bg = Colors.green;
 
-      if (selectedQuestionIndex < 7) {
-        switch (opts.length) {
-          case 1:
-            bg = value == true && _selectedOptionsOne[count] == true
-                ? Colors.green
-                : Theme.of(context).colorScheme.errorContainer;
-            break;
-          case 2:
-            bg = value == true && _selectedOptionsTwo[count] == true
-                ? Colors.green
-                : Theme.of(context).colorScheme.errorContainer;
-            break;
-          case 4:
-            bg = value == true && _selectedOptionsFour[count] == true
-                ? Colors.green
-                : Theme.of(context).colorScheme.errorContainer;
-          case 6:
-            bg = value == true && _selectedOptionsSix[count] == true
-                ? Colors.green
-                : Theme.of(context).colorScheme.errorContainer;
-        }
+      // if (selectedQuestionIndex < 7) {
+      //   switch (opts.length) {
+      //     case 1:
+      //       bg = value == true && _selectedOptionsOne[count] == true
+      //           ? Colors.green
+      //           : Theme.of(context).colorScheme.errorContainer;
+      //       break;
+      //     case 2:
+      //       bg = value == true && _selectedOptionsTwo[count] == true
+      //           ? Colors.green
+      //           : Theme.of(context).colorScheme.errorContainer;
+      //       break;
+      //     case 4:
+      //       bg = value == true && _selectedOptionsFour[count] == true
+      //           ? Colors.green
+      //           : Theme.of(context).colorScheme.errorContainer;
+      //     case 6:
+      //       bg = value == true && _selectedOptionsSix[count] == true
+      //           ? Colors.green
+      //           : Theme.of(context).colorScheme.errorContainer;
+      //   }
+
+      // }
+
+      switch (opts.length) {
+        case 1:
+          bg = value == true && _selectedOptionsOne[count] == true
+              ? Colors.green
+              : Theme.of(context).colorScheme.errorContainer;
+          break;
+        case 2:
+          bg = value == true && _selectedOptionsTwo[count] == true
+              ? Colors.green
+              : Theme.of(context).colorScheme.errorContainer;
+          break;
+        case 4:
+          bg = value == true && _selectedOptionsFour[count] == true
+              ? Colors.green
+              : Theme.of(context).colorScheme.errorContainer;
+        case 6:
+          bg = value == true && _selectedOptionsSix[count] == true
+              ? Colors.green
+              : Theme.of(context).colorScheme.errorContainer;
       }
 
       optionButtons.add(
@@ -1067,7 +1204,7 @@ class _MyHomePageState extends State<MyHomePage> {
             IgnorePointer(
               ignoring: true,
               child: Padding(
-                padding: EdgeInsets.fromLTRB(40.sw, 0, 1.sw, 30.sh),
+                padding: EdgeInsets.fromLTRB(40.sw, 0, 1.sw, 25.sh),
                 child: Container(
                   padding: const EdgeInsets.all(20.0),
                   decoration: const BoxDecoration(
@@ -1084,7 +1221,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 22.sp,
+                      fontSize: 20.sp,
                     ),
                   ),
                 ),
@@ -1297,6 +1434,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         value: showOptions,
                         onChanged: (value) {
                           setState(() {
+                            _themeToggled!.change(true);
+
+                            _selectedOptionsOne = List<bool>.filled(1, false);
+                            _selectedOptionsTwo = List<bool>.filled(2, false);
+                            _selectedOptionsFour = List<bool>.filled(4, false);
+                            _selectedOptionsSix = List<bool>.filled(6, false);
+
                             showOptions = value;
                           });
                         },
@@ -1305,6 +1449,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: const Text('Prev'),
                         onPressed: () {
                           setState(() {
+                            _isFireworks!.change(false);
+                            _themeToggled!.change(true);
+
+                            _selectedOptionsOne = List<bool>.filled(1, false);
+                            _selectedOptionsTwo = List<bool>.filled(2, false);
+                            _selectedOptionsFour = List<bool>.filled(4, false);
+                            _selectedOptionsSix = List<bool>.filled(6, false);
+
                             if (selectedQuestionIndex > 0) {
                               selectedQuestionIndex = selectedQuestionIndex - 1;
                             }
@@ -1315,6 +1467,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: const Text('Next'),
                         onPressed: () {
                           setState(() {
+                            _isFireworks!.change(false);
+                            _themeToggled!.change(true);
+
+                            _selectedOptionsOne = List<bool>.filled(1, false);
+                            _selectedOptionsTwo = List<bool>.filled(2, false);
+                            _selectedOptionsFour = List<bool>.filled(4, false);
+                            _selectedOptionsSix = List<bool>.filled(6, false);
                             if (selectedQuestionIndex <
                                 questionSets.length - 1) {
                               selectedQuestionIndex = selectedQuestionIndex + 1;

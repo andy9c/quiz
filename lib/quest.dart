@@ -78,7 +78,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q8",
     "set": 1,
     "question":
-        "8. In Matt 12, Jesus heals a man with a withered hand. On which day does this healing occur, causing controversy ? मत्ती 12 में यीशु ने सूखे हाथ वाले को चंगा किया। यह चमत्कार कब हुआ ?",
+        "8. In Matt 12, Jesus heals a man with a withered hand. On which day does this healing occur, causing controversy ?\nमत्ती 12 में यीशु ने सूखे हाथ वाले को चंगा किया। यह चमत्कार कब हुआ ?",
     "options": {
       "The Sabbath, विश्राम के दिन": true,
     },
@@ -87,7 +87,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q9",
     "set": 1,
     "question":
-        "9. In Matt 18, Jesus teaches about forgiveness using the Parable of the Unmerciful Servant. How many times does Jesus tell Peter we should forgive others ? मत्ती 18 में निर्दय सेवा के दृष्टांत के द्वारा येसु का पाठ पढ़ाते हैं। पेत्रुस को अपने भाई को कितनी बार क्षमा करने की आवश्यकता है ?",
+        "9. In Matt 18, Jesus teaches about forgiveness using the Parable of the Unmerciful Servant. How many times does Jesus tell Peter we should forgive others ?\nमत्ती 18 में निर्दय सेवा के दृष्टांत के द्वारा येसु का पाठ पढ़ाते हैं। पेत्रुस को अपने भाई को कितनी बार क्षमा करने की आवश्यकता है ?",
     "options": {
       "70 times 7, सत्तर गुना सात बार": true,
     },
@@ -96,7 +96,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q10",
     "set": 1,
     "question":
-        "10. In the Gospel of Matthew, where does Jesus pray before His arrest ?42.	संत मत्ती के अनुसार सुसमाचार में अपनी गिरफ्तारी के पहले येसु ने कहां प्रार्थना की ?",
+        "10. In the Gospel of Matthew, where does Jesus pray before His arrest ?\nसंत मत्ती के अनुसार सुसमाचार में अपनी गिरफ्तारी के पहले येसु ने कहां प्रार्थना की ?",
     "options": {
       "Gethsemane, गेथसेमनी": true,
     },
