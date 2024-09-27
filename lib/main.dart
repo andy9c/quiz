@@ -1011,7 +1011,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
-              width: opts.length == 1 ? 40.sw : 15.sw,
+              width: opts.length == 1 ? 30.sw : 15.sw,
               child: Text(
                 fiftyfifty
                     ? ftft.containsKey(key)
@@ -1087,10 +1087,6 @@ class _MyHomePageState extends State<MyHomePage> {
         color: Theme.of(context).buttonTheme.colorScheme!.primary,
         fillColor: fillerColor,
         hoverColor: Theme.of(context).highlightColor,
-        constraints: BoxConstraints(
-          minHeight: 100.0,
-          minWidth: optionButtons.length == 4 ? 250.0 : 180,
-        ),
         isSelected: optionButtons.length == 1
             ? _selectedOptionsOne
             : optionButtons.length == 2
@@ -1204,7 +1200,7 @@ class _MyHomePageState extends State<MyHomePage> {
             IgnorePointer(
               ignoring: true,
               child: Padding(
-                padding: EdgeInsets.fromLTRB(30.sw, 0, 1.sw, 30.sh),
+                padding: EdgeInsets.fromLTRB(40.sw, 1.sw, 1.sw, 40.sh),
                 child: Container(
                   padding: const EdgeInsets.all(20.0),
                   decoration: const BoxDecoration(
@@ -1221,7 +1217,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 20.sp,
+                      fontSize: 18.sp,
                     ),
                   ),
                 ),
