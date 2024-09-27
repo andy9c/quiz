@@ -256,9 +256,12 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 3 - Q1",
     "set": 3,
     "question":
-        "1.	In the Gospel of Matthew, which title is most frequently used to refer to Jesus ?\nसंत मत्ती के अनुसार सुसमाचार में येशु किस नाम से ज्यादा जाने जाते थे?",
+        "1.	Which of these parables is found in the Gospel of Matthew ?\nनिम्नलिखित दृष्टांत में संत मत्ती के अनुसार सुसमाचार में कौन सा दृष्टांत पाया जाता है ?",
     "options": {
-      "Son of God, ईश्वर के पुत्र": true,
+      "A. The Good Samaritan\nभला समारी": false,
+      "B. The Prodigal Son\nउड़ाव पुत्र": false,
+      "C. The Parable of the Sower\nबोने वाले का दृष्टांत": false,
+      "D. The Parable of the Rich Fool\nमूर्ख धनी का दृष्टांत ": false,
     },
   },
   {
@@ -267,7 +270,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "2.	In the Gospel of Matthew, who orders the Massacre of the Innocents ?\nसंत मत्ती के अनुसार सुसमाचार में बालकों की हत्या की आज्ञा किसने दी ?",
     "options": {
-      "King Herod, राजा हेरोद": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -276,7 +282,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "3. Which group of people does Jesus frequently criticize in the Gospel of Matthew ?\nकिन लोगों की संत मत्ती के अनुसार सुसमाचार में अक्सर प्रभु यीशु आलोचना करते थे ?",
     "options": {
-      "Pharisees, फरीसी": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -285,7 +294,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "4. In the Parable of the Weeds (Matt 13), who is the one who sows the good seed ?\nजंगली बीज के दृष्टांत में कौन अच्छा बीज बोता है ?",
     "options": {
-      "The Son of Man, मानव पुत्र": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -294,7 +306,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "5. In the Genealogy of Matthew, who is the grandfather of king David ?\n21.संत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है ?",
     "options": {
-      "Obed, ओबेद": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -303,7 +318,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "6.	In the Genealogy of Matthew, who is the grandfather of Jesus ?\nसंत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है ?",
     "options": {
-      "Jacob, याकूब": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -312,7 +330,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "7.	In Matt 20, Jesus heals two blind men near Jericho. What do the men call Jesus ?\nमत्ती 20 में येसु दो दृष्टिहीन व्यक्तियों को चंगा करते हैं। वे येसु को कैसे पुकारते हैं ?",
     "options": {
-      "Son of David, दाऊद के पुत्र": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -321,7 +342,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "8. In Matt 9, Jesus calls Matthew to follow Him. What was Matthew's profession ?\nमत्ती पाँच में येसु मत्ती को बुलाते हैं। मत्ती का पेशा क्या था ?",
     "options": {
-      "Tax collector, नाकेदार": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -330,8 +354,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "9. In Matt 16, who does Peter declare Jesus to be ?\nमत्ती 16 में पेत्रुस क्या घोषणा करते हैं ?",
     "options": {
-      "The Messiah, the Son of the living God\nमसीहा जीवंत ईश्वर के पुत्र":
-          true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -340,7 +366,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "10. In whose house, was Jesus anointed just before the Passover in Bethany ?\nबेथानिया में पस्का के पर्व के पहले किसके घर में यीशु का अभिषेक हुआ ?",
     "options": {
-      "Simon the Leper, कोढी सिमोन के घर": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -349,7 +378,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "11. Which criminal was released instead of Jesus ?\nकिस व्यक्ति को पिलातुस ने येसु के बदले रिहा कर दिया ?",
     "options": {
-      "Barabbas, बराबस": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -358,7 +390,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "12.	In the Genealogy of Matthew, who is the grandfather of Jesus ?\nसंत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है ?",
     "options": {
-      "Jacob, याकूब": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -367,7 +402,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "13.	In Matt 20, Jesus heals two blind men near Jericho. What do the men call Jesus ?\nमत्ती 20 में येसु दो दृष्टिहीन व्यक्तियों को चंगा करते हैं। वे येसु को कैसे पुकारते हैं ?",
     "options": {
-      "Son of David, दाऊद के पुत्र": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -376,7 +414,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "14. In Matt 9, Jesus calls Matthew to follow Him. What was Matthew's profession ?\nमत्ती पाँच में येसु मत्ती को बुलाते हैं। मत्ती का पेशा क्या था ?",
     "options": {
-      "Tax collector, नाकेदार": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -385,8 +426,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "15. In Matt 16, who does Peter declare Jesus to be ?\nमत्ती 16 में पेत्रुस क्या घोषणा करते हैं ?",
     "options": {
-      "The Messiah, the Son of the living God\nमसीहा जीवंत ईश्वर के पुत्र":
-          true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -395,7 +438,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "16. In whose house, was Jesus anointed just before the Passover in Bethany ?\nबेथानिया में पस्का के पर्व के पहले किसके घर में यीशु का अभिषेक हुआ ?",
     "options": {
-      "Simon the Leper, कोढी सिमोन के घर": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -404,7 +450,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "17. Which criminal was released instead of Jesus ?\nकिस व्यक्ति को पिलातुस ने येसु के बदले रिहा कर दिया ?",
     "options": {
-      "Barabbas, बराबस": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
   {
@@ -413,7 +462,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "18. Who went to Pilate to ask for Jesus' body ?\nयेशु की मृत लाश मांगने कौन पिलातुस के पास जाता है ?",
     "options": {
-      "Joseph of Arimathea, अरमिथिया के युसूफ": true,
+      "A. The Good Samaritan": false,
+      "B. The Good Samaritan": false,
+      "C. The Good Samaritan": false,
+      "D. The Good Samaritan": false,
     },
   },
 ];

@@ -125,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   bool fiftyfifty = false;
   Map<String, bool> ftft = {};
+  Color? fillerColor = Colors.red;
 
   List<Timer> activeTimers = [];
   RiveFile? _dayNight, _fireworks, _bear, _frog;
@@ -1005,21 +1006,24 @@ class _MyHomePageState extends State<MyHomePage> {
           decoration: BoxDecoration(
             color: bg,
             // border: Border.all(color: Colors.black, width: 1.0),
-            borderRadius: const BorderRadius.all(Radius.circular(8)),
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(
-              fiftyfifty
-                  ? ftft.containsKey(key)
-                      ? key
-                      : "---"
-                  : key,
-              textAlign: TextAlign.center,
-              softWrap: true,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.sp,
+            child: SizedBox(
+              width: opts.length == 1 ? 40.sw : 15.sw,
+              child: Text(
+                fiftyfifty
+                    ? ftft.containsKey(key)
+                        ? key
+                        : "---"
+                    : key,
+                textAlign: TextAlign.center,
+                softWrap: true,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.sp,
+                ),
               ),
             ),
           ),
@@ -1038,6 +1042,7 @@ class _MyHomePageState extends State<MyHomePage> {
             selectedOptionIndex = index;
 
             bool b = opts.entries.toList()[index].value;
+            fillerColor = b ? Colors.green : Colors.red;
 
             if (opts.length == 1) {
               if (_selectedOptionsOne[index] == false) {
@@ -1074,12 +1079,13 @@ class _MyHomePageState extends State<MyHomePage> {
             }
           });
         },
-        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
         //selectedBorderColor: Colors.red[700],
         //splashColor: Colors.amber,
         selectedColor: Colors.red,
         //fillColor: Colors.blue[200],
         color: Theme.of(context).buttonTheme.colorScheme!.primary,
+        fillColor: fillerColor,
         hoverColor: Theme.of(context).highlightColor,
         constraints: BoxConstraints(
           minHeight: 100.0,
@@ -1191,14 +1197,14 @@ class _MyHomePageState extends State<MyHomePage> {
             IgnorePointer(
               ignoring: false,
               child: Padding(
-                padding: EdgeInsets.fromLTRB(20.sw, 0, 1.sw, 5.sh),
+                padding: EdgeInsets.fromLTRB(30.sw, 0, 1.sw, 7.sh),
                 child: showOptions ? allOptions : Container(),
               ),
             ),
             IgnorePointer(
               ignoring: true,
               child: Padding(
-                padding: EdgeInsets.fromLTRB(40.sw, 0, 1.sw, 25.sh),
+                padding: EdgeInsets.fromLTRB(30.sw, 0, 1.sw, 30.sh),
                 child: Container(
                   padding: const EdgeInsets.all(20.0),
                   decoration: const BoxDecoration(
