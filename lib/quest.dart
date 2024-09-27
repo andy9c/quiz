@@ -816,7 +816,7 @@ final List<Map<String, dynamic>> questionSets = [
     "options": {
       "A. ": false,
       "B. ": false,
-      "C. ": false,
+      "C. ": true,
       "D. ": false,
     },
   },
@@ -824,216 +824,267 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 3 - Q1",
     "set": 8,
     "question":
-        "1. Which of these parables is found in the Gospel of Matthew? निम्नलिखित दृष्टांत में संत मत्ती के अनुसार सुसमाचार में कौन सा दृष्टांत पाया जाता है?",
+        "1. What is the genealogy of Jesus in the Gospel of Matthew traced back to? संत मत्ती के अनुसार सुसमाचार में दिया गया प्रभु ईसा की वंशावली किसकी ओर अंकित करता है?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. Abraham, अब्राहम": true,
+      "B. Moses, मूसा": false,
+      "C. Adam, आदम": false,
+      "D. Elijah, एलिय्याह": false,
     },
   },
   {
     "title": "Round 3 - Q2",
     "set": 8,
     "question":
-        "2. In the Parable of the Sower (Matt 13), what does the seed that falls on the rocky ground represent? बोने वाले दृष्टांत में जो बीज पथरीली जमीन पर गिरते हैं उसका अर्थ क्या है?",
+        "2. What gift did the Magi bring to Jesus? ज्योतिषी येसु के लिए कौन से तोफे लेकर आए?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. Silver, Linen and myrrh, चांदी, लिनन (क्षोमवस्र), और लोहबान": false,
+      "B. Gold, frankincense, and myrrh, सोना, लोबान, और लोहबान": true,
+      "C. Frankincense, bronze and robe, लोबान, कांस्य, और बागे": false,
+      "D. Gold, Candles and Bread, सोना, मोमबत्तियाँ और रोटी": false,
     },
   },
   {
     "title": "Round 3 - Q3",
     "set": 8,
     "question":
-        "3. In the Parable of the Ten Virgins (Matt 25), what do the oil lamps represent? 10 कुंवारी के दृष्टांत में मशाल किस चीज को अंकित करता है?",
+        "3. To which country did Joseph and Mary flee with Jesus to escape King Herod? राजा हेरोद से येसु को बचाने के लिए युसूफ और माता मरियम कौन से देश भाग गए?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. Babylon, बाबुल (बेबीलोन)": false,
+      "B. Rome, रोम": false,
+      "C. Egypt, मिस्र": true,
+      "D. Galilee, गलील": false,
     },
   },
   {
     "title": "Round 3 - Q4",
     "set": 8,
     "question":
-        "4. In the Parable of the Talents (Matt 25), how many talents does the master give to the servant who is given the most? अशरफियों के दृष्टांत में ज्यादा से ज्यादा कितनी अशरफी दी गई थी?",
+        "4. What did Jesus say to John the Baptist when he hesitated to baptize Him? येसु ने योहन बपतिस्ता को क्या कहा था जब उन्होंने येसु को बपतिस्मा देने से इंकार किया था?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. “पश्चाताप करो, क्योंकि स्वर्ग का राज्य निकट है”": false,
+      "B. ”यह मेरा प्रिय पुत्र है जिससे मैं बहुत प्रसन्न हूँ”": false,
+      "C. “अब ऐसा ही हो; हमें सभी धार्मिकता को पूरा करने के लिए ऐसा करना उचित है”":
+          true,
+      "D. “मैं तुमसे सच कहता हूँ, अपने नगर में कोई भी नबी का स्वागत नहीं होता”":
+          false,
     },
   },
   {
     "title": "Round 3 - Q5",
     "set": 8,
     "question":
-        "5. In the Parable of the Two Sons (Matt 21), which son did the will of his father? दो पुत्र के दृष्टांत में कौन से पुत्र ने अपने पिताजी की इच्छा पूरी की?",
+        "5. What were Jesus' three temptations in the wilderness? निर्जन प्रदेश में स येसु की तीन परीक्षा क्या थी?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. पानी पर चलना, तूफान को शांत करना और पाँच हज़ार लोगों को खाना खिलाना":
+          false,
+      "B. पानी को अंगूरी में बदलना, स्वर्ग से मन्ना प्राप्त करना, और चट्टान से पानी निकालना":
+          false,
+      "C. पत्थरों को रोटी में बदलना, मंदिर के शिखर से कूदना, और दुनिया के राज्यों के लिए शैतान की पूजा करना":
+          true,
+      "D. शैतान को सूअरों के पास भेजना, लकवाग्रस्त को ठीक करना और लाजर को जीवित करना":
+          false,
     },
   },
   {
     "title": "Round 3 - Q6",
     "set": 8,
     "question":
-        "6. In the Parable of the Wedding Banquet (Matt 22), why were some guests thrown out? विवाह भोज के दृष्टांत में क्यों कुछ मेहमान बाहर फैंके गए?",
+        "6. Name three Beatitudes mentioned in the Sermon on the Mount. तीन आशीर्वचन को लिखिए जो पहाड़ी उपदेश में येसु के द्वारा दिए गए थे?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. माँगो और तुम्हें दिया जायेगा; ढूँढ़ों और तुम्हें मिल जायेगा; खटखटाओं और तुम्हारे लिए खोला जायेगा।":
+          false,
+      "B. धन्य हैं वे, जो अपने को दीन-हीन समझते हैं! स्वर्गराज्य उन्हीं का है; धन्य हैं वे जो शोक करते हैं, क्योंकि उन्हें सान्त्वना मिलेगी' धन्य हैं वे जो नम्र हैं, क्योंकि उन्हें प्रतिज्ञात देश प्राप्त होगा।":
+          true,
+      "C. स्वर्ग का राज्य खमीर की तरह है, स्वर्ग का राज्य खेत में छिपे खजाने की तरह है;स्वर्ग का राज्य बीज की तरह है।":
+          false,
+      "D. धिक्कार तुम अंधे मार्गदर्शकों पर, धिक्कार तुम शास्त्रियों और फरीसियों पर; धिक्कार तुम कपटी पर।":
+          false,
     },
   },
   {
     "title": "Round 3 - Q7",
     "set": 8,
     "question":
-        "7. Which of these women not found in the Genealogy of Matthew? निम्नलिखित चार महिलाओं में कौन संत मति के अनुसार सुसमाचार में ईशा की वंशावली में नहीं है?",
+        "7. What does Jesus teach about the Law and the Prophets in the Sermon on the Mount? पहाडी उपदेश में येसु संहिता और नबियों के बारे में क्या सिखाते हैं?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. Jesus came to modify them, not force them. ईसा उन्हें बदलने आए थे, उन्हें मजबूर करने नहीं।":
+          false,
+      "B. Jesus came to correct them, not fulfill them. ईसा उन्हें सुधारने आए थे, उन्हें पूरा करने नहीं।":
+          false,
+      "C. Jesus came to fulfill them, not abolish them. ईसा उन्हें पूरा करने आए थे, उन्हें खत्म करने नहीं।":
+          true,
+      "D. Jesus came to change them, not insist on them. ईसा उन्हें बदलने आए थे, उन पर जोर देने नहीं।":
+          false,
     },
   },
   {
     "title": "Round 3 - Q8",
     "set": 8,
     "question":
-        "8. In Matt 9, Jesus heals a woman who had been suffering from bleeding for twelve years. How did she receive her healing? मत्ती 9 में येसु एक महिला को चंगा करते हैं जो 12 वर्षों से रक्तस्राव की बीमारी से पीड़ित थी, वह कैसे चंगाई प्राप्त करती है?",
+        "8. What does Jesus teach about anger in the Sermon on the Mount? क्रोध के बारे में येसु ने पहाडी उपदेश में क्या बताया है?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. Anyone who is angry with a brother or sister will be subject to judgment. जो अपने भाई पर क्रोध करता है, वह कचहरी में दण्ड के योग्य ठहराया जायेगा।":
+          true,
+      "B. An eye for an eye, a tooth for a tooth. आँख के बदले आँख, दाँत के बदले दाँत।":
+          false,
+      "C. Anyone who is angry with a brother or sister shall offer sacrifice of bulls. जो कोई भाई या बहन से नाराज़ होगा, उसे बैल की बलि चढ़ानी होगी।":
+          false,
+      "D. Shall dip themselves in water three times. अपने आपको तीन बार पानी में डुबाना होगा।":
+          false,
     },
   },
   {
     "title": "Round 3 - Q9",
     "set": 8,
     "question":
-        "9. Which of the following miracles is performed by Jesus in Matt 14? 	निम्नलिखित चमत्कारों में कौन से चमत्कार को येसु ने मती 14 में किया?",
+        "9. How does Jesus describe his followers in the Sermon on the Mount? (Two metaphors). पहाडी उपदेश में येसु अपने अनुयाई का वर्णन कैसे करते हैं?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. Fish and the net. मछली और जाल।": false,
+      "B. Mustard seed and hidden treasure. सरसों के बीज और छिपा हुआ खजाना।":
+          false,
+      "C. Salt of the earth and light of the world. पृथ्वी का नमक और संसार की ज्योति।":
+          true,
+      "D. Good tree and good fruit. अच्छा पेड़ और अच्छा फल।": false,
     },
   },
   {
     "title": "Round 3 - Q10",
     "set": 8,
     "question":
-        "10. What miracle does Jesus perform in Matt 21 that causes the crowds to be astonished? मत्ती 21 में येसु कौन सा चमत्कार करते हैं जिसे देखकर लोग अचंभित हो गए?",
+        "10. What does Jesus say about judging others in Matthew 7? संत मती के अनुसार सुसमाचार अध्याय 7 में येसु दुसरों पर दोष लगाने के बारे में क्या बताते हैं?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. Let the assembly decide your case.सभा को अपना मामला तय करने दो।":
+          false,
+      "B. Take the other to the court. दूसरे को अदालत में ले जाओ।": false,
+      "C. Do not judge, or you too will be judged. दोष नहीं लगाओ, जिससे तुम पर भी दोष न लगाया जाये।":
+          true,
+      "D. Sabbath is made for man, not man for the Sabbath. विश्राम दिन मनुष्य के लिए बनाया गया है, मनुष्य विश्राम दिन के लिए नहीं।":
+          false,
     },
   },
   {
     "title": "Round 3 - Q11",
     "set": 8,
     "question":
-        "11. In Matt 9, how does Jesus heal two blind men? मत्ती 9 में किस प्रकार येसु दो दृष्टहीन व्यक्तियों को चंगा करते है?",
+        "11. What is the sign of Jonah that Jesus referred to? नबी योनस के चिन्ह के बारे में येसु क्या कहते हैं?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. जिस तरह योना ने नीनवे के लोगों को उपदेश दिया था, उसी तरह मनुष्य के पुत्र को भी अन्यजातियों को  सुसमाचार सुनाना है।":
+          false,
+      "B. जैसे योना तीन दिन और तीन रात मछली के पेट में था, उसी तरह मनुष्य का पुत्र भी तीन दिन और तीन रात पृथ्वी के हृदय में रहेगा।":
+          true,
+      "C. जिस तरह योना ने अपने मिशन से भागने की कोशिश की, उसी तरह यीशु के शिष्य भी उसे छोड़ देंगे।":
+          false,
+      "D. जिस तरह योना के उपदेश से लोगों में पश्चाताप आया, उसी तरह जब प्रेरित उपदेश देंगे तो बहुत से लोग पश्चाताप करेंगे।":
+          false,
     },
   },
   {
     "title": "Round 3 - Q12",
     "set": 8,
     "question":
-        "12. In Matt 4, how does Jesus begin His public ministry after His baptism and temptation? मत्ती 4 में अपना बपतिस्मा और अपनी परीक्षा के बाद किस प्रकार येसु अपने मिशन की शुरुआत करते हैं?",
+        "12. What happened when Peter noticed the strong wind while walking on water? सिमोन पेनुस के साथ क्या हुआ जब उसने प्रचंड वायु को देखा?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. He became frightened and began to sink. वह भयभीत हो गया और डूबने लगा।":
+          true,
+      "B. He asked Andrew to throw the net. उसने अन्द्रियास से जाल फेंकने को कहा।":
+          false,
+      "C. He worshipped Jesus. वह ईसा की आराधना की।": false,
+      "D. He tried to come back to the boat. उसने नाव पर वापस आने की कोशिश की।":
+          false,
     },
   },
   {
     "title": "Round 3 - Q13",
     "set": 8,
     "question":
-        "13. In Matt 13, what does Jesus use to teach the crowds about the kingdom of heaven? मत्ती 13 में स्वर्ग राज्य के बारे में सीखने के लिए किसका सहारा लेते हैं?",
+        "13. What does Jesus say about the faith of a mustard seed? राई के समान विश्वास के द्वारा येसु हमें क्या सीखना चाहते हैं?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. यदि आपके विश्वास, राई के दाने के समान हो, तो यह अंततः एक पेड़ बन जाएगा।":
+          false,
+      "B. यदि आपका विश्वास राई के दाने जितना छोटा हो, और तुम इस पहाड़ से यह कहो, ’यहाँ से वहाँ तक हट जा,  तो यह हट जायेगा।":
+          true,
+      "C. यदि तुम्हारा विश्वास राई के दाने के समान हो, तो शैतान आकर उसे दबा देगा।":
+          false,
+      "D. यदि तुम्हारा विश्वास राई के दाने के समान हो, तो तुम मेरे शिष्य नहीं हो सकते।":
+          false,
     },
   },
   {
     "title": "Round 3 - Q14",
     "set": 8,
     "question":
-        "14. In Matt 14, after the death of John the Baptist, what miracle does Jesus perform that demonstrates His compassion for the crowds? मत्ती 14 में योहन बपतिस्ता की मृत्यु के बाद अपनी दया और करुणा दिखाने के लिए येसु ने कौन सा चमत्कार किया?",
+        "14. Who did Jesus say was the greatest in the Kingdom of Heaven? येसु के अनुसार स्वर्ग राज्य में सबसे बड़ा कौन है?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. Whoever gives food to the hungry. जो कोई भूखों को भोजन देता है।":
+          false,
+      "B. Whoever shows his other cheek. जो कोई अपना दूसरा गाल दिखाता है।":
+          false,
+      "C. Whoever takes the lowly position of a child. जो कोई बालक का नीचा पद ग्रहण करता है।":
+          true,
+      "D. Whoever observes the Law faithfully. जो कोई भी कानून का ईमानदारी से पालन करता है।":
+          false,
     },
   },
   {
     "title": "Round 3 - Q15",
     "set": 8,
     "question":
-        "15. In Matt 19, what does Jesus teach about marriage and divorce? 38.	मत्ती 19 में विवाह और तलाक के विषय में येशु क्या सिखाते हैं?",
+        "15. What question did the rich young ruler ask Jesus? धनी युवक ने येसु से क्या प्रश्न पुछा?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. What good thing must I do to get eternal life? अनन्त जीवन प्राप्त करने के लिए मैं कौन-सा भला कार्य करूँ?":
+          true,
+      "B. Teacher, where do you stay? गुरुवर, आप कहां रहते हैं?": false,
+      "C. Master, how many times should I forgive? गुरु, मुझे कितनी बार माफ करना चाहिए?":
+          false,
+      "D. Good teacher, which is the greatest commandment? अच्छे शिक्षक,सबसे बड़ी आज्ञा कौन सी है?":
+          false,
     },
   },
   {
     "title": "Round 3 - Q16",
     "set": 8,
     "question":
-        "16. In Matt 22, when asked about paying taxes to Caesar, what does Jesus say? मत्ती 22 में केसर के कर देने के संबंध में येशु कि क्या राय है?",
+        "16. What did Jesus say was the greatest commandment? येसु के अनुसार सबसे बडी आज्ञा कौन सी है?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. Sell all that you have and follow me. तुम्हारे पास जो कुछ है उसे बेच दो और मेरे पीछे आओ।":
+          false,
+      "B. Love the Lord your God with all your heart and with all your soul and with all your mind. अपने प्रभु-ईश्वर को अपने सारे हृदय, अपनी सारी आत्मा और अपनी सारी बुद्धि से प्यार करो।":
+          true,
+      "C. Do to others what you want them to do for you. दूसरों से अपने प्रति जैसा व्यवहार चाहते हो, तुम भी उनके प्रति वैसा ही किया करो।":
+          false,
+      "D. Be perfect as your heavenly father is perfect. अपने स्वर्गीय पिता की तरह परिपूर्ण बनो।":
+          false,
     },
   },
   {
     "title": "Round 3 - Q17",
     "set": 8,
     "question":
-        "17. According to the Gospel of Matthew, what is the response of the crowd when Pilate offers to release Jesus? संत मत्ती के अनुसार सुसमाचार में जब पिलातुस येसु को रिहा करना चाहते थे तब लोगों की राय क्या थी?",
+        "17. What was the second greatest commandment according to Jesus? येसु के अनुसार दुसरी बड़ी आज्ञा कौन सी है?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. Honour your father and your mother. अपने माता  और पिता का आदर करो।":
+          false,
+      "B. Repent from your sins. अपने पापों से पश्चाताप करो।": false,
+      "C. Love your neighbour as yourself. अपने पड़ोसी से अपने समान प्रेम करो।":
+          true,
+      "D. Keep holy the Sabbath day. विश्रामदिन को पवित्र रखो।": false,
     },
   },
   {
     "title": "Round 3 - Q18",
     "set": 8,
     "question":
-        "18. What were Jesus' last words according to the Gospel of Matthew? संत मत्ती के अनुसार येशु के आखिरी शब्द क्या थे?",
+        "18. What does Jesus say about paying taxes to Caesar? कैसर का कर देने के विषय में येसु का विचार क्या है?",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": false,
-      "D. ": false,
+      "A. Caesar has no power over me unless it is given to him by my father. कैसर का मुझ पर कोई अधिकार नहीं है जब तक कि यह मेरे पिता द्वारा उसे न दिया गया हो।":
+          false,
+      "B. Give back to Caesar what is Caesar's, and to God what is God's. जो कैसर का है, उसे कैसर को दो और जो ईश्वर का है, उसे ईश्वर को।":
+          true,
+      "C. Pay taxes to Caesar but do not follow his example. कैसर को कर चुकाओ लेकिन उसके उदाहरण का अनुसरण मत करो।":
+          false,
+      "D. Give Caesar what he wants and God will take care of you. कैसर को वह दो जो वह चाहता है और भगवान तुम्हारी देखभाल करेगा।":
+          false,
     },
   },
   {
