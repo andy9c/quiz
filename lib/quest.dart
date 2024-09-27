@@ -3,7 +3,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q&A (A)",
     "set": 1,
     "main": true,
-    "question": "ROUND 1 QUESTIONS & ANSWERS प्रश्न और उत्तर",
+    "question": "ROUND 1 - QUESTIONS & ANSWERS, प्रश्न और उत्तर",
     "options": {
       "A. ": false,
       "B. ": false,
@@ -123,7 +123,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 2 - MAI KAUN HU (A)",
     "set": 2,
     "main": true,
-    "question": "ROUND 2 MAI KAUN HU मैं कौन हूँ",
+    "question": "ROUND 2 - MAI KAUN HU, मैं कौन हूँ",
     "options": {
       "A. ": false,
       "B. ": false,
@@ -244,7 +244,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 3 - MULTIPLE CHOICE (A)",
     "set": 3,
     "main": true,
-    "question": "ROUND 3 MULTIPLE CHOICE QUESTIONS बहु विकल्पीय प्रश्न",
+    "question": "ROUND 3 - MULTIPLE CHOICE QUESTIONS, बहु विकल्पीय प्रश्न",
     "options": {
       "A. ": false,
       "B. ": false,
@@ -385,7 +385,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 3 - Q11",
     "set": 3,
     "question":
-        "11. 30.	In Matt 9, how does Jesus heal two blind men? मत्ती 9 में किस प्रकार येसु दो दृष्टहीन व्यक्तियों को चंगा करते है?",
+        "11. In Matt 9, how does Jesus heal two blind men? मत्ती 9 में किस प्रकार येसु दो दृष्टहीन व्यक्तियों को चंगा करते है?",
     "options": {
       "A. by touching their eyes, उनकी आंखों को स्पर्श करते हुए": true,
       "B. by making mud and placing it on their eyes, उनकी आंखों में मिट्टी लगाते हुए":
@@ -484,6 +484,86 @@ final List<Map<String, dynamic>> questionSets = [
           false,
       "D. “My God, My God, why have You forsaken Me?”, मेरे ईश्वर! मेरे ईश्वर! तूने मुझे क्यों त्याग दिया है।":
           true,
+    },
+  },
+  {
+    "title": "Round 4 - SAHI-GALAT (A)",
+    "set": 4,
+    "main": true,
+    "question": "ROUND 4 - SAHI-GALAT, सही-गलत",
+    "options": {
+      "TRUE (सही)": false,
+      "FALSE (गलत)": true,
+    },
+  },
+  {
+    "title": "Round 4 - Q1",
+    "set": 4,
+    "question":
+        "1. Immediately after Jesus’ death, Peter went out and cried. यीशु की मृत्यु के तुरंत बाद, पतरस बाहर गया और रोया।",
+    "options": {
+      "TRUE (सही)": false,
+      "FALSE (गलत)": true,
+    },
+  },
+  {
+    "title": "Round 4 - Q2",
+    "set": 4,
+    "question":
+        "2. In the Parable of the Sheep and the Goats (Matt 25), the sheep are those who showed kindness to others. भेड़ों और बकरियों के दृष्टांत (मत्ती 25) में भेड़ें वे हैं जो दूसरों के प्रति दयालुता दिखाती हैं।",
+    "options": {
+      "TRUE (सही)": true,
+      "FALSE (गलत)": false,
+    },
+  },
+  {
+    "title": "Round 4 - Q3",
+    "set": 4,
+    "question":
+        "3. In the Parable of the Mustard Seed (Matt 13), what does the mustard seed represents the Kingdom of Heaven. राई के बीज के दृष्टांत (मत्ती 13) में, राई का बीज स्वर्ग के राज्य को दर्शाता हैं।",
+    "options": {
+      "TRUE (सही)": true,
+      "FALSE (गलत)": false,
+    },
+  },
+  {
+    "title": "Round 4 - Q4",
+    "set": 4,
+    "question":
+        "4. In the Parable of the Ten Bridesmaids (Matt 25:1-10), the five foolish virgins lack both lamp and oil. दस कुँवारियों के दृष्टांत में (मत्ती 25:1-10), पाँच मूर्ख कुँवारियों के पास दीपक और तेल दोनों ही नहीं थे।",
+    "options": {
+      "TRUE (सही)": false,
+      "FALSE (गलत)": true,
+    },
+  },
+  {
+    "title": "Round 4 - Q5",
+    "set": 4,
+    "question":
+        "5. In the Parable of the Hidden Treasure (Matt 13), the man after finding the treasure sells everything he has to buy the field. गुप्त खजाने के दृष्टांत (मत्ती 13) में, खजाना मिलने के बाद आदमी खेत खरीदने के लिए अपना सब कुछ बेच देता है।",
+    "options": {
+      "TRUE (सही)": true,
+      "FALSE (गलत)": false,
+    },
+  },
+  {
+    "title": "Round 4 - Q6",
+    "set": 4,
+    "question":
+        "6. In Matt 5, during the Sermon on the Mount, Jesus introduces his teachings by giving the two commandments. मत्ती 5 में, पहाड़ी उपदेश के दौरान, यीशु ने दो आज्ञाएँ देकर अपनी शिक्षाओं का परिचय दिया।",
+    "options": {
+      "TRUE (सही)": false,
+      "FALSE (गलत)": true,
+    },
+  },
+  {
+    "title": "Round 5 - RAPID FIRE (A)",
+    "set": 5,
+    "main": true,
+    "question": "ROUND 5 - RAPID FIRE",
+    "options": {
+      "TRUE (सही)": false,
+      "FALSE (गलत)": true,
     },
   },
 ];
