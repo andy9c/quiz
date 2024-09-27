@@ -563,7 +563,6 @@ final List<Map<String, dynamic>> questionSets = [
     "question": "ROUND 5 - RAPID FIRE",
     "options": {
       "TRUE (सही)": false,
-      "FALSE (गलत)": true,
     },
   },
 ];

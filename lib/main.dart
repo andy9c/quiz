@@ -529,10 +529,12 @@ class _MyHomePageState extends State<MyHomePage> {
         .firstWhere((e) => e.key == "options")
         .value;
 
-    scheduleTask(Duration(seconds: timeOutTimerSeconds), () {
+    scheduleTask(Duration(seconds: timeOutTimerSeconds), () async {
       if (showOptions == true && overPlayed == false) {
         playOver();
         overPlayed = true;
+
+        await stopAll();
       }
     });
 
