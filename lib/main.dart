@@ -255,7 +255,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       itemCount: sortedData.entries.toList().length,
                       itemBuilder: (BuildContext context, int index) {
                         String key =
-                            snapshot.data!.keys.elementAt(index).split(';')[0];
+                            sortedData.keys.elementAt(index).split(';')[0];
                         return Column(
                           children: <Widget>[
                             ListTile(
