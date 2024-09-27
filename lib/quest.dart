@@ -171,7 +171,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 2 - Q5",
     "set": 2,
     "question":
-        "5. In the Genealogy of Matthew, who is the grandfather of king David?\n21.संत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है?",
+        "5. In the Genealogy of Matthew, who is the grandfather of king David?\nसंत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है?",
     "options": {
       "Obed, ओबेद": true,
     },
@@ -304,7 +304,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 3 - Q5",
     "set": 3,
     "question":
-        "5. In the Genealogy of Matthew, who is the grandfather of king David?\n21.संत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है?",
+        "5. In the Genealogy of Matthew, who is the grandfather of king David?\nसंत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है?",
     "options": {
       "A. The Good Samaritan": false,
       "B. The Good Samaritan": false,
