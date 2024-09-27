@@ -581,108 +581,112 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q1",
     "set": 6,
     "question":
-        "1. How many days and nights did Jesus fast in the wilderness? येसुने तनजजन प्रिेश में ककतने दिन और रात उपवास ककया?",
+        "1. How many days and nights did Jesus fast in the wilderness? येसु ने निर्जन प्रदेश में कितने दिन और रात उपवास किया?",
     "options": {
-      "Rock, चट्टान": true,
+      "Forty , चालीस": true,
     },
   },
   {
     "title": "Round 1 - Q2",
     "set": 6,
     "question":
-        "2. In the Gospel of Matthew, how many Beatitudes are there in the Sermon on the Mount? संत मत्ती के अनुसार सुसमाचार में स्थित पहाड़ी उपदेश में कितने आशीर्वचन है?",
+        "2. What was the first miracle performed by Jesus in Matthew? संत मत्ती के अनुसार येसु का पहला चमत्कार कौन सा था?",
     "options": {
-      "Eight, आठ": true,
+      "Healing a man with leprosy, कुष्ठ रोग से पीड़ित व्यक्ति का उपचार": true,
     },
   },
   {
     "title": "Round 1 - Q3",
     "set": 6,
     "question":
-        "3. Which chapter of Matthew contains the Lord's Prayer? संत मत्ती के अनुसार सुसमाचार में किस अध्याय में हम प्रभु की प्रार्थना को पाते हैं?",
+        "What is the name of the sermon that includes the Beatitudes? उस उपदेश का नाम क्या है जसमें हम आशीर्वचन को पाते हैं?",
     "options": {
-      "Matthew 6, मत्ती 6": true,
+      "The Sermon on the Mount, पहाड़ी पर उपदेश": true,
     },
   },
   {
     "title": "Round 1 - Q4",
     "set": 6,
     "question":
-        "4. In the Gospel of Matthew, what sign does Judas use to betray Jesus? संत मत्ती के अनुसार सुसमाचार में यूदस इस्कारियोति ने येसु को पकड़वाने के लिए क्या संकेत दिया?",
+        "4. Where did Jesus deliver the Sermon on the Mount? प्रभु ने कहाँ से पहाडी उपदेश दिए?",
     "options": {
-      "Kiss, चुंबन": true,
+      "A mountainside, एक पहाड़ की ओर": true,
     },
   },
   {
     "title": "Round 1 - Q5",
     "set": 6,
     "question":
-        "5. In the Parable of the Workers in the Vineyard (Matt 20), what does the landowner agree to pay each worker? असमारियों के दृष्टांत में कितनी मजदूरी देने के लिए वादा किया था?",
+        "5. What was the occupation of Simon Peter and Andrew before following Jesus? प्रभु के अनुयाई बनने से पहले सिमोन, पेत्रुस और अंद्रेयस क्या कर रहे थे?",
     "options": {
-      "One denarius, एक दिनार": true,
+      "They were fishermen, वे मछुआरे थे": true,
     },
   },
   {
     "title": "Round 1 - Q6",
     "set": 6,
     "question":
-        "6. “It is not lawful for you to have her.” To whom did John the Baptist say these words? “उसे रखना आपके लिए उचित नहीं है” योहन बपतिस्ता ने किसको कहा?",
+        "6. What prayer did Jesus teach in the Sermon on the Mount? पहाडी उपदेश में येसु ने कौन सी प्रर्थना सिखाई?",
     "options": {
-      "Herod the Tetrarch, हेरोद हेट्रार्क": true,
+      "The Lord's Prayer (Our Father), प्रभु की प्रार्थना (हे हमारे पिता)":
+          true,
     },
   },
   {
     "title": "Round 1 - Q7",
     "set": 6,
     "question":
-        "7. In Matt 15, Jesus performs a miracle for a Canaanite woman's daughter. What was the daughter's condition? मत्ती 15 में यीशु एक कनानी स्त्री को चंगा करते हैं? उसकी बेटी की तकलीफें क्या थी?",
+        "7. How many baskets of leftovers were collected after feeding the 5,000? येसु ने जब 5000 लोगों को रोटी खिलाई तब कितने टोकरो में बचे हुए टुकडों को जमा किया था?",
     "options": {
-      "Demon possession, अपदूत ग्रस्त थी": true,
+      "Twelve baskets, बारह टोकरियाँ": true,
     },
   },
   {
     "title": "Round 1 - Q8",
     "set": 6,
     "question":
-        "8. In Matt 12, Jesus heals a man with a withered hand. On which day does this healing occur, causing controversy? मत्ती 12 में यीशु ने सूखे हाथ वाले को चंगा किया। यह चमत्कार कब हुआ?",
+        "8. What was the sign Judas used to betray Jesus? येसु को पकडवाने के मलए युदस ने कौन सा संकेत दिया?",
     "options": {
-      "The Sabbath, विश्राम के दिन": true,
+      "A kiss, एक चुम्बन": true,
     },
   },
   {
     "title": "Round 1 - Q9",
     "set": 6,
     "question":
-        "9. In Matt 18, Jesus teaches about forgiveness using the Parable of the Unmerciful Servant. How many times does Jesus tell Peter we should forgive others? मत्ती 18 में निर्दय सेवा के दृष्टांत के द्वारा येसु का पाठ पढ़ाते हैं। पेत्रुस को अपने भाई को कितनी बार क्षमा करने की आवश्यकता है?",
+        "9. What did Jesus do in the Garden of Gethsemane? गेथसैमनी बाग में येसुने क्या किया?",
     "options": {
-      "70 times 7, सत्तर गुना सात बार": true,
+      "Prayed, asking for the cup to pass from Him, प्रार्थना की कि प्याला उसके पास से टल जाए":
+          true,
     },
   },
   {
     "title": "Round 1 - Q10",
     "set": 6,
     "question":
-        "10. In the Gospel of Matthew, where does Jesus pray before His arrest? संत मत्ती के अनुसार सुसमाचार में अपनी गिरफ्तारी के पहले येसु ने कहां प्रार्थना की?",
+        "10. What was the inscription above Jesus' head on the cross? क्रूस में येसु के सिर पर क्या लिखा हुआ था?",
     "options": {
-      "Gethsemane, गेथसेमनी": true,
+      "“This is Jesus, the King of the Jews.”, यह यीशु है, यहूदियों का राजा":
+          true,
     },
   },
   {
     "title": "Round 1 - Q11",
     "set": 6,
     "question":
-        "11. How much was Judas paid to betray Jesus? येसु के साथ विश्वासघात करने के लिए युदस को कितनी रकम दी गयी?",
+        "11. What did the angel say to the women at the tomb? येसु के कब्र पर मदहलाओं को स्वर्गदूत ने क्या बताया था?",
     "options": {
-      "30 pieces of silver, तीस चांदी के सिक्के": true,
+      "“…He is not here; he has risen, just as he said....” , वे यहाँ नहीं हैं। वे जी उठे हैं, जैसा कि उन्होंने कहा था":
+          true,
     },
   },
   {
     "title": "Round 1 - Q12",
     "set": 6,
     "question":
-        "12. What did Judas do with the money he received for betraying Jesus? जो पैसा युदस को मिला उससे युदस ने क्या किया?",
+        "12. Where did Jesus tell his disciples to meet him after his resurrection? येसु पुनरुत्थान के बाद अपने शिष्यों से कहां मिलने वाले थे?",
     "options": {
-      "Threw it in the temple, उसे मंदिर में फेंक दिया": true,
+      "Galilee, गलिली": true,
     },
   },
   {
@@ -1106,7 +1110,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 4 - Q5",
     "set": 9,
     "question":
-        "5. Jesus was baptised in the Sea of Galilee. यीशु का बपतिस्मा गलील झील में हुआ था।",
+        "5. Jesus was baptised in the Sea of Galilee. यीशु का बपतिस्मा गलीलिया सागर में हुआ था।",
     "options": {
       "TRUE (सही)": false,
       "FALSE (गलत)": true,
