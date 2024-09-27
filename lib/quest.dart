@@ -1066,7 +1066,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 4 - Q1",
     "set": 9,
     "question":
-        "1. Immediately after Jesus’ death, Peter went out and cried. यीशु की मृत्यु के तुरंत बाद, पतरस बाहर गया और रोया।",
+        "1. Jesus was buried in the family tomb of Davidic Line. यीशु को दाऊद वंश के पारिवारिक कब्र में दफनाया गया था।",
     "options": {
       "TRUE (सही)": false,
       "FALSE (गलत)": true,
@@ -1076,7 +1076,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 4 - Q2",
     "set": 9,
     "question":
-        "2. In the Parable of the Sheep and the Goats (Matt 25), the sheep are those who showed kindness to others. भेड़ों और बकरियों के दृष्टांत (मत्ती 25) में भेड़ें वे हैं जो दूसरों के प्रति दयालुता दिखाती हैं।",
+        "2. Judas received thirty pieces of silver to betray Jesus. यीशु को धोखा देने के लिए यहूदा को चाँदी के तीस सिक्के मिले।",
     "options": {
       "TRUE (सही)": true,
       "FALSE (गलत)": false,
@@ -1086,40 +1086,40 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 4 - Q3",
     "set": 9,
     "question":
-        "3. In the Parable of the Mustard Seed (Matt 13), what does the mustard seed represents the Kingdom of Heaven. राई के बीज के दृष्टांत (मत्ती 13) में, राई का बीज स्वर्ग के राज्य को दर्शाता हैं।",
+        "3. The rich young ruler asked Jesus: “Good Teacher, which is the greatest commandment?” धनी युवा शासक ने यीशु से पूछा: “भले गुरु, सबसे बड़ी आज्ञा कौन सी है?”",
     "options": {
-      "TRUE (सही)": true,
-      "FALSE (गलत)": false,
+      "TRUE (सही)": false,
+      "FALSE (गलत)": true,
     },
   },
   {
     "title": "Round 4 - Q4",
     "set": 9,
     "question":
-        "4. In the Parable of the Ten Bridesmaids (Matt 25:1-10), the five foolish virgins lack both lamp and oil. दस कुँवारियों के दृष्टांत में (मत्ती 25:1-10), पाँच मूर्ख कुँवारियों के पास दीपक और तेल दोनों ही नहीं थे।",
-    "options": {
-      "TRUE (सही)": false,
-      "FALSE (गलत)": true,
-    },
-  },
-  {
-    "title": "Round 4 - Q5",
-    "set": 9,
-    "question":
-        "5. In the Parable of the Hidden Treasure (Matt 13), the man after finding the treasure sells everything he has to buy the field. गुप्त खजाने के दृष्टांत (मत्ती 13) में, खजाना मिलने के बाद आदमी खेत खरीदने के लिए अपना सब कुछ बेच देता है।",
+        "4. While speaking about the faith of a mustard seed, Jesus said:“If you have faith as small as a mustard seed, you can say to this mountain, ‘Move from here to there,’ and it will move.” राई के दाने के बराबर विश्‍वास के बारे में बोलते हुए, यीशु ने कहा: “यदि तुम्हारा विश्‍वास राई के दाने के बराबर भी हो, तो तुम इस पहाड़ से कह सकोगे, ‘यहाँ से हटकर वहाँ चला जा’, और वह चला जाएगा।”",
     "options": {
       "TRUE (सही)": true,
       "FALSE (गलत)": false,
     },
   },
   {
-    "title": "Round 4 - Q6",
+    "title": "Round 4 - Q5",
     "set": 9,
     "question":
-        "6. In Matt 5, during the Sermon on the Mount, Jesus introduces his teachings by giving the two commandments. मत्ती 5 में, पहाड़ी उपदेश के दौरान, यीशु ने दो आज्ञाएँ देकर अपनी शिक्षाओं का परिचय दिया।",
+        "5. Jesus was baptised in the Sea of Galilee. यीशु का बपतिस्मा गलील झील में हुआ था।",
     "options": {
       "TRUE (सही)": false,
       "FALSE (गलत)": true,
+    },
+  },
+  {
+    "title": "Round 4 - Q6",
+    "set": 9,
+    "question":
+        "6. After feeding the 5000, Jesus went up on a mountainside to pray. पाँच हज़ार लोगों को भोजन कराने के बाद यीशु प्रार्थना करने के लिए पहाड़ पर चले गये।",
+    "options": {
+      "TRUE (सही)": true,
+      "FALSE (गलत)": false,
     },
   },
   {
