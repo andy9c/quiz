@@ -178,7 +178,7 @@ class _MyHomePageState extends State<MyHomePage> {
           (await getApplicationDocumentsDirectory()).path;
 
       // Create a File object
-      final file = File('$myDocumentsFolderPath\\$fileName');
+      final file = File('$myDocumentsFolderPath//$fileName');
 
       // Read the file contents
       final contents = await file.readAsString();
@@ -189,12 +189,13 @@ class _MyHomePageState extends State<MyHomePage> {
       // Handle errors (e.g., file not found)
       //print('Error reading file: $e');
       return {
-        "PRANOLD": 100,
-        "AMAN": 200,
-        "SMIRITY": 300,
-        "KAMLES": 100,
-        "SNEHA": 200,
-        "DIVYA": 300
+        "ARLINA BAXLA;JHUNMUR SCHOOL (STD-9)": 1,
+        "KRITIKA ANGEL DUNGDUNG;ST. THERESA ENGLISH SCHOOL, SUNDARGARH (STD-9)":
+            2,
+        "BIBIANA LAKRA;ST. MARY'S GIRL'S HIGH SCHOOL, RAJGANGPUR (STD-9)": 3,
+        "AMAN TOPPO;KUSUMDEGI HIGH SCHOOL (STD-9)": 4,
+        "ABHIJIT BILUNG;NOHS GAIBIRA (STD-9)": 5,
+        "ARATI LAKRA;ST. JOHN MARY VIANNEY, KUTRA (STD-9)": 6
       }; // Or throw an exception, depending on your error handling strategy
     }
   }
@@ -1273,25 +1274,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             IgnorePointer(
               ignoring: false,
-              child: DropdownButton<int>(
-                value: selectedQuestionIndex,
-                items: List.generate(questionSets.length, (index) => index)
-                    .map((int value) {
-                  return DropdownMenuItem<int>(
-                    value: value,
-                    child: Text(questionSets[value]
-                        .entries
-                        .firstWhere((e) => e.key == "title")
-                        .value),
-                  );
-                }).toList(),
-                onChanged: (val) {
-                  selectQuestion(val);
-                },
-              ),
-            ),
-            IgnorePointer(
-              ignoring: false,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(200, 0, 0, 10),
                 child: Padding(
@@ -1301,6 +1283,23 @@ class _MyHomePageState extends State<MyHomePage> {
                     spacing: 8.0,
                     overflowSpacing: 8.0,
                     children: <Widget>[
+                      DropdownButton<int>(
+                        value: selectedQuestionIndex,
+                        items:
+                            List.generate(questionSets.length, (index) => index)
+                                .map((int value) {
+                          return DropdownMenuItem<int>(
+                            value: value,
+                            child: Text(questionSets[value]
+                                .entries
+                                .firstWhere((e) => e.key == "title")
+                                .value),
+                          );
+                        }).toList(),
+                        onChanged: (val) {
+                          selectQuestion(val);
+                        },
+                      ),
                       TextButton(
                         child: const Text('5 sec'),
                         onPressed: () {
