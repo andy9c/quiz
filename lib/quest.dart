@@ -581,7 +581,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q1",
     "set": 6,
     "question":
-        "1. In the Gospel of Matthew, which title is most frequently used to refer to Jesus? मत्ती 16:18 में येसु कहते हैं “तुम पेत्रुस हो और उसे पर मैं अपनी कलीसिया बनाऊंगा” पेत्रुस नाम का मतलब क्या है?",
+        "1. How many days and nights did Jesus fast in the wilderness? येसुने तनजजन प्रिेश में ककतने दिन और रात उपवास ककया?",
     "options": {
       "Rock, चट्टान": true,
     },
