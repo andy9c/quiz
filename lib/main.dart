@@ -611,7 +611,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.of(context).pop();
                       playNotify();
                       // loadResults(context, "Results");
-                      loadResultsArranged(context, "Results");
+                      loadResultsArranged(context, "Leaderboard");
                     },
                     child: const Text('Load Results'),
                   ),
