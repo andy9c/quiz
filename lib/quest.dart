@@ -816,7 +816,7 @@ final List<Map<String, dynamic>> questionSets = [
     "options": {
       "A. ": false,
       "B. ": false,
-      "C. ": true,
+      "C. ": false,
       "D. ": false,
     },
   },
@@ -826,10 +826,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "1. Which of these parables is found in the Gospel of Matthew? निम्नलिखित दृष्टांत में संत मत्ती के अनुसार सुसमाचार में कौन सा दृष्टांत पाया जाता है?",
     "options": {
-      "A. The Good Samaritan, भला समारी": false,
-      "B. The Prodigal Son, उड़ाव पुत्र": false,
-      "C. The Parable of the Sower, बोने वाले का दृष्टांत": true,
-      "D. The Parable of the Rich Fool, मूर्ख धनी का दृष्टांत ": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -838,11 +838,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "2. In the Parable of the Sower (Matt 13), what does the seed that falls on the rocky ground represent? बोने वाले दृष्टांत में जो बीज पथरीली जमीन पर गिरते हैं उसका अर्थ क्या है?",
     "options": {
-      "A. जो ईश वचन सुनते हैं और उसे समझते हैं": false,
-      "B. जो ईश वचन सुनते हैं परंतु जब मुसीबत आती है तो वह वचन के अनुसार जी नहीं पाते":
-          true,
-      "C. जो दुनियादारी, चिताओं और धन के दबाव में आ जाते हैं": false,
-      "D. जो बहुत फल देते हैं": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -851,11 +850,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "3. In the Parable of the Ten Virgins (Matt 25), what do the oil lamps represent? 10 कुंवारी के दृष्टांत में मशाल किस चीज को अंकित करता है?",
     "options": {
-      "A. Wealth and prosperity, धन और दौलत": false,
-      "B. Good works, भला कार्य": false,
-      "C. Readiness for the coming of the bridegroom, दूल्हे का स्वागत करने के लिए तैयार रहना":
-          true,
-      "D. The light of the world, दुनिया का दीप": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -864,10 +862,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "4. In the Parable of the Talents (Matt 25), how many talents does the master give to the servant who is given the most? अशरफियों के दृष्टांत में ज्यादा से ज्यादा कितनी अशरफी दी गई थी?",
     "options": {
-      "A. One, एक": false,
-      "B. Two, दो": false,
-      "C. Five, पाँच": true,
-      "D. Ten, दस": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -876,14 +874,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "5. In the Parable of the Two Sons (Matt 21), which son did the will of his father? दो पुत्र के दृष्टांत में कौन से पुत्र ने अपने पिताजी की इच्छा पूरी की?",
     "options": {
-      "A. The one who said he would go but didn't, जिसने कहा जाऊंगा परंतु नहीं गया।":
-          false,
-      "B. The one who initially refused but later went, जिसने कहा नहीं जाऊँगा परंतु गया":
-          true,
-      "C. Both sons did the will of their father, दोनों पुत्र ने पिताजी की इच्छा पूरी की":
-          false,
-      "D. Neither son did the will of their father, दोनों ने पिता की इच्छा पूरी नहीं की":
-          false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -892,11 +886,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "6. In the Parable of the Wedding Banquet (Matt 22), why were some guests thrown out? विवाह भोज के दृष्टांत में क्यों कुछ मेहमान बाहर फैंके गए?",
     "options": {
-      "A. They didn't bring gifts, उन्होंने तोहफा नहीं दिया": false,
-      "B. They insulted the host, उन्होंने मेजबान का अपमान किया": false,
-      "C. They weren't wearing wedding clothes, उन्होंने शादी के योग्य कपड़े नहीं पहने":
-          true,
-      "D. They arrived late, वे देरी से आए": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -905,10 +898,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "7. Which of these women not found in the Genealogy of Matthew? निम्नलिखित चार महिलाओं में कौन संत मति के अनुसार सुसमाचार में ईशा की वंशावली में नहीं है?",
     "options": {
-      "A. Rahab, रहाब": false,
-      "B. Ruth, रूथ": false,
-      "C. Tamar, तामार": false,
-      "D. Hannah, हनना": true,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -917,11 +910,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "8. In Matt 9, Jesus heals a woman who had been suffering from bleeding for twelve years. How did she receive her healing? मत्ती 9 में येसु एक महिला को चंगा करते हैं जो 12 वर्षों से रक्तस्राव की बीमारी से पीड़ित थी, वह कैसे चंगाई प्राप्त करती है?",
     "options": {
-      "A. Jesus spoke a word of healing, यीशु ने कहा भला चंगा हो जाओ": false,
-      "B. She touched the hem of Jesus' garment, उसने येसु के कपड़ों को छुआ":
-          true,
-      "C. Jesus laid hands on her, येसु ने अपना हाथ उस पर रखा": false,
-      "D. She was healed by washing in a pool, पानी में धोकर वह ठीक हुई": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -930,10 +922,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "9. Which of the following miracles is performed by Jesus in Matt 14? 	निम्नलिखित चमत्कारों में कौन से चमत्कार को येसु ने मती 14 में किया?",
     "options": {
-      "A. Healing a blind man, एक दृष्टिहीन व्यक्ति की चंगाई": false,
-      "B. Walking on the water, पानी के ऊपर चलना": true,
-      "C. Raising Lazarus from the dead, मृत लाजरूस को जीवन देना": false,
-      "D. Casting out an evil spirit, दुष्ट आत्मा को निकालना": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -942,11 +934,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "10. What miracle does Jesus perform in Matt 21 that causes the crowds to be astonished? मत्ती 21 में येसु कौन सा चमत्कार करते हैं जिसे देखकर लोग अचंभित हो गए?",
     "options": {
-      "A. Healing the blind and the lame in the temple, मंदिर में एक दृष्टिहीन व्यक्ति और लंगड़े को चंगा करना":
-          true,
-      "B. Raising a widow's son, विधवा के बेटे को चलाना": false,
-      "C. Cleansing a leper, कोड़ी की चंगाई ": false,
-      "D. Casting out a demon, अपदूत को निकालना": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -955,12 +946,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "11. In Matt 9, how does Jesus heal two blind men? मत्ती 9 में किस प्रकार येसु दो दृष्टहीन व्यक्तियों को चंगा करते है?",
     "options": {
-      "A. by touching their eyes, उनकी आंखों को स्पर्श करते हुए": true,
-      "B. by making mud and placing it on their eyes, उनकी आंखों में मिट्टी लगाते हुए":
-          false,
-      "C. by telling them to wash in a pool, उन्हें पानी के कुंड में धोने से":
-          false,
-      "D. by speaking a word, अपने शब्दों द्वारा": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -969,11 +958,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "12. In Matt 4, how does Jesus begin His public ministry after His baptism and temptation? मत्ती 4 में अपना बपतिस्मा और अपनी परीक्षा के बाद किस प्रकार येसु अपने मिशन की शुरुआत करते हैं?",
     "options": {
-      "A. by choosing His disciples, अपने शिष्यों को चुनकर": false,
-      "B. by healing the sick, बीमारो को भला चंगा करके": false,
-      "C. by preaching, “Repent, for the kingdom of heaven has come near”, पश्चाताप के प्रवचन द्वारा":
-          true,
-      "D. by turning water into wine, पानी को अंगूरी में बदलकर": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -982,10 +970,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "13. In Matt 13, what does Jesus use to teach the crowds about the kingdom of heaven? मत्ती 13 में स्वर्ग राज्य के बारे में सीखने के लिए किसका सहारा लेते हैं?",
     "options": {
-      "A. Laws, संहिता": false,
-      "B. Prophecies, भविष्यवाणी": false,
-      "C. Parables, दृष्टांत": true,
-      "D. Songs, संगीत": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -994,10 +982,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "14. In Matt 14, after the death of John the Baptist, what miracle does Jesus perform that demonstrates His compassion for the crowds? मत्ती 14 में योहन बपतिस्ता की मृत्यु के बाद अपनी दया और करुणा दिखाने के लिए येसु ने कौन सा चमत्कार किया?",
     "options": {
-      "A. Heals the lepers, कोढ़ियों की चंगाई": false,
-      "B. Raises the dead, मृतकों को जिलाया": false,
-      "C. Feeds the 5000, 5000 लोगों को रोटी खिलाई": true,
-      "D. Walks on the water, पानी के ऊपर चलना": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -1006,12 +994,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "15. In Matt 19, what does Jesus teach about marriage and divorce? 38.	मत्ती 19 में विवाह और तलाक के विषय में येशु क्या सिखाते हैं?",
     "options": {
-      "A. Divorce is always permitted, तलाक की अनुमति हमेशा रहेगी": false,
-      "B. Marriage is only for the righteous, विवाह सिर्फ धार्मिक लोगों के लिए है":
-          false,
-      "C. What God has joined together, let no one separate, जिसे ईश्वर ने जोड़ा है उसे मनुष्य अलग ना करें":
-          true,
-      "D. Marriage is a temporary institution, विवाह तो अस्थाई है": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -1020,12 +1006,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "16. In Matt 22, when asked about paying taxes to Caesar, what does Jesus say? मत्ती 22 में केसर के कर देने के संबंध में येशु कि क्या राय है?",
     "options": {
-      "A. Do not pay taxes, करों का भुगतान न करें": false,
-      "B. Give to Caesar what is Caesar's, and to God what is God's, जो कैसर का है उसे कैसर को दें और जो ईश्वर का है उसे ईश्वर को":
-          true,
-      "C. Keep your money for the poor, गरीबों की मदद करना": false,
-      "D. The kingdom of God does not require taxes, स्वर्ग राज्य में कर देने की आवश्यकता नहीं है":
-          false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -1034,10 +1018,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "17. According to the Gospel of Matthew, what is the response of the crowd when Pilate offers to release Jesus? संत मत्ती के अनुसार सुसमाचार में जब पिलातुस येसु को रिहा करना चाहते थे तब लोगों की राय क्या थी?",
     "options": {
-      "A. Release Him!, येसु को रिहा करना": false,
-      "B. Crucify Him!, येसु को क्रूस पर चढ़ाना": true,
-      "C. Stone Him!, येसु को पत्थर से मारना": false,
-      "D. Kill Him!, येसु को मार डालना": false,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
@@ -1046,12 +1030,10 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "18. What were Jesus' last words according to the Gospel of Matthew? संत मत्ती के अनुसार येशु के आखिरी शब्द क्या थे?",
     "options": {
-      "A. “Father, forgive them”, पिता उन्हें क्षमा कीजिए।": false,
-      "B. “It is finished”, सब कुछ पूरा हो चुका है।": false,
-      "C. “Father, into Your hands I commit My spirit”, पिता! आपके हाथों में अपनी आत्मा को सौंपता हूं।":
-          false,
-      "D. “My God, My God, why have You forsaken Me?”, मेरे ईश्वर! मेरे ईश्वर! तूने मुझे क्यों त्याग दिया है।":
-          true,
+      "A. ": false,
+      "B. ": false,
+      "C. ": false,
+      "D. ": false,
     },
   },
   {
