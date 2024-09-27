@@ -530,12 +530,17 @@ class _MyHomePageState extends State<MyHomePage> {
         .value;
 
     scheduleTask(Duration(seconds: timeOutTimerSeconds), () async {
-      if (showOptions == true && overPlayed == false) {
-        playOver();
-        overPlayed = true;
+      // if (showOptions == true && overPlayed == false) {
+      //   playOver();
+      //   overPlayed = true;
 
-        await stopAll();
-      }
+      //   await stopAll();
+      // }
+
+      playOver();
+      overPlayed = true;
+
+      await stopAll();
     });
 
     setState(() {
