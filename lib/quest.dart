@@ -444,7 +444,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 3 - Q16",
     "set": 3,
     "question":
-        "16. In Matt 22, when asked about paying taxes to Caesar, what does Jesus say? मत्ती 22 में केसर के कर देने के संबंध में येशु कि क्या राय है?",
+        "16. In Matt 22, when asked about paying taxes to Caesar, what does Jesus say? मत्ती 22 में कैसर के कर देने के संबंध में येशु कि क्या राय है?",
     "options": {
       "A. Do not pay taxes, करों का भुगतान न करें": false,
       "B. Give to Caesar what is Caesar's, and to God what is God's, जो कैसर का है उसे कैसर को दें और जो ईश्वर का है उसे ईश्वर को":
@@ -590,7 +590,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q3",
     "set": 6,
     "question":
-        "What is the name of the sermon that includes the Beatitudes? उस उपदेश का नाम क्या है जसमें हम आशीर्वचन को पाते हैं?",
+        "3. What is the name of the sermon that includes the Beatitudes? उस उपदेश का नाम क्या है जसमें हम आशीर्वचन को पाते हैं?",
     "options": {
       "The Sermon on the Mount, पहाड़ी पर उपदेश": true,
     },
@@ -608,7 +608,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q5",
     "set": 6,
     "question":
-        "5. What was the occupation of Simon Peter and Andrew before following Jesus? प्रभु के अनुयाई बनने से पहले सिमोन, पेत्रुस और अंद्रेयस क्या कर रहे थे?",
+        "5. What was the occupation of Simon Peter and Andrew before following Jesus? प्रभु के अनुयाई बनने से पहले सिमोन पेत्रुस और अंद्रेयस क्या कर रहे थे?",
     "options": {
       "They were fishermen, वे मछुआरे थे": true,
     },
@@ -636,7 +636,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q8",
     "set": 6,
     "question":
-        "8. What was the sign Judas used to betray Jesus? येसु को पकडवाने के मलए युदस ने कौन सा संकेत दिया?",
+        "8. What was the sign Judas used to betray Jesus? येसु को पकडवाने के लिये युदस ने कौन सा संकेत दिया?",
     "options": {
       "A kiss, एक चुम्बन": true,
     },
@@ -645,7 +645,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q9",
     "set": 6,
     "question":
-        "9. What did Jesus do in the Garden of Gethsemane? गेथसैमनी बाग में येसुने क्या किया?",
+        "9. What was Jesus' prayer in the Garden of Gethsemane? गेथसैमनी बारी में येशु कि प्रार्थना क्या थी?",
     "options": {
       "Prayed, asking for the cup to pass from Him, प्रार्थना की कि प्याला उसके पास से टल जाए":
           true,
@@ -657,15 +657,14 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "10. What was the inscription above Jesus' head on the cross? क्रूस में येसु के सिर पर क्या लिखा हुआ था?",
     "options": {
-      "“This is Jesus, the King of the Jews.”, यह यीशु है, यहूदियों का राजा":
-          true,
+      "This is Jesus, the King of the Jews. यह यहूदियों का राजा ईसा है": true,
     },
   },
   {
     "title": "Round 1 - Q11",
     "set": 6,
     "question":
-        "11. What did the angel say to the women at the tomb? येसु के कब्र पर मदहलाओं को स्वर्गदूत ने क्या बताया था?",
+        "11. What did the angel say to the women at the tomb? येसु के कब्र पर महीलाओं को स्वर्गदूत ने क्या बताया था?",
     "options": {
       "“…He is not here; he has risen, just as he said....” , वे यहाँ नहीं हैं। वे जी उठे हैं, जैसा कि उन्होंने कहा था":
           true,
@@ -695,7 +694,7 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "1. Who visited Jesus after his birth according to Matthew? संत मत्ती के अनुसार येसु के जन्म के बाद कौन मिलने आए थे?",
     "options": {
-      "The Magi (Wise Men), ज्योतिषी(बुद्धिमान पुरुष)": true,
+      "Wise Men, ज्योतिषी": true,
     },
   },
   {
@@ -721,7 +720,7 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "4. Who did Jesus call from their tax booth to follow Him? चुंगी घर से येसु ने किसको अपना शिष्य बनने बुलाया?",
     "options": {
-      "Matthew (Levi), मत्ती (लेवी)": true,
+      "Matthew, मत्ती": true,
     },
   },
   {
