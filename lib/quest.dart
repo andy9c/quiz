@@ -12,7 +12,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q1",
     "set": 1,
     "question":
-        "1. In the Gospel of Matthew, which title is most frequently used to refer to Jesus? मत्ती 16:18 में येसु कहते हैं “तुम पेत्रुस हो और उसे पर मैं अपनी कलीसिया बनाऊंगा” पेत्रुस नाम का मतलब क्या है?",
+        "1. In Matt 16:18, Jesus says, ''You are Peter, and on this rock, I will build my church.''. What does the name  ''Peter'' mean? मत्ती 16:18 में येसु कहते हैं “तुम पेत्रुस हो और उसे पर मैं अपनी कलीसिया बनाऊंगा” पेत्रुस नाम का मतलब क्या है?",
     "options": {
       "Rock, चट्टान": true,
     },
@@ -23,7 +23,7 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "2. In the Gospel of Matthew, how many Beatitudes are there in the Sermon on the Mount? संत मत्ती के अनुसार सुसमाचार में स्थित पहाड़ी उपदेश में कितने आशीर्वचन है?",
     "options": {
-      "Eight, आठ": true,
+      "Nine": true,
     },
   },
   {
@@ -84,7 +84,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 1 - Q9",
     "set": 1,
     "question":
-        "9. In Matt 18, Jesus teaches about forgiveness using the Parable of the Unmerciful Servant. How many times does Jesus tell Peter we should forgive others? मत्ती 18 में निर्दय सेवा के दृष्टांत के द्वारा येसु का पाठ पढ़ाते हैं। पेत्रुस को अपने भाई को कितनी बार क्षमा करने की आवश्यकता है?",
+        "9. In Matt 18, Jesus teaches about forgiveness using the Parable of the Unmerciful Servant. How many times does Jesus tell Peter we should forgive others? मत्ती 18 में निर्दय सेवा के दृष्टांत के द्वारा येसु पाठ पढ़ाते हैं। पेत्रुस को अपने भाई को कितनी बार क्षमा करने की आवश्यकता है?",
     "options": {
       "70 times 7, सत्तर गुना सात बार": true,
     },
@@ -147,7 +147,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 2 - Q3",
     "set": 2,
     "question":
-        "3. Which group of people does Jesus frequently criticize in the Gospel of Matthew? किन लोगों की संत मत्ती के अनुसार सुसमाचार में अक्सर प्रभु यीशु आलोचना करते थे?",
+        "3. Which group of people does Jesus frequently criticize in the Gospel of Matthew? किस यहुदि समुदाय कि निंन्दा येशु ने मत्ती 18 में कि है?",
     "options": {
       "Pharisees, फरीसी": true,
     },
@@ -174,7 +174,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 2 - Q6",
     "set": 2,
     "question":
-        "6. In the Genealogy of Matthew, who is the grandfather of Jesus? संत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में राजा दाऊद के दादाजी कौन है?",
+        "6. In the Genealogy of Matthew, who is the grandfather of Jesus? संत मत्ती के सुसमाचार में दी गई प्रभु ईसा की वंशावली में येशु के दादाजी कौन है?",
     "options": {
       "Jacob, याकूब": true,
     },
@@ -192,7 +192,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 2 - Q8",
     "set": 2,
     "question":
-        "8. In Matt 9, Jesus calls Matthew to follow Him. What was Matthew's profession? मत्ती पाँच में येसु मत्ती को बुलाते हैं। मत्ती का पेशा क्या था?",
+        "8. In Matt 9, Jesus calls Matthew to follow Him. What was Matthew's profession? मत्ती 9 में येसु मत्ती को बुलाते हैं। मत्ती का पेशा क्या था?",
     "options": {
       "Tax collector, नाकेदार": true,
     },
@@ -222,7 +222,7 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "11. Which criminal was released instead of Jesus? किस व्यक्ति को पिलातुस ने येसु के बदले रिहा कर दिया?",
     "options": {
-      "Barabbas, बराबस": true,
+      "Barabbas, बराब्बस": true,
     },
   },
   {
@@ -379,7 +379,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 3 - Q11",
     "set": 3,
     "question":
-        "11. In Matt 9, how does Jesus heal two blind men? मत्ती 9 में किस प्रकार येसु दो दृष्टहीन व्यक्तियों को चंगा करते है?",
+        "11. In Matt 9, how does Jesus heal two blind men? मत्ती 9 में किस प्रकार येसु दो दृष्टिहीन व्यक्तियों को चंगा करते है?",
     "options": {
       "A. by touching their eyes, उनकी आंखों को स्पर्श करते हुए": true,
       "B. by making mud and placing it on their eyes, उनकी आंखों में मिट्टी लगाते हुए":

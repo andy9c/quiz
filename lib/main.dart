@@ -1405,7 +1405,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: const Text('50-50'),
                         onPressed: () {
                           if (opts.length == 4 && showOptions == true) {
-                            playFiftyfifty();
+                            if (fiftyfifty) {
+                              playFiftyfifty();
+                            }
                             setState(() {
                               _selectedOptionsOne = List<bool>.filled(1, false);
                               _selectedOptionsTwo = List<bool>.filled(2, false);
@@ -1414,7 +1416,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               _selectedOptionsSix = List<bool>.filled(6, false);
 
                               ftft = getRandomEntriesFiftyFifty(opts);
-                              fiftyfifty = true;
+                              fiftyfifty = !fiftyfifty;
                             });
                           }
                         },
@@ -1456,6 +1458,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: const Text('Prev'),
                         onPressed: () {
                           setState(() {
+                            fiftyfifty = false;
                             _isFireworks!.change(false);
                             _themeToggled!.change(true);
 
@@ -1474,6 +1477,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: const Text('Next'),
                         onPressed: () {
                           setState(() {
+                            fiftyfifty = false;
                             _isFireworks!.change(false);
                             _themeToggled!.change(true);
 
