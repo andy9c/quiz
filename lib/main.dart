@@ -1035,7 +1035,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 softWrap: true,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 16.sp,
+                  fontSize: key.length > 105 ? 15.sp : 16.sp,
                 ),
               ),
             ),

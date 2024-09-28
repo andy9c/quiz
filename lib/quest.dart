@@ -878,7 +878,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 3 - Q6",
     "set": 8,
     "question":
-        "6. Name three Beatitudes mentioned in the Sermon on the Mount. तीन आशीर्वचन को लिखिए जो पहाड़ी उपदेश में येसु के द्वारा दिए गए थे?",
+        "6. Name three Beatitudes mentioned in the Sermon on the Mount. तीन आशीर्वचन को लिखिए जो पहाड़ी उपदेश में येसु के द्वारा दिए गए थे?\n\n",
     "options": {
       "A. माँगो और तुम्हें दिया जायेगा; ढूँढ़ों और तुम्हें मिल जायेगा; खटखटाओं और तुम्हारे लिए खोला जायेगा।":
           false,
@@ -1033,7 +1033,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 3 - Q16",
     "set": 8,
     "question":
-        "16. What did Jesus say was the greatest commandment? येसु के अनुसार सबसे बडी आज्ञा कौन सी है?",
+        "16. What did Jesus say was the greatest commandment? येसु के अनुसार सबसे बडी आज्ञा कौन सी है?\n\n",
     "options": {
       "A. Sell all that you have and follow me. तुम्हारे पास जो कुछ है उसे बेच दो और मेरे पीछे आओ।":
           false,
