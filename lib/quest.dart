@@ -729,7 +729,7 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "5. Who is described as the ''rock'' upon which Jesus will build his church? येसु किसको चट्टान के रूप में वर्णन करके उस पर अपनी कलीमसया को बनाएंगे?",
     "options": {
-      "Peter, पेत्रुस": true,
+      "Simon Peter, सिमोन पेत्रुस": true,
     },
   },
   {
@@ -765,7 +765,7 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "9. Who helped Jesus carry the cross? क्रूस ढोने में किसने येसु की सहायता की?",
     "options": {
-      "Simon of Cyrene, साइरीन के साइमन": true,
+      "Simon of Cyrene, कुरेने निवासी सिमोन": true,
     },
   },
   {
@@ -790,7 +790,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 2 - Q12",
     "set": 7,
     "question":
-        "12. Who asked Pilate for Jesus' body for burial? येसु के मतृ शरीर को दफनाने की अनुमतत ककसने मांगी?",
+        "12. Who asked Pilate for Jesus' body for burial? येसु के मतृ शरीर को दफनाने की अनुमतत किसने मांगी?",
     "options": {
       "Joseph of Arimathea, अरमिथिया के युसूफ": true,
     },
@@ -825,8 +825,8 @@ final List<Map<String, dynamic>> questionSets = [
     "question":
         "2. What gift did the Magi bring to Jesus? ज्योतिषी येसु के लिए कौन से तोफे लेकर आए?",
     "options": {
-      "A. Silver, Linen and myrrh, चांदी, लिनन (क्षोमवस्र), और लोहबान": false,
-      "B. Gold, frankincense, and myrrh, सोना, लोबान, और लोहबान": true,
+      "A. Silver, Linen and myrrh, चांदी, लिनन (क्षोमवस्र), और गन्धरस": false,
+      "B. Gold, frankincense, and myrrh, सोना, लोबान, और गन्धरस": true,
       "C. Frankincense, bronze and robe, लोबान, कांस्य, और बागे": false,
       "D. Gold, Candles and Bread, सोना, मोमबत्तियाँ और रोटी": false,
     },
@@ -861,7 +861,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 3 - Q5",
     "set": 8,
     "question":
-        "5. What were Jesus' three temptations in the wilderness? निर्जन प्रदेश में स येसु की तीन परीक्षा क्या थी?",
+        "5. What were Jesus' three temptations in the wilderness? निर्जन प्रदेश में येसु की तीन परीक्षा क्या थीं?",
     "options": {
       "A. पानी पर चलना, तूफान को शांत करना और पाँच हज़ार लोगों को खाना खिलाना":
           false,
@@ -1098,7 +1098,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 4 - Q2",
     "set": 9,
     "question":
-        "2. Judas received thirty pieces of silver to betray Jesus. यीशु को धोखा देने के लिए यहूदा को चाँदी के तीस सिक्के मिले।",
+        "2. Judas received thirty pieces of silver to betray Jesus. यीशु को धोखा देने के लिए यूदस इस्करियोती को चाँदी के तीस सिक्के मिले।",
     "options": {
       "TRUE (सही)": true,
       "FALSE (गलत)": false,
@@ -1108,7 +1108,7 @@ final List<Map<String, dynamic>> questionSets = [
     "title": "Round 4 - Q3",
     "set": 9,
     "question":
-        "3. The rich young ruler asked Jesus: “Good Teacher, which is the greatest commandment?” धनी युवा शासक ने यीशु से पूछा: “भले गुरु, सबसे बड़ी आज्ञा कौन सी है?”",
+        "3. The rich young man asked Jesus: “Good Teacher, which is the greatest commandment?” धनी युवक ने यीशु से पूछा: “भले गुरु, सबसे बड़ी आज्ञा कौन सी है?”",
     "options": {
       "TRUE (सही)": false,
       "FALSE (गलत)": true,
