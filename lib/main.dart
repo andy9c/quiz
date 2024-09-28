@@ -524,7 +524,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _startAction() {
+  void _startAction({int secs = 0}) {
     Map<String, bool> opts = questionSets[selectedQuestionIndex]
         .entries
         .firstWhere((e) => e.key == "options")
@@ -550,7 +550,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       _themeToggled!.change(true);
 
-      playStart();
+      secs == 60 ? playNotify() : playStart();
       _onIdle();
 
       _selectedOptionsOne = List<bool>.filled(1, false);
@@ -1352,7 +1352,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             _selectedOptionsSix = List<bool>.filled(6, false);
 
                             timeOutTimerSeconds = 60;
-                            _startAction();
+                            _startAction(secs: 60);
                           });
                         },
                       ),
