@@ -5,10 +5,7 @@ final List<Map<String, dynamic>> questionSets = [
     "main": true,
     "question": "ROUND 1 - QUESTIONS & ANSWERS, प्रश्न और उत्तर",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": true,
-      "D. ": false,
+      "A. ": true,
     },
   },
   {
@@ -125,10 +122,7 @@ final List<Map<String, dynamic>> questionSets = [
     "main": true,
     "question": "ROUND 2 - MAI KAUN HU, मैं कौन हूँ",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": true,
-      "D. ": false,
+      "A. ": true,
     },
   },
   {
@@ -571,10 +565,7 @@ final List<Map<String, dynamic>> questionSets = [
     "main": true,
     "question": "ROUND 1 - QUESTIONS & ANSWERS, प्रश्न और उत्तर",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": true,
-      "D. ": false,
+      "A. ": true,
     },
   },
   {
@@ -695,10 +686,7 @@ final List<Map<String, dynamic>> questionSets = [
     "main": true,
     "question": "ROUND 2 - MAI KAUN HU, मैं कौन हूँ",
     "options": {
-      "A. ": false,
-      "B. ": false,
-      "C. ": true,
-      "D. ": false,
+      "A. ": true,
     },
   },
   {
